@@ -91,7 +91,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -102,8 +102,6 @@
       <img src="images/logo.png" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -119,163 +117,315 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="introduction">Introduction</h1>
+        <h1 id="provider-api">Provider API</h1>
 
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>The Provider API is hosted by SatoshiPay. Providers talk to this API either directly or through plugins and libraries provided by SatoshiPay or third parties in order to register individual goods for monetisation. The provider itself hosts a complementary <a href="README_CONTENT_API.md">Content API</a>.</p>
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>Note: In the context of monetisation of web page content <em>goods</em> are called <a href="README_CONTENT_ITEMS.md">Content Items</a>.</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
+<p>https://provider-api-testnet.satoshipay.io/v1/</p>
 
 <h1 id="authentication">Authentication</h1>
 
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Basic_access_authentication">Basic Authentication</a></li>
+<li>Sign up at https://dashboard-testnet.satoshipay.io/ to receive API key and secret</li>
+<li>Use API key as authentication username and API secret as password</li>
+</ul>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
+<h1 id="format">Format</h1>
+
+<h2 id="convention">Convention</h2>
+
+<ul>
+<li>Output: JSON</li>
+<li>Input: JSON body</li>
+<li>Make sure to send <code class="prettyprint">Content-Type: application/json</code> header when posting data</li>
+</ul>
+<pre class="highlight shell"><code>curl https://provider-api-testnet.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 <span class="se">\</span>
+  -u user:password <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -d <span class="s1">'{"secret": "x"}'</span>
+  -X PATCH
 </code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
+<h1 id="goods">Goods</h1>
 
-<blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
-</blockquote>
+<h2 id="get-all-goods">Get all goods</h2>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-<h1 id="kittens">Kittens</h1>
-
-<h2 id="get-all-kittens">Get All Kittens</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+<p>Get all goods for authenticated user.</p>
+<pre class="highlight shell"><code>curl https://provider-api-testnet.satoshipay.io/v1/goods <span class="se">\</span>
+  -u user:password
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Example response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56c5a2a4f1cc5c0448c429f2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"n1hLnMiJwAwB"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">9106</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tempora accusamus maxime similique veritatis magni."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.info"</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56c5a2a52362b70448a589b3"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"naKQdYiJbOug"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">1836</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Qui quod sint rem excepturi odio."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.name"</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56c5a2a52362b70448a589b4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"m1btHMWJ6O6g"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">1349</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saepe voluptatibus tempore pariatur atque quia corrupti nisi dolores."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.name"</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves all kittens.</p>
-
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/api/kittens</code></p>
+<p><code class="prettyprint">GET https://api.satoshipay.io/v1/goods</code></p>
 
-<h3 id="query-parameters">Query Parameters</h3>
+<h2 id="get-one-good">Get one good</h2>
 
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+<p>Get a good.</p>
+<pre class="highlight shell"><code>    curl https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 <span class="se">\</span>
+      -u user:password
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Example response</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"558bcdbb1309c59725bdb559"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"m1btHMWJ6O6g"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">1349</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saepe voluptatibus tempore pariatur atque quia corrupti nisi dolores."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.name"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves a specific kitten.</p>
+<h3 id="http-request">HTTP Request</h3>
 
-<aside class="warning">Inside HTML code blocks like this one, you can&rsquo;t use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<p><code class="prettyprint">GET https://api.satoshipay.io/v1/goods/&lt;ID&gt;</code></p>
+
+<h2 id="post-a-good">Post a good</h2>
+
+<p>Create a new good.</p>
+<pre class="highlight shell"><code>    curl https://provider-api-testnet.satoshipay.io/v1/goods <span class="se">\</span>
+      -u user:password <span class="se">\</span>
+      -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+      -d <span class="s1">'{"secret":"DLDwYsQGromi","price":6247, \
+      "title":"Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.", \
+       "src":"http://example.org/post1"}'</span>
+</code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56c5a5a722252b484dc4839f"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DLDwYsQGromi"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">6247</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.org/post1"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">POST https://provider-api-testnet.satoshipay.io/v1/goods</code></p>
 
-<h3 id="url-parameters">URL Parameters</h3>
+<h3 id="parameters">Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
 <th>Description</th>
+<th>Required</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>price</td>
+<td>Product price in satoshis</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>secret</td>
+<td>Secret information which the payment server will deliver to client after payment</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>src</td>
+<td>URL of page that contains the good</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>title</td>
+<td>Title of good</td>
+<td>yes</td>
 </tr>
 </tbody></table>
+
+<h2 id="patch-a-good">Patch a good</h2>
+
+<p>Partially update a good, i.e. send only those properties that are to be updated.</p>
+<pre class="highlight shell"><code>    curl https://provider-api-testnet.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 <span class="se">\</span>
+      -u user:password <span class="se">\</span>
+      -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+      -d <span class="s1">'{"src": "http://example.com/changed"}'</span> <span class="se">\</span>
+      -X PATCH
+</code></pre>
+
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56c5a82328383fe54f841a60"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XyZtFohL7"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">1799</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beatae ab autem delectus dolorem est fugiat."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/changed"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://provider-api-testnet.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>price</td>
+<td>Product price in satoshis</td>
+<td>no</td>
+</tr>
+<tr>
+<td>secret</td>
+<td>Secret information which the payment server will deliver to client after payment</td>
+<td>no</td>
+</tr>
+<tr>
+<td>src</td>
+<td>URL of page that contains the good</td>
+<td>no</td>
+</tr>
+<tr>
+<td>title</td>
+<td>Title of good</td>
+<td>no</td>
+</tr>
+</tbody></table>
+
+<h3 id="put-goods-id"><em>PUT</em> goods/:id</h3>
+
+<p>Replace a good, i.e. send a complete model.</p>
+
+<h4 id="arguments">Arguments</h4>
+
+<ul>
+<li><strong>price</strong> (required): Product price in satoshis</li>
+<li><strong>secret</strong> (required): Secret information which the payment server will deliver to client after payment</li>
+<li><strong>url</strong> (required): URL of page that contains the good</li>
+<li><strong>title</strong> (required): Title of good</li>
+</ul>
+<pre class="highlight shell"><code>    curl https://provider-api-testnet.satoshipay.io/v1/goods/56c5a91265e80b7c51afad23 <span class="se">\</span>
+      -u user:password <span class="se">\</span>
+      -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+      -d <span class="s1">'{"secret":"RLC43wvCcmcs","price":4806,"title":"Veritatis impedit mollitia nam ipsum laudantium quam quidem.","src":"https://example.net"}'</span> <span class="se">\</span>
+      -X PUT
+</code></pre>
+
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56c5a91265e80b7c51afad23"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RLC43wvCcmcs"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">4806</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Veritatis impedit mollitia nam ipsum laudantium quam quidem."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.net"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="delete-goods-id"><em>DELETE</em> goods/:id</h3>
+
+<p>Delete a good.</p>
+
+<ul>
+<li>No arguments</li>
+</ul>
+<pre class="highlight shell"><code>    curl https://provider-api-testnet.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 <span class="se">\</span>
+      -u user:password <span class="se">\</span>
+      -X DELETE
+</code></pre>
+
+<blockquote>
+<p>Example response</p>
+</blockquote>
+
+<ul>
+<li>Empty response body</li>
+</ul>
+
+<h3 id="post-batch"><em>POST</em> batch</h3>
+
+<p>Add a batch job of requests</p>
+
+<ul>
+<li><strong>requests</strong> (required): Array of requests of form:
+
+<ul>
+<li><strong>method</strong> (required): The method of the query. (POST, PUT, PATCH, DELETE)</li>
+<li><strong>path</strong> (required): The path of the resource. (example: <code class="prettyprint">/goods/:id</code>)</li>
+<li><strong>body</strong> (required): JSON formatted body.</li>
+</ul></li>
+</ul>
+<pre class="highlight shell"><code>curl https://provider-api-testnet.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 <span class="se">\</span>
+  -u user:password <span class="se">\</span>
+  -d <span class="s1">'{"requests":[{"method":"POST","path":"/goods","body":{"secret":"NSKLDspUuo_V","price":1182,"title":"Aliquam sit nisi quia ut rerum.","src":"https://example.com/post1"}},{"method":"POST","path":"/goods","body":{"secret":"wh8tDxlUtkWR","title":"Id fugit atque fugiat eum.","src":"https://armand.info"}},{"method":"POST","path":"/goods","body":{"secret":"NSfg1elotk_R","price":7343,"title":"Vitae facere ea totam hic.","src":"https://example.com/post1"}}]}'</span>
+  -X POST
+</code></pre>
+
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"responses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56c59f4092d316b1419591eb"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NSKLDspUuo_V"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">1182</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aliquam sit nisi quia ut rerum."</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/post1"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Malformed"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56c59f4092d316b1419591ec"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NSfg1elotk_R"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">7343</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vitae facere ea totam hic."</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"src"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/post2"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
           <h1 id="errors">Errors</h1>
 
@@ -339,8 +489,6 @@ Remember — a happy kitten is an authenticated kitten!
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
           </div>
       </div>
     </div>
