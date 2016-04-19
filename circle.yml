@@ -1,0 +1,15 @@
+machine:
+  services:
+    - docker
+  pre:
+    - bundle install
+
+deployment:
+  develop:
+    branch: master
+    commands:
+      - docker info
+      - bundle exec middleman build --clean
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker build -t satoshipay/api-docs .
+      - docker push satoshipay/api-docs
