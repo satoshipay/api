@@ -1,3 +1,5 @@
+set :source, "docs"
+
 # Markdown
 set :markdown_engine, :redcarpet
 set :markdown,
