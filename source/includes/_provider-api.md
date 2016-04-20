@@ -1,8 +1,8 @@
 # Provider API
 
-The Provider API is hosted by SatoshiPay. Providers talk to this API either directly or through plugins and libraries provided by SatoshiPay or third parties in order to register individual goods for monetisation. The provider itself hosts a complementary [Content API](README_CONTENT_API.md).
+The Provider API is hosted by SatoshiPay. Providers talk to this API either directly or through plugins and libraries provided by SatoshiPay or third parties in order to register individual goods for monetization. The provider itself hosts a complementary [Content API](README_CONTENT_API.md).
 
-Note: In the context of monetisation of web page content *goods* are called [Content Items](README_CONTENT_ITEMS.md).
+Note: In the context of monetization of web page content *goods* are called [Content Items](README_CONTENT_ITEMS.md).
 
     https://provider-api-testnet.satoshipay.io/v1/
 
