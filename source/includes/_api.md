@@ -483,7 +483,7 @@ curl https://api.satoshipay.io/v1/batch \
               "secret": "NSfg1elotk_R",
               "price": 7343,
               "title": "Vitae facere ea totam hic",
-              "url": "https://example.com/post1"
+              "url": "https://example.com/post2"
             }
           }
         ]
@@ -519,7 +519,7 @@ request({
           "secret": "NSfg1elotk_R",
           "price": 7343,
           "title": "Vitae facere ea totam hic",
-          "url": "https://example.com/post1"
+          "url": "https://example.com/post2"
         }
       }
     ]
@@ -564,7 +564,7 @@ Provide an array of 'request' objects in the body. Each request object has the f
 
 Property | Type          | Required              | Description
 -------- | ------------- | -------------------   | -----------
-`method` | *string*      | yes                   | The method of the query. Has to be one of POST | PUT | PATCH | DELETE.
+`method` | *string*      | yes                   | The method of the query. Has to be one of POST, PUT, PATCH or DELETE.
 `path`   | *string*      | yes                   | The path of the resource. For example: `/goods/<id>`
 `body`   | *json value*  | depending on `method` | JSON value that represents the body of the request.
 
