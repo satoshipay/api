@@ -222,12 +222,12 @@ POST https://api.satoshipay.io/v1/goods
 curl https://api.satoshipay.io/v1/goods \
   -u ngYFu8z33dHT5BdNX:4e2b80863e94ac88da23c541d2772124eb55f57d \
   -H 'Content-Type: application/json' \
-  -X POST
-  -d '{ \
-       "secret": "DLDwYsQGromi", \
-       "price": 6247, \
-       "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.", \
-       "url": "http://example.org/post1" \
+  -X POST \
+  -d '{
+       "secret": "DLDwYsQGromi",
+       "price": 6247,
+       "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.",
+       "url": "http://example.org/post1"
       }'
 ```
 
@@ -294,11 +294,11 @@ curl https://api.satoshipay.io/v1/goods/56c5a91265e80b7c51afad23 \
   -u ngYFu8z33dHT5BdNX:4e2b80863e94ac88da23c541d2772124eb55f57d \
   -H 'Content-Type: application/json' \
   -X PUT \
-  -d '{ \
-        "secret": "RLC43wvCcmcs", \
-        "price": 4806, \
-        "title": "Veritatis impedit mollitia nam ipsum laudantium quam quidem.", \
-        "url": "https://example.net" \
+  -d '{
+        "secret": "RLC43wvCcmcs",
+        "price": 4806,
+        "title": "Veritatis impedit mollitia nam ipsum laudantium quam quidem.",
+        "url": "https://example.net"
       }'
 ```
 
@@ -365,8 +365,8 @@ curl https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 \
   -u ngYFu8z33dHT5BdNX:4e2b80863e94ac88da23c541d2772124eb55f57d \
   -H 'Content-Type: application/json' \
   -X PATCH \
-  -d '{ \
-        "url": "http://example.com/changed" \
+  -d '{
+        "url": "http://example.com/changed"
       }'
 ```
 
@@ -463,30 +463,30 @@ POST https://api.satoshipay.io/v1/batch
 curl https://api.satoshipay.io/v1/batch \
   -u ngYFu8z33dHT5BdNX:4e2b80863e94ac88da23c541d2772124eb55f57d \
   -H 'Content-Type: application/json' \
-  -X POST
-  -d '{ \
-        "requests": [ \
-          { \
-            "method": "POST", \
-            "path": "/goods", \
-            "body": { \
-              "secret": "NSKLDspUuo_V", \
-              "price": 1182, \
-              "title": "Aliquam sit nisi quia ut rerum.", \
-              "url": "https://example.com/post1" \
-            } \
-          }, \
-          { \
-            "method": "POST", \
-            "path": "/goods", \
-            "body": { \
-              "secret": "NSfg1elotk_R", \
-              "price": 7343, \
-              "title": "Vitae facere ea totam hic", \
-              "url": "https://example.com/post1" \
-            } \
-          } \
-        ] \
+  -X POST \
+  -d '{
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/goods",
+            "body": {
+              "secret": "NSKLDspUuo_V",
+              "price": 1182,
+              "title": "Aliquam sit nisi quia ut rerum.",
+              "url": "https://example.com/post1"
+            }
+          },
+          {
+            "method": "POST",
+            "path": "/goods",
+            "body": {
+              "secret": "NSfg1elotk_R",
+              "price": 7343,
+              "title": "Vitae facere ea totam hic",
+              "url": "https://example.com/post1"
+            }
+          }
+        ]
       }'
 ```
 
