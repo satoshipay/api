@@ -180,7 +180,7 @@ html, body {
 
   li {
     color: $nav-text;
-    transition-property: background;
+    transition-property: all;
     transition-timing-function: linear;
     transition-duration: 230ms;
   }
@@ -414,13 +414,13 @@ html, body {
 
   h3, h4, h5, h6 {
     @extend %header-font;
-    font-size: 15px;
+    font-size: 17px;
     margin-top: 2.5em;
     margin-bottom: 0.8em;
   }
 
   h4, h5, h6 {
-    font-size: 13px;
+    font-size: 15px;
   }
 
   hr {
@@ -494,7 +494,7 @@ html, body {
   aside {
     padding-top: 1em;
     padding-bottom: 1em;
-    text-shadow: 0 1px 0 lighten($aside-notice-bg, 15%);
+    text-shadow: 0 1px 0 lighten($aside-notice-bg, 10%);
     margin-top: 1.5em;
     margin-bottom: 1.5em;
     background: $aside-notice-bg;
