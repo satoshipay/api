@@ -12,9 +12,10 @@
 
   var makeToc = function() {
     global.toc = $("#toc").tocify({
-      selectors: 'h1, h2',
+      selectors: 'h1, h2, h3',
       extendPage: false,
       theme: 'none',
+      showAndHide: false,
       smoothScroll: false,
       showEffectSpeed: 0,
       hideEffectSpeed: 180,
@@ -54,4 +55,3 @@
     });
   });
 })(window);
-

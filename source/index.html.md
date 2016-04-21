@@ -6,9 +6,12 @@ toc_footers:
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - provider-api
-  - content-api
-  - content-items
+  - api
+  - integration
 
 search: true
 ---
+
+# Introduction
+
+Introductory words, diagram, etc...

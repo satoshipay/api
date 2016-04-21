@@ -1,24 +1,46 @@
-# Provider API
+# SatoshiPay API
 
-The Provider API is hosted by SatoshiPay. Providers talk to this API either directly or through plugins and libraries provided by SatoshiPay or third parties in order to register individual goods for monetization. The provider itself hosts a complementary [Content API](README_CONTENT_API.md).
+> URL of the Provider API
 
-Note: In the context of monetization of web page content *goods* are called [Content Items](README_CONTENT_ITEMS.md).
+```
+https://api.satoshipay.io/v1/
+```
 
-    https://provider-api-testnet.satoshipay.io/v1/
+The Provider API is hosted by SatoshiPay. Providers talk to this API either directly or through plugins and libraries provided by SatoshiPay or third parties in order to register individual goods for monetization. The provider itself hosts a complementary [Content API](#content-api).
+
+<aside class="notice">
+  In the context of monetization of web page content, <em>goods</em> are called <a href="#content-items">Content Items</a>.
+</aside>
 
 ## Authentication
 
-* [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication)
-* Sign up at https://dashboard-testnet.satoshipay.io/ to receive API key and secret
-* Use API key as authentication username and API secret as password
+> Basic Authentication using cURL
 
-## Format
+```
+curl https://api.satoshipay.io/v1/goods \
+  -u <api-key>:<api-secret>
+```
 
-### Convention
+Every request to the Provider API must be authenticated with your API credentials. These credentials can be obtained by creating a provider account at [https://dashboard.satoshipay.io/](https://dashboard.satoshipay.io/). After signing up, you have to add a bitcoin payout address in order for the API credentials to be generated. Once generated, your API key and secret can be found at [https://dashboard.satoshipay.io/settings/api](https://dashboard.satoshipay.io/settings/api).
 
-* Output: JSON
-* Input: JSON body
-* Make sure to send ```Content-Type: application/json``` header when posting data
+The Provider API uses [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication), where the user name is your API key, and the password is your API secret.
+
+The example on the right uses cURL for Basic Authentication to receive the list of all goods.
+
+#### Authentication Failure
+
+```json
+{
+  "name": "unauthorized",
+  "message": "Unauthorized Request",
+  "statusCode": 401,
+  "errorCode": 401
+}
+```
+
+When the authorization fails, a JSON object with an error message will be returned as a response (along with the HTTP status `401`) .
+
+## Conventions
 
 ```shell
 curl https://provider-api-testnet.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 \
@@ -27,6 +49,10 @@ curl https://provider-api-testnet.satoshipay.io/v1/goods/558bcdbb1309c59725bdb55
   -d '{"secret": "x"}'
   -X PATCH
 ```
+
+* Output: JSON
+* Input: JSON body
+* Make sure to send ```Content-Type: application/json``` header when posting data
 
 
 
