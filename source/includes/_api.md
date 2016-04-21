@@ -6,7 +6,7 @@
 https://api.satoshipay.io/v1/
 ```
 
-The Provider API is hosted by SatoshiPay. Providers talk to this API either directly or through plugins and libraries provided by SatoshiPay or third parties in order to register individual goods for monetization. The provider itself hosts a complementary [Content API](#content-api).
+The Digital Goods API is hosted by SatoshiPay. Providers talk to this API either directly or through plugins and libraries provided by SatoshiPay or third parties in order to register individual goods for monetization. The provider itself hosts a complementary [Content API](#content-api).
 
 <aside class="notice">
   In the context of monetization of web page content, <em>goods</em> are called <a href="#content-items">Content Items</a>.
@@ -34,9 +34,9 @@ request({
 }, callback);
 ```
 
-Every request to the Provider API must be authenticated with your API credentials. These credentials can be obtained by creating a provider account at [https://dashboard.satoshipay.io/](https://dashboard.satoshipay.io/). After signing up, you have to add a bitcoin payout address in order for the API credentials to be generated. Once generated, your API key and secret can be found at [https://dashboard.satoshipay.io/settings/api](https://dashboard.satoshipay.io/settings/api).
+Every request to the API must be authenticated with your API credentials. These credentials can be obtained by creating a provider account at [https://dashboard.satoshipay.io/](https://dashboard.satoshipay.io/). After signing up, you have to add a bitcoin payout address in order for the API credentials to be generated. Once generated, your API key and secret can be found at [https://dashboard.satoshipay.io/settings/api](https://dashboard.satoshipay.io/settings/api).
 
-The Provider API uses [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication), where the user name is your API key, and the password is your API secret.
+The API uses [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication), where the user name is your API key, and the password is your API secret.
 
 The example on the right uses cURL for Basic Authentication to receive the list of all goods.
 
