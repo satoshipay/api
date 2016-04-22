@@ -19,3 +19,7 @@ search: true
 # Introduction
 
 Introductory words, diagram, etc...
+
+<p align="center">
+  <img src="images/api.svg" width="450px" height="250px" />
+</p>
