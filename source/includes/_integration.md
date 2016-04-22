@@ -58,7 +58,7 @@ Authentication is done for each content item using its payment certificate. Curr
 > Content item tag example
 
 ```html
-<p class="satoshipay-content-item-text satoshipay-untouched-placeholder"
+<p class="satoshipay-placeholder"
    data-sp-src="/satoshipay-content"
    data-sp-id="558bcdbb1309c59725bdb559"
    data-sp-length="800"
