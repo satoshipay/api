@@ -24,9 +24,20 @@ In the example below, assuming the content item tags are defined in `https://exa
 curl https://example.org/satoshipay-content?id=9lgf2XmI&paymentCert=kaTBAIv5j
 ```
 
+```javascript
+var request = require("request");
+request({
+  url: "https://example.org/satoshipay-content",
+  qs: {
+    id: "9lgf2XmI",
+    paymentCert: "kaTBAIv5j"
+  }
+}, callback);
+```
+
 The endpoint will be called with a `GET` request that has the following *query parameters*:
 
-Query Parameter | Description
+<span style="white-space: nowrap"> Query Parameter</span> | Description
 --------------- | -----------
 `id`            | Identifier of the product that's being monetized. See [Content Items](#content-items) for more information on IDs.
 `paymentCert`   | Certificate for payment. This parameter should be used by the API to authenticate the call (see [Authentication](#authentication19) below).
@@ -35,15 +46,19 @@ Query Parameter | Description
 
 > Example response
 
-```
-HTTP/1.1 200 OK
-Date: Wed, 20 Apr 2016 16:14:25 GMT
-Content-Type: text/html; charset=utf-8
-
-<strong>Some premium content</strong>: Lorem ipsum!
+```json
+{
+  "content": "<strong>Some premium content</strong>: Lorem ipsum!"
+}
 ```
 
-The Content API needs to return the correct `Content-Type` header for the content that is shipped. For example `Content-Type: text/html; charset=utf-8` for regular HTML.
+The response needs to be a JSON formatted object with the following property:
+
+Property  | Type     | Required | Description
+--------- | -------- | -------- | ------------
+`content` | *string* | yes      | Content of the digital good. May contain HTML markup.
+
+The Content API needs to return the correct `Content-Type` header for the content that is shipped. For example `Content-Type:application/json; charset=utf-8` for JSON.
 
 ### Authentication
 
