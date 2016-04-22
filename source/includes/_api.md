@@ -47,7 +47,7 @@ When the authorization fails, a JSON object with an error message will be return
 ```shell
 curl https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 \
   -X PATCH \
-  -u ngYFu8z33dHT5BdNX:4e2b80863e94ac88da23c541d2772124eb55f57d \
+  -u apikey:apisecret \
   -H 'Content-Type: application/json' \
   -d '{ "secret": "xyz" }'
 ```
@@ -57,8 +57,8 @@ var request = require("request");
 request({
   url: "https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559",
   auth: {
-    user: "ngYFu8z33dHT5BdNX",
-    password: "4e2b80863e94ac88da23c541d2772124eb55f57d"
+    user: "apikey",
+    password: "apisecret"
   },
   method: "PATCH",
   json: {
@@ -102,7 +102,7 @@ GET https://api.satoshipay.io/v1/goods
 
 ```shell
 curl https://api.satoshipay.io/v1/goods \
-  -u ngYFu8z33dHT5BdNX:4e2b80863e94ac88da23c541d2772124eb55f57d
+  -u apikey:apisecret
 ```
 
 ```javascript
@@ -110,8 +110,8 @@ var request = require("request");
 request({
   url: "https://api.satoshipay.io/v1/goods",
   auth: {
-    user: "ngYFu8z33dHT5BdNX",
-    password: "4e2b80863e94ac88da23c541d2772124eb55f57d"
+    user: "apikey",
+    password: "apisecret"
   },
   json: true
 }, callback);
@@ -164,7 +164,7 @@ GET https://api.satoshipay.io/v1/goods/<id>
 
 ```shell
 curl https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 \
-  -u ngYFu8z33dHT5BdNX:4e2b80863e94ac88da23c541d2772124eb55f57d
+  -u apikey:apisecret
 ```
 
 ```javascript
@@ -172,8 +172,8 @@ var request = require("request");
 request({
   url: "https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559",
   auth: {
-    user: "ngYFu8z33dHT5BdNX",
-    password: "4e2b80863e94ac88da23c541d2772124eb55f57d"
+    user: "apikey",
+    password: "apisecret"
   },
   json: true
 }, callback);
@@ -221,7 +221,7 @@ POST https://api.satoshipay.io/v1/goods
 
 ```shell
 curl https://api.satoshipay.io/v1/goods \
-  -u ngYFu8z33dHT5BdNX:4e2b80863e94ac88da23c541d2772124eb55f57d \
+  -u apikey:apisecret \
   -H 'Content-Type: application/json' \
   -X POST \
   -d '{
@@ -237,8 +237,8 @@ var request = require("request");
 request({
   url: "https://api.satoshipay.io/v1/goods",
   auth: {
-    user: "ngYFu8z33dHT5BdNX",
-    password: "4e2b80863e94ac88da23c541d2772124eb55f57d"
+    user: "apikey",
+    password: "apisecret"
   },
   method: "POST",
   json: {
@@ -291,7 +291,7 @@ PUT https://api.satoshipay.io/v1/goods/<id>
 
 ```shell
 curl https://api.satoshipay.io/v1/goods/56c5a91265e80b7c51afad23 \
-  -u ngYFu8z33dHT5BdNX:4e2b80863e94ac88da23c541d2772124eb55f57d \
+  -u apikey:apisecret \
   -H 'Content-Type: application/json' \
   -X PUT \
   -d '{
@@ -307,8 +307,8 @@ var request = require("request");
 request({
   url: "https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559",
   auth: {
-    user: "ngYFu8z33dHT5BdNX",
-    password: "4e2b80863e94ac88da23c541d2772124eb55f57d"
+    user: "apikey",
+    password: "apisecret"
   },
   method: "PUT",
   json: {
@@ -361,7 +361,7 @@ PATCH https://api.satoshipay.io/v1/goods/<id>
 
 ```shell
 curl https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 \
-  -u ngYFu8z33dHT5BdNX:4e2b80863e94ac88da23c541d2772124eb55f57d \
+  -u apikey:apisecret \
   -H 'Content-Type: application/json' \
   -X PATCH \
   -d '{
@@ -374,8 +374,8 @@ var request = require("request");
 request({
   url: "https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559",
   auth: {
-    user: "ngYFu8z33dHT5BdNX",
-    password: "4e2b80863e94ac88da23c541d2772124eb55f57d"
+    user: "apikey",
+    password: "apisecret"
   },
   method: "PATCH",
   json: {
@@ -425,7 +425,7 @@ DELETE https://api.satoshipay.io/v1/goods/<id>
 
 ```shell
 curl https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 \
-  -u ngYFu8z33dHT5BdNX:4e2b80863e94ac88da23c541d2772124eb55f57d \
+  -u apikey:apisecret \
   -X DELETE
 ```
 
@@ -434,8 +434,8 @@ var request = require("request");
 request({
   url: "https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559",
   auth: {
-    user: "ngYFu8z33dHT5BdNX",
-    password: "4e2b80863e94ac88da23c541d2772124eb55f57d"
+    user: "apikey",
+    password: "apisecret"
   },
   method: "DELETE"
 }, callback);
@@ -459,7 +459,7 @@ POST https://api.satoshipay.io/v1/batch
 
 ```shell
 curl https://api.satoshipay.io/v1/batch \
-  -u ngYFu8z33dHT5BdNX:4e2b80863e94ac88da23c541d2772124eb55f57d \
+  -u apikey:apisecret \
   -H 'Content-Type: application/json' \
   -X POST \
   -d '{
@@ -493,8 +493,8 @@ var request = require("request");
 request({
   url: "https://api.satoshipay.io/v1/batch",
   auth: {
-    user: "ngYFu8z33dHT5BdNX",
-    password: "4e2b80863e94ac88da23c541d2772124eb55f57d"
+    user: "apikey",
+    password: "apisecret"
   },
   method: "POST",
   json: {
