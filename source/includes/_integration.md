@@ -29,7 +29,7 @@ The endpoint will be called with a `GET` request that has the following *query p
 Query Parameter | Description
 --------------- | -----------
 `id`            | Identifier of the product that's being monetized. See [Content Items](#content-items) for more information on IDs.
-`paymentCert`   | Certificate for payment. This parameter should be used by the API to authenticate the call (see [Authentication](#authentication8) below).
+`paymentCert`   | Certificate for payment. This parameter should be used by the API to authenticate the call (see [Authentication](#authentication19) below).
 
 ### Response Format
 
