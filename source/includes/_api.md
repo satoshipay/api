@@ -61,8 +61,7 @@ request({
     password: "4e2b80863e94ac88da23c541d2772124eb55f57d"
   },
   method: "PATCH",
-  json: true,
-  body: {
+  json: {
     secret: "xyz"
   }
 }, callback);
@@ -113,7 +112,8 @@ request({
   auth: {
     user: "ngYFu8z33dHT5BdNX",
     password: "4e2b80863e94ac88da23c541d2772124eb55f57d"
-  }
+  },
+  json: true
 }, callback);
 ```
 
@@ -174,7 +174,8 @@ request({
   auth: {
     user: "ngYFu8z33dHT5BdNX",
     password: "4e2b80863e94ac88da23c541d2772124eb55f57d"
-  }
+  },
+  json: true
 }, callback);
 ```
 
@@ -240,8 +241,7 @@ request({
     password: "4e2b80863e94ac88da23c541d2772124eb55f57d"
   },
   method: "POST",
-  json: true,
-  body: {
+  json: {
     "secret": "DLDwYsQGromi",
     "price": 6247,
     "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.",
@@ -279,7 +279,7 @@ Property | Type      | Required | Description
 
 As a confirmation, the handler returns the an object representing the good from the request, augmented by an `id` property, which holds the id that has been assigned to the good as a *string*.
 
-### Replace a good
+### Replace a Good
 
 > Definition
 
@@ -311,8 +311,7 @@ request({
     password: "4e2b80863e94ac88da23c541d2772124eb55f57d"
   },
   method: "PUT",
-  json: true,
-  body: {
+  json: {
     "secret": "RLC43wvCcmcs",
     "price": 4806,
     "title": "Veritatis impedit mollitia nam ipsum laudantium quam quidem.",
@@ -379,8 +378,7 @@ request({
     password: "4e2b80863e94ac88da23c541d2772124eb55f57d"
   },
   method: "PATCH",
-  json: true,
-  body: {
+  json: {
     "url": "http://example.com/changed"
   }
 }, callback);
@@ -415,7 +413,7 @@ Property | Type      | Required | Description
 
 The updated 'good' object.
 
-### Delete a good
+### Delete a Good
 
 > Definition
 
@@ -499,8 +497,7 @@ request({
     password: "4e2b80863e94ac88da23c541d2772124eb55f57d"
   },
   method: "POST",
-  json: true,
-  body: {
+  json: {
     "requests": [
       {
         "method": "POST",

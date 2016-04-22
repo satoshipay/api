@@ -1,5 +1,5 @@
 ---
-title: API Reference
+title: SatoshiPay API Reference
 
 language_tabs:
   - shell: cURL
