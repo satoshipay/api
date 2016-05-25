@@ -6,7 +6,7 @@ language_tabs:
   - javascript: Node
 
 toc_footers:
-  - <a href='https://dashboard.satoshipay.io/'>Sign Up for a Developer Key</a>
+  - <a href='https://dashboard.satoshipay.io/sign-up'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -18,20 +18,29 @@ search: true
 
 # Introduction
 
-The SatoshiPay infrastructure is designed in a way that allows third parties to develop plugins (or apps) that facilitate the management and content provision of the digital goods that are exchanged via SatoshiPay. For this, SatoshiPay provides a public *Digital Goods API*. In order to integrate SatoshiPay as a service, the plugin must do three things:
+Welcome to the SatoshiPay API! You can use this API to make digital goods like articles, images, video/audio and downloadable files available for purchase using the SatoshiPay widget. This documentation covers:
 
-1. Communicate with the [Digital Goods API](#digital-goods-api) to manage the goods.
-2. Insert [Content Items](#content-items) at the places in the website where the content of the digital goods should appear.
-3. Provide a [Content API](#content-api) endpoint that delivers the content of a purchased digital good.
+* [Digital Goods API](#digital-goods-api) - Register and manage digital goods with SatoshiPay
+* [HTML Tags](#content-items) - How to embed digital goods into your website
+* [HTTP Resource](#content-api) - How to deliver paid content to your users
 
-The following diagram illustrates how the plugin and SatoshiPay interact with each other:
+### SatoshiPay and You
+
+To understand how SatoshiPay works you need to know the following:
+
+* You need to register your digital goods with SatoshiPay
+* You need to embed the digital goods and the SatoshiPay widget into your website
+* SatoshiPay handles the payments
+* You need to deliver the digital goods to your users via HTTP
+
+The following diagram illustrates how your website and SatoshiPay interact with each other:
 
 <p align="center">
   <img src="images/api.svg" width="450px" height="250px" />
 </p>
 
-For every provider, the SatoshiPay backend manages a set of abstract digital goods. These abstract goods only contain the price and some meta information, but not the content. The plugin can register and define these goods through the Digital Goods API.
+The SatoshiPay backend manages a registry of your digital goods. This registry only contains pricing and some meta information, but not the content itself. You can register and manage these goods through the Digital Goods API.
 
-The goods can be included as *content items* on the web page. The location of the content item tag determines the location of the content (and its placeholder, if the content hasn't been paid for yet) on the webpage.
+The goods can be embedded on your web page using HTML tags with special data attributes. The location of the HTML tag determines the position of the digital good on the page, or the position of its placeholder, if the good hasn't been paid yet.
 
-All content items are managed by the SatoshiPay widget that is injected in the web page. When the consumer buys a digital good, the widget handles the payment process by talking to the SatoshiPay backend. At the end of that process, the widget receives a payment certificate which is then used to fetch the actual content of the good from the *Content API*, which has to be provided by the plugin.
+The special HTML tags are recognised by the SatoshiPay widget, which needs to be included on every page that contains digital goods for sale. When the consumer buys a digital good, the widget handles the payment process by communicating to the SatoshiPay backend using a WebSocket connection. After a successful payment the widget receives a payment certificate, which is then used to fetch the actual content of the good from a special HTTP resource provided by you.
