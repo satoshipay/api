@@ -20,13 +20,13 @@ search: true
 
 # Introduction
 
-Welcome to the [SatoshiPay](https://satoshipay.io/) API! You can use this API to make digital goods like articles, images, video/audio and downloadable files available for purchase using the SatoshiPay widget. This documentation covers:
+Welcome to the [SatoshiPay](https://satoshipay.io/) API! You can use this API to make digital goods like articles, images, video/audio and downloadable files available for purchase using the SatoshiPay [widget](#sun-of-satoshi). This documentation covers:
 
 * [Digital Goods API](#digital-goods-api) - Register and manage digital goods with SatoshiPay
 * [HTML Tags](#html-tags) - How to embed digital goods into your website
 * [HTTP Endpoints](#http-endpoints) - How to deliver paid digital goods to your users
 
-### SatoshiPay and You
+## SatoshiPay and You
 
 To understand how SatoshiPay works you need to know the following:
 
@@ -46,3 +46,26 @@ The SatoshiPay backend manages a registry of your digital goods. This registry c
 The goods can be embedded on your web page using [HTML Tags](#html-tags) with special data attributes. The location of the HTML tag determines the position of the digital good on the page, or if the good hasn't been paid yet, the position of its placeholder.
 
 The special HTML tags are recognised by the SatoshiPay widget, which needs to be included on every page that contains digital goods for sale. When a user buys a digital good, the widget handles the payment process by communicating to the SatoshiPay backend using a WebSocket connection. After successful payment the widget receives a payment certificate, which in turn is used to fetch the content of the good from a special [HTTP Endpoint](#http-endpoints) provided by you.
+
+## Sun of Satoshi
+
+> Include SatoshiPay Widget
+
+```html
+<script src="https://wallet.satoshipay.io/satoshipay.js"></script>
+```
+
+We've nicknamed our website widget "Sun of Satoshi" to honour Bitcoin's anonymous creator Satoshi Nakamoto. It will float at the bottom right of the page and look like this:
+
+<p>
+  <img src="images/sun.png" />
+</p>
+
+The widget displays a user's current balance in satoshis and, when clicked, a menu with items for top-up, settings and help. It can be included *anywhere* on *any* web page and will automatically transform SatoshiPay [HTML Tags](#html-tags) into digital goods.
+
+The widget performs the following tasks:
+
+* Generate a bitcoin wallet and keep it in user's LocalStorage
+* Communicate with SatoshiPay servers
+* Control digital goods on the web page
+* Interact with the user via menus and messages
