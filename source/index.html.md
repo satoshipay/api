@@ -1,5 +1,5 @@
 ---
-title: SatoshiPay API Reference
+title: SatoshiPay API
 
 language_tabs:
   - shell: cURL
@@ -8,6 +8,7 @@ language_tabs:
 toc_footers:
   - <a href='https://dashboard.satoshipay.io/sign-up'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - 2016 <a href='https://satoshipay.io/'>SatoshiPay</a>
 
 includes:
   - api
@@ -19,7 +20,7 @@ search: true
 
 # Introduction
 
-Welcome to the SatoshiPay API! You can use this API to make digital goods like articles, images, video/audio and downloadable files available for purchase using the SatoshiPay widget. This documentation covers:
+Welcome to the [SatoshiPay](https://satoshipay.io/) API! You can use this API to make digital goods like articles, images, video/audio and downloadable files available for purchase using the SatoshiPay widget. This documentation covers:
 
 * [Digital Goods API](#digital-goods-api) - Register and manage digital goods with SatoshiPay
 * [HTML Tags](#html-tags) - How to embed digital goods into your website
