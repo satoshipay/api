@@ -22,7 +22,7 @@ Welcome to the SatoshiPay API! You can use this API to make digital goods like a
 
 * [Digital Goods API](#digital-goods-api) - Register and manage digital goods with SatoshiPay
 * [HTML Tags](#content-items) - How to embed digital goods into your website
-* [HTTP Resource](#content-api) - How to deliver paid content to your users
+* [HTTP Endpoints](#content-api) - How to deliver paid digital goods to your users
 
 ### SatoshiPay and You
 
@@ -39,8 +39,8 @@ The following diagram illustrates how your website and SatoshiPay interact with 
   <img src="images/api.svg" width="450px" height="250px" />
 </p>
 
-The SatoshiPay backend manages a registry of your digital goods. This registry only contains pricing and some meta information, but not the content itself. You can register and manage these goods through the Digital Goods API.
+The SatoshiPay backend manages a registry of your digital goods. This registry contains pricing and some meta information, but not the content itself. You can register and manage these goods through the [Digital Goods API](#digital-goods-api).
 
-The goods can be embedded on your web page using HTML tags with special data attributes. The location of the HTML tag determines the position of the digital good on the page, or the position of its placeholder, if the good hasn't been paid yet.
+The goods can be embedded on your web page using [HTML Tags](#content-items) with special data attributes. The location of the HTML tag determines the position of the digital good on the page, or if the good hasn't been paid yet, the position of its placeholder.
 
-The special HTML tags are recognised by the SatoshiPay widget, which needs to be included on every page that contains digital goods for sale. When the consumer buys a digital good, the widget handles the payment process by communicating to the SatoshiPay backend using a WebSocket connection. After a successful payment the widget receives a payment certificate, which is then used to fetch the actual content of the good from a special HTTP resource provided by you.
+The special HTML tags are recognised by the SatoshiPay widget, which needs to be included on every page that contains digital goods for sale. When a user buys a digital good, the widget handles the payment process by communicating to the SatoshiPay backend using a WebSocket connection. After successful payment the widget receives a payment certificate, which in turn is used to fetch the content of the good from a special [HTTP Endpoint](#content-api) provided by you.
