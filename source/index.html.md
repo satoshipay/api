@@ -41,7 +41,7 @@ The following diagram illustrates how your website and SatoshiPay interact with 
   <img src="images/api.svg" width="450px" height="250px" />
 </p>
 
-The SatoshiPay backend manages a registry of your digital goods. This registry contains pricing and some meta information, but not the content itself. You can register and manage these goods through the [Digital Goods API](#digital-goods-api).
+The SatoshiPay backend manages a registry of your digital goods. This registry contains pricing and some meta information, but not the content itself. You can register and manage these goods using the [Digital Goods API](#digital-goods-api).
 
 The goods can be embedded on your web page using [HTML Tags](#html-tags) with special data attributes. The location of the HTML tag determines the position of the digital good on the page, or if the good hasn't been paid yet, the position of its placeholder.
 
