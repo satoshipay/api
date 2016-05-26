@@ -6,10 +6,10 @@
 https://api.satoshipay.io/v1/
 ```
 
-The Digital Goods API is hosted by SatoshiPay. Providers talk to this API either directly or through plugins and libraries provided by SatoshiPay or third parties in order to register individual goods for monetization. The provider itself hosts a complementary [Content API](#content-api).
+The Digital Goods API is hosted by SatoshiPay. Providers talk to this API either directly or through plugins and libraries provided by SatoshiPay or third parties in order to register individual goods for monetization. The provider itself hosts a complementary [HTTP Endpoints](#html-endpoints).
 
 <aside class="notice">
-  In the context of monetization of web page content, <em>goods</em> are called <a href="#content-items">Content Items</a>.
+  In the context of monetisation of web page content, <em>goods</em> are described as <a href="#html-tags">HTML Tags</a>.
 </aside>
 
 ## General
@@ -148,7 +148,7 @@ Property | Type      | Description
 -------- | --------- | ------------
 `id`     | *string*  | Unique identifier of the good.
 `price`  | *integer* | Product price in satoshis.
-`secret` | *string*  | Secret information which the SatoshiPay widget will use to fetch content after successful payment. See [Content API](#content-api).
+`secret` | *string*  | Secret information which the SatoshiPay widget will use to fetch content after successful payment. See [HTTP Endpoints](#http-endpoints).
 `url`    | *string*  | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | Title of the good for reference in the provider dashboard.
 
@@ -205,7 +205,7 @@ Property | Type      | Description
 -------- | --------- | ------------
 `id`     | *string*  | Unique identifier of the good.
 `price`  | *integer* | Product price in satoshis.
-`secret` | *string*  | Secret information which the SatoshiPay widget will use to fetch content after successful payment. See [Content API](#content-api).
+`secret` | *string*  | Secret information which the SatoshiPay widget will use to fetch content after successful payment. See [HTTP Endpoints](#http-endpoints).
 `url`    | *string*  | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | Title of the good for reference in the provider dashboard.
 
@@ -271,7 +271,7 @@ Provide a 'good' object with the following properties:
 Property | Type      | Required | Description
 -------- | --------- | -------- | ------------
 `price`  | *integer* | yes      | Product price in satoshis.
-`secret` | *string*  | yes      | Secret information which the SatoshiPay widget will use to fetch content after successful payment. See [Content API](#content-api).
+`secret` | *string*  | yes      | Secret information which the SatoshiPay widget will use to fetch content after successful payment. See [HTTP Endpoints](#http-endpoints).
 `url`    | *string*  | yes      | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | yes      | Title of the good for reference in the provider dashboard.
 
@@ -341,7 +341,7 @@ Insert the id of the good that should be replaced into the request URL and provi
 Property | Type      | Required | Description
 -------- | --------- | -------- | ------------
 `price`  | *integer* | yes      | Product price in satoshis.
-`secret` | *string*  | yes      | Secret information which the SatoshiPay widget will use to fetch content after successful payment. See [Content API](#content-api).
+`secret` | *string*  | yes      | Secret information which the SatoshiPay widget will use to fetch content after successful payment. See [HTTP Endpoints](#http-endpoints).
 `url`    | *string*  | yes      | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | yes      | Title of the good for reference in the provider dashboard.
 
@@ -405,7 +405,7 @@ Insert the id of the good that should be updated into the request URL and provid
 Property | Type      | Required | Description
 -------- | --------- | -------- | ------------
 `price`  | *integer* | no       | Product price in satoshis.
-`secret` | *string*  | no       | Secret information which the SatoshiPay widget will use to fetch content after successful payment. See [Content API](#content-api).
+`secret` | *string*  | no       | Secret information which the SatoshiPay widget will use to fetch content after successful payment. See [HTTP Endpoints](#http-endpoints).
 `url`    | *string*  | no       | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | no       | Title of the good for reference in the provider dashboard.
 
