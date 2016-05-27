@@ -138,6 +138,8 @@ request({
 ]
 ```
 
+`GET goods`
+
 Get a list of all the goods that the authenticated user has created.
 
 #### Response
@@ -190,6 +192,8 @@ request({
   "url": "http://example.name"
 }
 ```
+
+`GET goods/<id>`
 
 Retrieve a specific good identified by `<id>`. If no good with the given ID can be found, an error object with status code `404` is returned.
 
@@ -262,6 +266,8 @@ request({
 }
 ```
 
+`POST goods`
+
 Create a new good.
 
 #### Request
@@ -332,6 +338,8 @@ request({
 }
 ```
 
+`PUT goods/<id>`
+
 Replace the good given by `<id>`. If no good with the given ID exists, an error object with status code `404` will be returned.
 
 #### Request
@@ -396,6 +404,8 @@ request({
 }
 ```
 
+`PATCH goods/<id>`
+
 Partially update a good, i.e. send only those properties that are to be updated.
 
 #### Request
@@ -440,6 +450,8 @@ request({
   method: "DELETE"
 }, callback);
 ```
+
+`DELETE goods/<id>`
 
 Delete a good.
 
@@ -552,6 +564,8 @@ request({
   ]
 }
 ```
+
+`POST batch`
 
 Execute a batch of requests at once.
 
