@@ -8,10 +8,6 @@ https://api.satoshipay.io/v1/
 
 The Digital Goods API allows developers to interact with SatoshiPay using HTTP REST calls and JSON. Digital goods merchants communicate with the API in order to register individual goods for sale &ndash; either directly or through plugins and libraries provided by SatoshiPay or 3rd parties. The digital goods merchant hosts complementary [HTTP Endpoints](#html-endpoints) that deliver the goods to the user.
 
-<aside class="notice">
-  In the context of monetisation of web page content, <em>goods</em> are described as <a href="#html-tags">HTML Tags</a>.
-</aside>
-
 ## General
 
 ### Authentication
@@ -38,7 +34,7 @@ Every request to the API must be authenticated with your API credentials. These 
 
 The API uses [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication), where the user name is your API key, and the password is your API secret.
 
-The examples use Basic Authentication to receive the list of all goods.
+The example uses Basic Authentication to receive the list of your goods. The result will be an empty array `[]` if you didn't add any goods yet.
 
 If authorization fails, a JSON object with an error message will be returned as a response (along with the HTTP status `401`) .
 
@@ -84,13 +80,13 @@ For `POST`, `PUT` or `PATCH` requests, the request body needs to be valid JSON. 
 }
 ```
 
-If an error occurs while handling the request, a JSON error object will be returned along with a corresponding HTTP status code. The object contains status- and error-codes, the name of the error, as well as the error message.
+If an error occurs while handling the request, a JSON error object will be returned along with a corresponding HTTP status code. The object contains status and error codes, the name of the error, as well as the error message.
 
 ## Goods
 
-This is the API resource for managing a merchant's digital goods.
+The API resource `goods` allows a merchant to manage their digital goods. A good in the API represents a merchant's digital good (e.g. news article, image, audio/video or file download) and holds all infromation needed for SatoshiPay to handle payments. This includes pricing information and other metadata, but not the content itself.
 
-### List all goods
+### List Goods
 
 > Definition
 
@@ -140,70 +136,11 @@ request({
 
 `GET goods`
 
-Get a list of all the goods that the authenticated user has created.
+Get a list of all goods a merchant has created.
 
 #### Response
 
 Returns an array of 'good' objects. Every object has the following properties:
-
-Property | Type      | Description
--------- | --------- | ------------
-`id`     | *string*  | Unique identifier of the good.
-`price`  | *integer* | Good's price in satoshis.
-`secret` | *string*  | Secret information which the SatoshiPay widget will use to fetch content after successful payment. See [HTTP Endpoints](#http-endpoints).
-`url`    | *string*  | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
-`title`  | *string*  | Title of the good for reference in the provider dashboard.
-
-### Retrieve one Good
-
-> Definition
-
-```
-GET https://api.satoshipay.io/v1/goods/<id>
-```
-
-> Example Request
-
-```shell
-curl https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 \
-  -u apikey:apisecret
-```
-
-```javascript
-var request = require("request");
-request({
-  url: "https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559",
-  auth: {
-    user: "apikey",
-    password: "apisecret"
-  },
-  json: true
-}, callback);
-```
-
-> Example Response
-
-```json
-{
-  "id": "558bcdbb1309c59725bdb559",
-  "secret": "m1btHMWJ6O6g",
-  "price": 1349,
-  "title": "Saepe voluptatibus tempore pariatur atque quia corrupti nisi dolores.",
-  "url": "http://example.name"
-}
-```
-
-`GET goods/<id>`
-
-Retrieve a specific good identified by `<id>`. If no good with the given ID can be found, an error object with status code `404` is returned.
-
-#### Request
-
-Insert the ID of the good into the request URL.
-
-#### Response
-
-A 'good' object with the following properties:
 
 Property | Type      | Description
 -------- | --------- | ------------
@@ -284,6 +221,65 @@ Property | Type      | Required | Description
 #### Response
 
 As a confirmation, the handler returns the an object representing the good from the request, augmented by an `id` property, which holds the ID that has been assigned to the good as a *string*.
+
+### Retrieve a Good
+
+> Definition
+
+```
+GET https://api.satoshipay.io/v1/goods/<id>
+```
+
+> Example Request
+
+```shell
+curl https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 \
+  -u apikey:apisecret
+```
+
+```javascript
+var request = require("request");
+request({
+  url: "https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559",
+  auth: {
+    user: "apikey",
+    password: "apisecret"
+  },
+  json: true
+}, callback);
+```
+
+> Example Response
+
+```json
+{
+  "id": "558bcdbb1309c59725bdb559",
+  "secret": "m1btHMWJ6O6g",
+  "price": 1349,
+  "title": "Saepe voluptatibus tempore pariatur atque quia corrupti nisi dolores.",
+  "url": "http://example.name"
+}
+```
+
+`GET goods/<id>`
+
+Retrieve a specific good identified by `<id>`. If no good with the given ID can be found, an error object with status code `404` is returned.
+
+#### Request
+
+Insert the ID of the good into the request URL.
+
+#### Response
+
+A 'good' object with the following properties:
+
+Property | Type      | Description
+-------- | --------- | ------------
+`id`     | *string*  | Unique identifier of the good.
+`price`  | *integer* | Good's price in satoshis.
+`secret` | *string*  | Secret information which the SatoshiPay widget will use to fetch content after successful payment. See [HTTP Endpoints](#http-endpoints).
+`url`    | *string*  | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
+`title`  | *string*  | Title of the good for reference in the provider dashboard.
 
 ### Replace a Good
 

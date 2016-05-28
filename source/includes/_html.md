@@ -1,17 +1,6 @@
 # HTML Tags
 
-> SatoshiPay HTML Tag Example
-
-```html
-<p class="satoshipay-placeholder"
-   data-sp-src="/satoshipay-content"
-   data-sp-id="558bcdbb1309c59725bdb559"
-   data-sp-length="800"
-   data-sp-price="4000"
-></p>
-```
-
-Digital goods can be included in a web page by defining special *HTML tags*, which will then be controlled by the SatoshiPay [widget](#sun-of-satoshi). Currently the only supported type of digital goods is HTML text. We are working hard on making other types like images, audio and video, downloadable files like PDFs and streams available soon. Follow [@SatoshiPay](https://twitter.com/SatoshiPay) on Twitter to receive updates on new features.
+Digital goods can be included in a web page by defining special *HTML tags*, which will then be controlled by the SatoshiPay [widget](#sun-of-satoshi). Currently the only supported type of digital goods is [Text/HTML](#text-html). We are working hard on making other types like images, audio and video, downloadable files like PDFs and streams available soon. Follow [@SatoshiPay](https://twitter.com/SatoshiPay) on Twitter to receive updates on new features.
 
 ![Goods Placeholder](images/content-mask.png "Goods Placeholder")
 
@@ -21,11 +10,28 @@ The data attributes specify where the good can be downloaded from by the Satoshi
 
 The SatoshiPay stylesheets apply styles to placeholders using the `satoshipay-placeholder` CSS class, so that the items are recognizable while the SatoshiPay widget is being initialized.
 
-## Data Attributes
+## Text/HTML
+
+> Text/HTML Example
+
+```html
+<p class="satoshipay-placeholder"
+   data-sp-type="text/html"
+   data-sp-src="/paid-content/1"
+   data-sp-id="558bcdbb1309c59725bdb559"
+   data-sp-length="800"
+   data-sp-price="4000"
+></p>
+```
+
+This tag type represents text or HTML source that is injected into the web page after payment.
+
+#### Data Attributes
 
 Data Attribute   | Required | Description
 ---------------- | -------- | -----------
+`data-sp-type`   | yes      | Content type, must be "text/html" for this type of digital good.
 `data-sp-src`    | yes      | [HTTP endpoint](#http-endpoints) as absolute or relative URL, e.g. `/satoshipay-content`.
 `data-sp-id`     | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. "558bcdbb1309c59725bdb559".
-<span style="white-space: nowrap;">`data-sp-length`</span> | no       | If text content: Number of content characters (excluding HTML tags and other invisible characters). For example: "800". The length will be used to determine how much area the placeholder should cover. Default value is 500 characters.
+<span style="white-space: nowrap;">`data-sp-length`</span> | no       | Number of content characters (excluding HTML tags and other invisible characters). For example: "800". The length will be used to determine how much area the placeholder will cover. Default value is 500 characters.
 `data-sp-price`  | yes      | Content price in satoshis, for example: "4000".
