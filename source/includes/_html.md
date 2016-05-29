@@ -24,7 +24,7 @@ The SatoshiPay stylesheets apply styles to placeholders using the `satoshipay-pl
 ></p>
 ```
 
-This tag type represents text or HTML source that is injected into the web page after payment.
+This tag type represents text or HTML source that is loaded into the web page via an AJAX call after payment.
 
 #### Data Attributes
 

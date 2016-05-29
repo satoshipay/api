@@ -64,15 +64,15 @@ Authentication is done for each good using its payment certificate. Currently th
 
 ## HTTP 402
 
-The SatoshiPay widget *optionally* supports the HTTP status code 402 (**"Payment Required"**): It sends the payment certificate as a `X-Payment-Certificate` request header.
+The SatoshiPay widget supports HTTP status code 402 (**"Payment Required"**): It sends payment certificates as an `X-Payment-Certificate` request header. This is only done for the digital goods type Text/HTML, because this type is loaded via an AJAX request where custom headers can be added in JavaScript.
 
 <aside class="notice">
   SatoshiPay's HTTP 402 support is experimental. For production use we advise to implement HTTP endpoints as described above.
 </aside>
 
-In order to implement the server part of the HTTP 402 handling, the endpoint needs act as follows:
+In order to implement the server part of HTTP 402 handling, your endpoint needs to process and send specific HTTP header information. Currently there is no standard for HTTP 402 responses, so we have created our own proposal.
 
-### Return 402 Response with Payment Information Headers
+### Response Header Fields
 
 > Example response
 
@@ -84,11 +84,11 @@ X-Payment-Price: 4000
 X-Payment-Identifier: <satoshipay-id>
 ```
 
-When the `X-Payment-Certificate` header is not set, or the certificate is invalid, the server has to respond with a status code of `402` and the following response headers:
+When the `X-Payment-Certificate` header is not set, or the certificate is invalid, the server needs to respond with HTTP status code `402` and the following response headers containing payment details:
 
 Response Header       | Description
 --------------------- | -----------
-<span style="white-space: nowrap;">`X-Payment-Types-Accepted: SatoshiPay`</span> | Indicate that one of the accepted payment methods is the SatoshiPay service.
+<span style="white-space: nowrap;">`X-Payment-Types-Accepted: SatoshiPay`</span> | Indicate that the only accepted payment method is SatoshiPay.
 `X-Payment-Price: <price>` | Price of the good in satoshis.
 <span style="white-space: nowrap;">`X-Payment-Identifier: <satoshipay-id>`</span> | Identifier of the good in SatoshiPay's registry. Needs to be the same as the `data-sp-id` attribute in the corresponding [HTML tag](#html-tags).
 
@@ -98,4 +98,4 @@ A valid request to the endpoint needs to provide the following header, which the
 
 Request Header | Description
 -------------- | -----------
-<span style="white-space: nowrap;">`X-Payment-Certificate: <certificate>`</span> | Payment certificate that proves to the server that payment for the associated good has been successfully completed.
+<span style="white-space: nowrap;">`X-Payment-Certificate: <certificate>`</span> | Payment certificate that proves to the endpoint that payment for the associated good has been successfully completed.
