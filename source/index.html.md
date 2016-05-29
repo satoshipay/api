@@ -6,8 +6,8 @@ language_tabs:
   - javascript: Node
 
 toc_footers:
-  - <a href='https://dashboard.satoshipay.io/sign-up'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - <a href='https://dashboard.satoshipay.io/sign-up'>Sign Up for API Key</a>
+  - <a href='https://github.com/tripit/slate'>Docs by Slate</a>
   - 2016 <a href='https://satoshipay.io/'>SatoshiPay</a>
 
 includes:
