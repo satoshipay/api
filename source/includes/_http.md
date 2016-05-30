@@ -62,6 +62,17 @@ Authentication is done for each good using its payment certificate. Currently th
   Because payment certificates are pre-shared secrets between the SatoshiPay backend and the merchant, it is advised to secure the HTTP endpoint using an SSL connection (HTTPS).
 </aside>
 
+## Cross-Domain
+
+If you are serving digital goods from a different hostname the website containing SatoshiPay widget is served from, you need to work around the same-origin policy by adding these headers to your response:
+
+> Required Headers
+
+```
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Headers: X-Payment-Certificate
+```
+
 ## HTTP 402
 
 The SatoshiPay widget supports HTTP status code 402 (**"Payment Required"**): It sends payment certificates as an `X-Payment-Certificate` request header. This is only done for the digital goods type Text/HTML, because this type is loaded via an AJAX request where custom headers can be added in JavaScript.
