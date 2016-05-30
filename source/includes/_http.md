@@ -2,9 +2,7 @@
 
 HTTP endpoints need to be made available by the digital goods merchant to allow the SatoshiPay widget to retrieve a good once it has successfully been paid for.
 
-<aside class="notice">
-  Currently only HTML text content needs to be supported. Images and other content types will added soon.
-</aside>
+Currently only [Text/HTML](#text-html) content needs to be supported. Images and other content types will added soon.
 
 ## Endpoints
 
@@ -14,7 +12,7 @@ In the example, assuming the special HTML tags are defined in `https://example.o
 
 ## Request Format
 
-> Example request
+> Example Request
 
 ```bash
 curl https://example.org/satoshipay-content/5?paymentCert=kaTBAIv5j
@@ -38,21 +36,16 @@ The endpoint will be called with a `GET` request that has the following *query p
 
 ## Response Format
 
-> Example response
+> Example Response
 
-```json
-{
-  "content": "<strong>Some premium content</strong>: Lorem ipsum!"
-}
+```html
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+
+<strong>OH HAI!</strong> You've <em>nanopaid</em> me.
 ```
 
-The response needs to be a JSON formatted object with the following property:
-
-Property  | Type     | Required | Description
---------- | -------- | -------- | ------------
-`content` | *string* | yes      | Content of the digital good. May contain HTML markup.
-
-The endpoint needs to return the correct `Content-Type` header for the content that is shipped. For example `Content-Type:application/json; charset=utf-8` for JSON.
+The response needs to have HTTP status 200 set and contain the correct `Content-Type` header for the digital good. The HTTP header is followed by the content of the digital good, for example HTML code. Currently only `Content-Type: text/html; charset=utf-8` (regular HTML content) is supported by the website widget, so your responses should look like this example:
 
 ## Authentication
 
@@ -85,14 +78,14 @@ In order to implement the server part of HTTP 402 handling, your endpoint needs 
 
 ### Response Header Fields
 
-> Example response
+> Example Response
 
 ```
 HTTP/1.1 402 Payment Required
 Date: Mon, 27 Jul 2009 12:28:53 GMT
 X-Payment-Types-Accepted: SatoshiPay
 X-Payment-Price: 4000
-X-Payment-Identifier: <satoshipay-id>
+X-Payment-Identifier: 558bcdbb1309c59725bdb559
 ```
 
 When the `X-Payment-Certificate` header is not set, or the certificate is invalid, the server needs to respond with HTTP status code `402` and the following response headers containing payment details:
@@ -105,7 +98,7 @@ Response Header       | Description
 
 ### Process Request Headers
 
-A valid request to the endpoint needs to provide the following header, which the server needs to process:
+Alternatively to the GET parameter `paymentCert` a request to the endpoint can provide the following header:
 
 Request Header | Description
 -------------- | -----------

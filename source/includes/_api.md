@@ -322,7 +322,7 @@ request({
 }, callback);
 ```
 
-> Example response
+> Example Response
 
 ```json
 {
