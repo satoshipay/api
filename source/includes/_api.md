@@ -30,7 +30,7 @@ request({
 }, callback);
 ```
 
-Every request to the API must be authenticated with your API credentials. These credentials can be obtained in the [SatoshiPay Dashboard](https://dashboard.satoshipay.io/) after [creating an account](https://dashboard.satoshipay.io/sign-up). Before you can access your credentials, you need to set a bitcoin address for payouts. Your API key and secret can then be found at [Settings > API Access](https://dashboard.satoshipay.io/settings/api).
+Every request to the API must be authenticated with your API credentials. These credentials can be obtained in the [SatoshiPay Dashboard](https://dashboard.satoshipay.io/) after [creating an account](https://dashboard.satoshipay.io/sign-up). Before you can access your credentials, you need to set a Bitcoin address for payouts. Your API key and secret can then be found at [Settings > API Access](https://dashboard.satoshipay.io/settings/api).
 
 The API uses [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication), where the user name is your API key, and the password is your API secret.
 
@@ -84,7 +84,7 @@ If an error occurs while handling the request, a JSON error object will be retur
 
 ## Goods
 
-The API resource `goods` allows a merchant to manage their digital goods. A good in the API represents a merchant's digital good (e.g. news article, image, audio/video or file download) and holds all infromation needed for SatoshiPay to handle payments. This includes pricing information and other metadata, but not the content itself.
+The API resource `goods` allows a merchant to manage their digital goods. A good in the API represents a merchant's digital good (e.g. news article, image, audio/video or file download) and holds all information needed for SatoshiPay to handle payments. This includes pricing information and other metadata, but not the content itself.
 
 ### List Goods
 
