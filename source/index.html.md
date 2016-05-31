@@ -65,7 +65,7 @@ The widget displays a user's current balance in satoshis and, when clicked, a me
 
 The widget performs the following tasks:
 
-* Generate a bitcoin wallet and keep it in users' LocalStorage
+* Generate a bitcoin wallet and keep it in the user's LocalStorage
 * Communicate with SatoshiPay servers
 * Control digital goods on the web page
 * Interact with the user via menus and messages

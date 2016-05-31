@@ -57,14 +57,14 @@ Authentication is done for each good using its payment certificate. Currently th
 
 ## Cross-Domain
 
+If you are serving digital goods from a different hostname the website containing SatoshiPay widget is served from, you need to work around the same-origin policy by adding these headers to your response:
+
 > Required Headers
 
 ```
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Headers: X-Payment-Certificate
 ```
-
-If you are serving digital goods from a different hostname the website containing SatoshiPay widget is served from, you need to work around the same-origin policy by adding the headers on the right to your response.
 
 ## HTTP 402
 
