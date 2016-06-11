@@ -15,13 +15,13 @@ The SatoshiPay stylesheets apply styles to placeholders using the `satoshipay-pl
 > Text/HTML Example
 
 ```html
-<p class="satoshipay-placeholder"
+<div class="satoshipay-placeholder"
    data-sp-type="text/html"
    data-sp-src="/paid-content/1"
    data-sp-id="558bcdbb1309c59725bdb559"
    data-sp-length="800"
    data-sp-price="4000"
-></p>
+></div>
 ```
 
 This tag type represents text or HTML source that is loaded into the web page via an AJAX call after payment.
