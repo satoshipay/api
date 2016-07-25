@@ -1,37 +1,129 @@
 # HTML Tags
 
-Digital goods can be included in a web page by defining special *HTML tags*, which will then be controlled by the SatoshiPay [widget](#sun-of-satoshi). Currently the only supported type of digital goods is [Text/HTML](#text-html). We are working hard on making other types like images, audio and video, downloadable files like PDFs and streams available soon. Follow [@SatoshiPay](https://twitter.com/SatoshiPay) on Twitter to receive updates on new features.
+Digital goods can be included in a web page by defining special *HTML tags*, which will then be controlled by the SatoshiPay [widget](#sun-of-satoshi). Currently content types for [text](#text), [images](#image), [videos](#video) and [downloads](#download) are supported. Find a complete list of [supported types](#supported-content-types) in the reference section. We plan to include support for audio as well. Follow [@SatoshiPay](https://twitter.com/SatoshiPay) on Twitter to receive updates on new features.
 
-![Goods Placeholder](images/content-mask.png "Goods Placeholder")
+Before purchase, a digital good is represented on the merchant's website by a placeholder. These placeholders are injected by the SatoshiPay widget, which scans the current page for placeholder tags on initialization. The placeholder tags are identified by a CSS class name starting with `satoshipay-placeholder` and contain details about the good they replace in their `data` attributes (see the [text](#text) tag example).
 
-Before purchase, a digital good is represented on the merchant's website by a placeholder. These placeholders are injected by the SatoshiPay widget, which scans the current page for placeholder tags on initialization. The placeholder tags are identified by the CSS class name `satoshipay-placeholder` and contain details about the good they replace in their `data` attributes (see the HTML tag example).
+*Goods placeholder:*
 
-The data attributes specify where the good can be downloaded from by the SatoshiPay client once the purchase has been successfully completed, which specific type of good is being replaced, its price and its length or size. See below for a detailed description of the data attributes.
+![Goods placeholder](images/content-mask.png "Goods placeholder")
 
-The SatoshiPay stylesheets apply styles to placeholders using the `satoshipay-placeholder` CSS class, so that the items are recognizable while the SatoshiPay widget is being initialized.
+The data attributes specify where the good can be downloaded from by the SatoshiPay client once the payment has been successfully completed, which specific type of good is displayed, its price and other content type specific properties like length or size. See below for a detailed description of the data attributes for different content types.
 
-## Text/HTML
+During page load placeholders will appear in a simplified form (grey boxes) to make them recognizable while the SatoshiPay widget is being initialized. Placeholder styling can not be modified by the surrounding website.
 
-> Text/HTML Example
+## Text
+
+> Text Example
 
 ```html
 <div class="satoshipay-placeholder"
-   data-sp-type="text/html"
-   data-sp-src="/paid-content/1"
-   data-sp-id="558bcdbb1309c59725bdb559"
-   data-sp-length="800"
-   data-sp-price="4000"
+    data-sp-type="text/html"
+    data-sp-src="/paid-content/1.html"
+    data-sp-id="558bcdbb1309c59725bdb559"
+    data-sp-price="1000"
+    data-sp-length="800"
 ></div>
 ```
 
-This tag type represents text or HTML source that is loaded into the web page via an AJAX call after payment.
+This tag type represents text or HTML code that is loaded into the web page via an AJAX call after successful payment.
 
 #### Data Attributes
 
 Data Attribute   | Required | Description
 ---------------- | -------- | -----------
-`data-sp-type`   | yes      | Content type, must be "text/html" for this type of digital good.
-`data-sp-src`    | yes      | [HTTP endpoint](#http-endpoints) as absolute or relative URL, e.g. `/satoshipay-content`.
-`data-sp-id`     | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. "558bcdbb1309c59725bdb559".
-<span style="white-space: nowrap;">`data-sp-length`</span> | no       | Number of content characters (excluding HTML tags and other invisible characters). For example: "800". The length will be used to determine how much area the placeholder will cover. Default value is 500 characters.
-`data-sp-price`  | yes      | Content price in satoshis, for example: "4000".
+`data-sp-type`   | yes      | Content type (MIME), must be either `text/html` or `text/plain` for this type of digital good. See [supported types](#supported-content-types).
+`data-sp-src`    | yes      | [HTTP endpoint](#http-endpoints) as absolute or relative URL, e.g. `/paid-content/1.html`.
+`data-sp-id`     | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. `558bcdbb1309c59725bdb559`.
+`data-sp-price`  | yes      | Price of content in satoshis, e.g. `4000`.
+`data-sp-length` | no       | Number of content characters (excluding HTML tags and other invisible characters), e.g. `800`. The length will be used to determine how much area the placeholder will cover. Default value: `500`.
+
+## Image
+
+> Image Example
+
+```html
+<div class="satoshipay-placeholder-image"
+    data-sp-type="image/png"
+    data-sp-src="/paid-content/2.png"
+    data-sp-id="558bcdbb1309c59725bdb560"
+    data-sp-price="4000"
+    data-sp-width="450"
+    data-sp-height="300"
+    data-sp-placeholder="/placeholders/2.png"
+></div>
+```
+
+This tag type represents an image that is loaded by injection of an `img` tag after successful payment.
+
+#### Data Attributes
+
+Data Attribute        | Required | Description
+--------------------- | -------- | -----------
+`data-sp-type`        | yes      | Content type (MIME), must start with "image/" for this type of digital good, e.g. `image/png`. See [supported types](#supported-content-types).
+`data-sp-src`         | yes      | [HTTP endpoint](#http-endpoints) as absolute or relative URL, e.g. `/paid-content/2.png`.
+`data-sp-id`          | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. `558bcdbb1309c59725bdb559`.
+`data-sp-price`       | yes      | Price of image in satoshis, e.g. `4000`.
+`data-sp-width`       | yes      | Width of image in pixels, e.g. `450`.
+`data-sp-height`      | yes      | Height of image in pixels, e.g. `300`.
+`data-sp-placeholder` | no       | Absolute or relative URL to placeholder/preview image. This will be displayed if the image has not been paid yet. E.g. `/placeholders/2.png`.
+
+## Video
+
+> Video Example
+
+```html
+<div class="satoshipay-placeholder-video"
+    data-sp-type="video/mp4"
+    data-sp-src="/paid-content/4.mp4"
+    data-sp-id="558bcdbb1309c59725bdb562"
+    data-sp-price="4000"
+    data-sp-width="640"
+    data-sp-height="360"
+    data-sp-autoplay="true"
+    data-sp-placeholder="/placeholders/4.png"
+></div>
+```
+
+This tag type represents a video that is displayed by injecting a `video` tag after successful payment.
+
+#### Data Attributes
+
+Data Attribute        | Required | Description
+--------------------- | -------- | -----------
+`data-sp-type`        | yes      | Content type (MIME), must start with "video/" for this type of digital good, e.g. `video/mp4`. See [supported types](#supported-content-types).
+`data-sp-src`         | yes      | [HTTP endpoint](#http-endpoints) for video as absolute or relative URL, e.g. `/paid-content/4.mp4`.
+`data-sp-id`          | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. `558bcdbb1309c59725bdb559`.
+`data-sp-price`       | yes      | Price of video in satoshis, e.g. `4000`.
+`data-sp-height`      | yes      | Height of video in pixels, e.g. `360`.
+`data-sp-width`       | yes      | Width of video in pixels, e.g. `640`.
+`data-sp-autoplay`    | no       | Value for automatic video playback, where available. E.g. `true`, default: `false`.
+`data-sp-placeholder` | no       | Absolute or relative URL to placeholder/preview image. This will be displayed if the video has not been paid yet. E.g. `/placeholders/4.png`.
+
+## Download
+
+> Download Example
+
+```html
+<div class="satoshipay-placeholder-download"
+    data-sp-type="application/pdf"
+    data-sp-src="/paid-content/3.pdf"
+    data-sp-id="558bcdbb1309c59725bdb561"
+    data-sp-price="4000"
+    data-sp-length="835669"
+    data-sp-title="Book: What's the Deal with Bitcoins?"
+></div>
+```
+
+This tag type represents a secure download link that is displayed after successful payment.
+
+#### Data Attributes
+
+Data Attribute   | Required | Description
+---------------- | -------- | -----------
+`data-sp-type`   | yes      | Content type (MIME), must start with "application/" for this type of digital good, e.g. `application/pdf`. See [supported types](#supported-content-types).
+`data-sp-src`    | yes      | [HTTP endpoint](#http-endpoints) for download as absolute or relative URL, e.g. `/paid-content/3.pdf`.
+`data-sp-id`     | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. `558bcdbb1309c59725bdb559`.
+`data-sp-price`  | yes      | Price of download in satoshis, e.g. `4000`.
+`data-sp-length` | yes      | HTTP content-length i.e. file size of download in bytes. This value is used to indicate the download size next to the download link. E.g. `835669`.
+`data-sp-title`  | no       | Short title of download, e.g. `Research Report 2016`. If no title is given, `Download` will be used.

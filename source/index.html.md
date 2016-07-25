@@ -6,7 +6,7 @@ language_tabs:
   - javascript: Node
 
 toc_footers:
-  - <a href='https://dashboard.satoshipay.io/sign-up'>Sign Up for API Key</a>
+  - <a href='https://dashboard.satoshipay.io/sign-up'>Sign up for API key</a>
   - <a href='https://github.com/tripit/slate'>Docs by Slate</a>
   - 2016 <a href='https://satoshipay.io/'>SatoshiPay</a>
 
@@ -14,17 +14,19 @@ includes:
   - api
   - html
   - http
+  - reference
 
 search: true
 ---
 
 # Introduction
 
-Welcome to the [SatoshiPay](https://satoshipay.io/) API! You can use this API to make digital goods like articles, images, video/audio and downloadable files available for purchase using the SatoshiPay [widget](#sun-of-satoshi). This documentation covers:
+Welcome to the [SatoshiPay](https://satoshipay.io/) API! You can use this API to make digital goods like articles, images, videos and downloadable files available for purchase using the SatoshiPay [widget](#sun-of-satoshi). This documentation covers:
 
 * [Digital Goods API](#digital-goods-api) - Register and manage digital goods with SatoshiPay
 * [HTML Tags](#html-tags) - How to embed digital goods into your website
 * [HTTP Endpoints](#http-endpoints) - How to deliver paid digital goods to your users
+* [Reference](#reference) - Complete list of supported content types
 
 ## SatoshiPay and You
 

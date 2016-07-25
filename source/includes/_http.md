@@ -2,7 +2,7 @@
 
 HTTP endpoints need to be made available by the digital goods merchant to allow the SatoshiPay widget to retrieve a good once it has successfully been paid for.
 
-Currently only [Text/HTML](#text-html) content needs to be supported. Images and other content types will added soon.
+Content delivery for [text](#text), [images](#image), [videos](#video) and [downloads](#download) needs to be supported. Audio support will be required soon.
 
 ## Endpoints
 
@@ -32,7 +32,7 @@ The endpoint will be called with a `GET` request that has the following *query p
 
 <span style="white-space: nowrap"> Query Parameter</span> | Description
 --------------- | -----------
-`paymentCert`   | Certificate for payment. This parameter should be used by the endpoint to authenticate the request (see [Authentication](#authentication19) below).
+`paymentCert`   | Certificate for payment. This parameter should be used by the endpoint to authenticate the request (see [authentication](#request-authentication) below).
 
 ## Response Format
 
@@ -45,9 +45,11 @@ Content-Type: text/html; charset=UTF-8
 <strong>OH HAI!</strong> You've <em>nanopaid</em> me.
 ```
 
-The response needs to have HTTP status 200 set and contain the correct `Content-Type` header for the digital good. The HTTP header is followed by the content of the digital good, for example HTML code. Currently only `Content-Type: text/html; charset=utf-8` (regular HTML content) is supported by the website widget, so your responses should look like this example:
+The response needs to have HTTP status 200 set and contain the correct `Content-Type` header for the digital good. In most cases simply passing on the MIME media type returned by the file system should be sufficient, but make sure to check the [list of content types](#supported-content-types) that are supported.
 
-## Authentication
+The HTTP header is followed by the content of the digital good, for example HTML code. For a digital good that is HTML text, your responses should look like this example:
+
+## Request Authentication
 
 Authentication is done for each good using its payment certificate. Currently the merchant's HTTP endpoint only needs to check that the value of the query parameter `paymentCert` matches the `secret` that was specified by the merchant when registering the good using the [Provider API](#provider-api). More sophisticated payment certificate matching will be added soon.
 
@@ -64,6 +66,31 @@ If you are serving digital goods from a different hostname the website containin
 ```
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Headers: X-Payment-Certificate
+```
+
+## Range Requests
+
+For goods with a larger file size it is recommended to process HTTP range requests and serve [partial content](https://en.wikipedia.org/wiki/Byte_serving). This will allow browsers and download managers to resume a transfer or to transfer file segments in parallel.
+
+To make skipping to a certain position (seeking) in a video possible, support for range requests is mandatory. Most browsers or players won't allow seeking if the HTTP source does not support partial content.
+
+We will publish sample digital goods servers written in PHP and Node with support for range requests soon. [Contact us](mailto:hello@satoshipay.io) if you would like to get early access.
+
+> Standard Response Header
+
+```
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Content-Length: 1000
+```
+
+> Partial Content Response Header
+
+```
+HTTP/1.1 206 Partial Content
+Accept-Ranges: bytes
+Content-Length: 500
+Content-Range: bytes 0-499/1000
 ```
 
 ## HTTP 402
