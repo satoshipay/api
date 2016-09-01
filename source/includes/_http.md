@@ -2,7 +2,7 @@
 
 HTTP endpoints need to be made available by the digital goods merchant to allow the SatoshiPay widget to retrieve a good once it has successfully been paid for.
 
-Content delivery for [text](#text), [images](#image), [videos](#video) and [downloads](#download) needs to be supported. Audio support will be required soon.
+Content delivery for [text](#text), [images](#image), [audio files](#audio), [videos](#video) and [downloads](#download) needs to be supported.
 
 ## Endpoints
 
@@ -72,7 +72,7 @@ Access-Control-Allow-Headers: X-Payment-Certificate
 
 For goods with a larger file size it is recommended to process HTTP range requests and serve [partial content](https://en.wikipedia.org/wiki/Byte_serving). This will allow browsers and download managers to resume a transfer or to transfer file segments in parallel.
 
-To make skipping to a certain position (seeking) in a video possible, support for range requests is mandatory. Most browsers or players won't allow seeking if the HTTP source does not support partial content.
+To make skipping to a certain position (seeking) in an audio file or video possible, support for range requests is required. Most browsers or players won't allow seeking if the HTTP source does not support partial content.
 
 We will publish sample digital goods servers written in PHP and Node with support for range requests soon. [Contact us](mailto:hello@satoshipay.io) if you would like to get early access.
 
