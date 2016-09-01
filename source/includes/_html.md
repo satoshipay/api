@@ -68,6 +68,36 @@ Data Attribute        | Required | Description
 `data-sp-height`      | yes      | Height of image in pixels, e.g. `300`.
 `data-sp-placeholder` | no       | Absolute or relative URL to placeholder/preview image. This will be displayed if the image has not been paid yet. E.g. `/placeholders/2.png`.
 
+## Audio
+
+> Audio Example
+
+```html
+<div class="satoshipay-placeholder-audio"
+    data-sp-type="audio/mpeg"
+    data-sp-src="/paid-content/5.mp3"
+    data-sp-id="558bcdbb1309c59725bdb555"
+    data-sp-price="4000"
+    data-sp-autoplay="true"
+    data-sp-length="28007040"
+    data-sp-title="Podcast: Interview with Satoshi Nakamoto"
+></div>
+```
+
+This tag type represents an audio file that is displayed by injecting an `audio` tag after successful payment.
+
+#### Data Attributes
+
+Data Attribute        | Required | Description
+--------------------- | -------- | -----------
+`data-sp-type`        | yes      | Content type (MIME), must start with "audio/" for this type of digital good, e.g. `audio/mpeg`. See [supported types](#supported-content-types).
+`data-sp-src`         | yes      | [HTTP endpoint](#http-endpoints) for audio as absolute or relative URL, e.g. `/paid-content/5.mp3`.
+`data-sp-id`          | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. `558bcdbb1309c59725bdb555`.
+`data-sp-price`       | yes      | Price of audio file in satoshis, e.g. `4000`.
+`data-sp-autoplay`    | no       | Value for automatic audio playback, where available. E.g. `true`, default: `false`.
+`data-sp-length`      | yes      | HTTP content-length i.e. file size of audio in bytes. This value is used to indicate the audio file size next to the audio payment button. E.g. `28007040`.
+`data-sp-title`       | no       | Short title of audio file, e.g. `Podcast: Interview with Satoshi Nakamoto`. If no title is given, `File` will be used.
+
 ## Video
 
 > Video Example
@@ -126,4 +156,4 @@ Data Attribute   | Required | Description
 `data-sp-id`     | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. `558bcdbb1309c59725bdb559`.
 `data-sp-price`  | yes      | Price of download in satoshis, e.g. `4000`.
 `data-sp-length` | yes      | HTTP content-length i.e. file size of download in bytes. This value is used to indicate the download size next to the download link. E.g. `835669`.
-`data-sp-title`  | no       | Short title of download, e.g. `Research Report 2016`. If no title is given, `Download` will be used.
+`data-sp-title`  | no       | Short title of download, e.g. `Research Report 2016`. If no title is given, `File` will be used.

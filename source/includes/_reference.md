@@ -22,6 +22,16 @@ image/svg+xml
 image/tiff
 ```
 
+### Audio Types
+
+```
+audio/mpeg
+audio/mp4
+audio/ogg
+audio/webm
+audio/wav
+```
+
 ### Video Types
 
 ```
