@@ -13,8 +13,8 @@ toc_footers:
 includes:
   - api
   - html
-  - http
-  - reference
+  - retrieving-goods
+  - content-types
 
 search: true
 ---
@@ -47,7 +47,7 @@ The SatoshiPay backend manages a registry of your digital goods. This registry c
 
 The goods can be embedded on your web page using [HTML Tags](#html-tags) with special data attributes. The location of the HTML tag determines the position of the digital good on the page, or if the good hasn't been paid yet, the position of its placeholder.
 
-The special HTML tags are recognised by the SatoshiPay widget, which needs to be included on every page that contains digital goods for sale. When a user buys a digital good, the widget handles the payment process by communicating to the SatoshiPay backend using a WebSocket connection. After successful payment the widget receives a payment certificate, which in turn is used to fetch the content of the good from a special [HTTP Endpoint](#http-endpoints) provided by you.
+The special HTML tags are recognised by the SatoshiPay widget, which needs to be included on every page that contains digital goods for sale. When a user buys a digital good, the widget handles the payment process by communicating to the SatoshiPay backend using a WebSocket connection. After successful payment the widget receives a payment receipt, which in turn is used to fetch the content of the good from a special [HTTP Endpoint](#http-endpoints) provided by you.
 
 ## Sun of Satoshi
 
