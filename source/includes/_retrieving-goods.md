@@ -11,7 +11,7 @@ Content delivery for [text](#text), [images](#image), [audio files](#audio), [vi
 > Example Request
 
 ```bash
-curl https://example.org/satoshipay-content/5?paymentReceipt=kaTBAIv5j
+curl https://example.org/satoshipay-content/5?paymentReceipt=eyJleHAiOjE1MDM1NzY4NDksIml0byI6IjAyZmNmZWNiZGFiMTExMmY0MjRiYzc2MTVmZDY2NjkzNzBhMjc3Njg1MjgxMjc3MWM2YWQ1Y2RmZTU3MTgzNDNkNSIsImp0aSI6ImNRNkROa1dUdjU3NGVLb2NoQnZlZWFtRzY2WE9lSUx4In0.13c5d97f6ac3b0d2412962437066ca22ada3cafad1aefad85a2e261a98b2ee14e0ca8f3c7772c78fd8fed9cfb0b51b4b4c154c078a1a0b36a5c19185c84b6281
 ```
 
 ```javascript
@@ -19,7 +19,7 @@ var request = require("request");
 request({
   url: "https://example.org/satoshipay-content/5",
   qs: {
-    paymentReceipt: "kaTBAIv5j"
+    paymentReceipt: "eyJleHAiOjE1MDM1NzY4NDksIml0byI6IjAyZmNmZWNiZGFiMTExMmY0MjRiYzc2MTVmZDY2NjkzNzBhMjc3Njg1MjgxMjc3MWM2YWQ1Y2RmZTU3MTgzNDNkNSIsImp0aSI6ImNRNkROa1dUdjU3NGVLb2NoQnZlZWFtRzY2WE9lSUx4In0.13c5d97f6ac3b0d2412962437066ca22ada3cafad1aefad85a2e261a98b2ee14e0ca8f3c7772c78fd8fed9cfb0b51b4b4c154c078a1a0b36a5c19185c84b6281"
   }
 }, callback);
 ```
