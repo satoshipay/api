@@ -45,7 +45,7 @@ curl https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 \
   -X PATCH \
   -u apikey:apisecret \
   -H 'Content-Type: application/json' \
-  -d '{ "secret": "xyz" }'
+  -d '{ "sharedSecret": "xyz" }'
 ```
 
 ```javascript
@@ -58,7 +58,7 @@ request({
   },
   method: "PATCH",
   json: {
-    secret: "xyz"
+    sharedSecret: "xyz"
   }
 }, callback);
 ```
@@ -120,14 +120,14 @@ request({
   {
     "id": "56c5a2a4f1cc5c0448c429f2",
     "price": 9106,
-    "secret": "n1hLnMiJwAwB",
+    "sharedSecret": "n1hLnMiJwAwB",
     "url": "https://example.info",
     "title": "Tempora accusamus maxime similique veritatis magni."
   },
   {
     "id": "56c5a2a52362b70448a589b4",
     "price": 1349,
-    "secret": "m1btHMWJ6O6g",
+    "sharedSecret": "m1btHMWJ6O6g",
     "url": "http://example.name",
     "title": "Saepe voluptatibus tempore pariatur atque quia corrupti nisi dolores."
   }
@@ -146,7 +146,7 @@ Property | Type      | Description
 -------- | --------- | ------------
 `id`     | *string*  | Unique identifier of the good.
 `price`  | *integer* | Good's price in satoshis.
-`secret` | *string*  | Secret information which the SatoshiPay widget will use to fetch content after successful payment. See [HTTP Endpoints](#http-endpoints).
+`sharedSecret` | *string*  | Shared secret information which will be used to sign the `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | Title of the good for reference in the provider dashboard.
 
@@ -166,7 +166,7 @@ curl https://api.satoshipay.io/v1/goods \
   -H 'Content-Type: application/json' \
   -X POST \
   -d '{
-       "secret": "DLDwYsQGromi",
+       "sharedSecret": "DLDwYsQGromi",
        "price": 6247,
        "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.",
        "url": "http://example.org/post1"
@@ -183,7 +183,7 @@ request({
   },
   method: "POST",
   json: {
-    "secret": "DLDwYsQGromi",
+    "sharedSecret": "DLDwYsQGromi",
     "price": 6247,
     "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.",
     "url": "http://example.org/post1"
@@ -196,7 +196,7 @@ request({
 ```json
 {
   "id": "56c5a5a722252b484dc4839f",
-  "secret": "DLDwYsQGromi",
+  "sharedSecret": "DLDwYsQGromi",
   "price": 6247,
   "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.",
   "url": "http://example.org/post1"
@@ -214,7 +214,7 @@ Provide a 'good' object with the following properties:
 Property | Type      | Required | Description
 -------- | --------- | -------- | ------------
 `price`  | *integer* | yes      | Good's price in satoshis.
-`secret` | *string*  | yes      | Secret information which the SatoshiPay widget will use to fetch content after successful payment. See [HTTP Endpoints](#http-endpoints).
+`sharedSecret` | *string*  | yes      | Shared secret information which will be used to sign the `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | yes      | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | yes      | Title of the good for reference in the provider dashboard.
 
@@ -254,7 +254,7 @@ request({
 ```json
 {
   "id": "558bcdbb1309c59725bdb559",
-  "secret": "m1btHMWJ6O6g",
+  "sharedSecret": "m1btHMWJ6O6g",
   "price": 1349,
   "title": "Saepe voluptatibus tempore pariatur atque quia corrupti nisi dolores.",
   "url": "http://example.name"
@@ -277,7 +277,7 @@ Property | Type      | Description
 -------- | --------- | ------------
 `id`     | *string*  | Unique identifier of the good.
 `price`  | *integer* | Good's price in satoshis.
-`secret` | *string*  | Secret information which the SatoshiPay widget will use to fetch content after successful payment. See [HTTP Endpoints](#http-endpoints).
+`sharedSecret` | *string*  | Shared secret information which will be used to sign the `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | Title of the good for reference in the provider dashboard.
 
@@ -297,7 +297,7 @@ curl https://api.satoshipay.io/v1/goods/56c5a91265e80b7c51afad23 \
   -H 'Content-Type: application/json' \
   -X PUT \
   -d '{
-        "secret": "RLC43wvCcmcs",
+        "sharedSecret": "RLC43wvCcmcs",
         "price": 4806,
         "title": "Veritatis impedit mollitia nam ipsum laudantium quam quidem.",
         "url": "https://example.net"
@@ -314,7 +314,7 @@ request({
   },
   method: "PUT",
   json: {
-    "secret": "RLC43wvCcmcs",
+    "sharedSecret": "RLC43wvCcmcs",
     "price": 4806,
     "title": "Veritatis impedit mollitia nam ipsum laudantium quam quidem.",
     "url": "https://example.net"
@@ -327,7 +327,7 @@ request({
 ```json
 {
   "id": "56c5a91265e80b7c51afad23",
-  "secret": "RLC43wvCcmcs",
+  "sharedSecret": "RLC43wvCcmcs",
   "price": 4806,
   "title": "Veritatis impedit mollitia nam ipsum laudantium quam quidem.",
   "url": "https://example.net"
@@ -345,7 +345,7 @@ Insert the ID of the good that should be replaced into the request URL and provi
 Property | Type      | Required | Description
 -------- | --------- | -------- | ------------
 `price`  | *integer* | yes      | Good's price in satoshis.
-`secret` | *string*  | yes      | Secret information which the SatoshiPay widget will use to fetch content after successful payment. See [HTTP Endpoints](#http-endpoints).
+`sharedSecret` | *string*  | yes      | Shared secret information which will be used to create `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | yes      | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | yes      | Title of the good for reference in the provider dashboard.
 
@@ -393,7 +393,7 @@ request({
 ```json
 {
   "id": "56c5a82328383fe54f841a60",
-  "secret": "XyZtFohL7",
+  "sharedSecret": "XyZtFohL7",
   "price": 1799,
   "title": "Beatae ab autem delectus dolorem est fugiat.",
   "url": "http://example.com/changed"
@@ -411,7 +411,7 @@ Insert the ID of the good that should be updated into the request URL and provid
 Property | Type      | Required | Description
 -------- | --------- | -------- | ------------
 `price`  | *integer* | no       | Good's price in satoshis.
-`secret` | *string*  | no       | Secret information which the SatoshiPay widget will use to fetch content after successful payment. See [HTTP Endpoints](#http-endpoints).
+`sharedSecret` | *string*  | no       | Shared secret information which will be used to create `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | no       | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | no       | Title of the good for reference in the provider dashboard.
 
@@ -476,7 +476,7 @@ curl https://api.satoshipay.io/v1/batch \
             "method": "POST",
             "path": "/goods",
             "body": {
-              "secret": "NSKLDspUuo_V",
+              "sharedSecret": "NSKLDspUuo_V",
               "price": 1182,
               "title": "Aliquam sit nisi quia ut rerum.",
               "url": "https://example.com/post1"
@@ -486,7 +486,7 @@ curl https://api.satoshipay.io/v1/batch \
             "method": "POST",
             "path": "/goods",
             "body": {
-              "secret": "NSfg1elotk_R",
+              "sharedSecret": "NSfg1elotk_R",
               "price": 7343,
               "title": "Vitae facere ea totam hic",
               "url": "https://example.com/post2"
@@ -511,7 +511,7 @@ request({
         "method": "POST",
         "path": "/goods",
         "body": {
-          "secret": "NSKLDspUuo_V",
+          "sharedSecret": "NSKLDspUuo_V",
           "price": 1182,
           "title": "Aliquam sit nisi quia ut rerum.",
           "url": "https://example.com/post1"
@@ -521,7 +521,7 @@ request({
         "method": "POST",
         "path": "/goods",
         "body": {
-          "secret": "NSfg1elotk_R",
+          "sharedSecret": "NSfg1elotk_R",
           "price": 7343,
           "title": "Vitae facere ea totam hic",
           "url": "https://example.com/post2"
@@ -541,7 +541,7 @@ request({
       "status": 200,
       "body": {
         "id": "56c59f4092d316b1419591eb",
-        "secret": "NSKLDspUuo_V",
+        "sharedSecret": "NSKLDspUuo_V",
         "price": 1182,
         "title": "Aliquam sit nisi quia ut rerum.",
         "url": "https://example.com/post1"
@@ -551,7 +551,7 @@ request({
       "status": 200,
       "body": {
         "id": "56c59f4092d316b1419591ec",
-        "secret": "NSfg1elotk_R",
+        "sharedSecret": "NSfg1elotk_R",
         "price": 7343,
         "title": "Vitae facere ea totam hic.",
         "url": "https://example.com/post2"
