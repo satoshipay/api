@@ -2,10 +2,13 @@ machine:
   ruby:
     version: "2.3.0"
 
+test:
+  override:
+    - "true"
+
 deployment:
-  develop:
+  production:
     branch: master
     commands:
-      - bundle install
       - bundle exec middleman build --clean
       - /bin/bash publish.sh
