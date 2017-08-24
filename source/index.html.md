@@ -2,8 +2,8 @@
 title: SatoshiPay API
 
 language_tabs:
-  - shell: cURL
-  - javascript: Node
+  - shell: Bash
+  - javascript: JavaScript
 
 toc_footers:
   - <a href='https://dashboard.satoshipay.io/sign-up'>Sign up for API key</a>
