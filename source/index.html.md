@@ -8,7 +8,7 @@ language_tabs:
 toc_footers:
   - <a href='https://dashboard.satoshipay.io/sign-up'>Sign up for API key</a>
   - <a href='https://github.com/tripit/slate'>Docs by Slate</a>
-  - 2016 <a href='https://satoshipay.io/'>SatoshiPay</a>
+  - <span>&copy;</span> 2016-2017 <a href='https://satoshipay.io/'>SatoshiPay</a>
 
 includes:
   - api
