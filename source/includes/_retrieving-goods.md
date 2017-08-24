@@ -33,7 +33,83 @@ Query&nbsp;Parameter | Description
 <a name="retriving-auth"></a>
 ## Authentication
 
-Authentication is done for each good using its payment receipt. The merchant's HTTP endpoint needs to verify that the value of the query parameter `paymentReceipt` is valid.
+Authentication is implemented on the merchant's HTTP endpoint without connecting to the SatoshiPay API using [JSON Web Token](https://en.wikipedia.org/wiki/JSON_Web_Token) standard ([RFC 7519](https://tools.ietf.org/html/rfc7519)). It is done by verifying value of the query parameter `paymentReceipt`, which consists of [Base64](https://en.wikipedia.org/wiki/Base64) encoded `payload` and `signature` split by a dot.
+
+> Example URL
+
+```text
+https://example.org/satoshipay-content/5?paymentReceipt=eyJleHAiOjE1MDM1NzY4NDksIml0byI6IjAyZmNmZWNiZGFiMTExMmY0MjRiYzc2MTVmZDY2NjkzNzBhMjc3Njg1MjgxMjc3MWM2YWQ1Y2RmZTU3MTgzNDNkNSIsImp0aSI6ImNRNkROa1dUdjU3NGVLb2NoQnZlZWFtRzY2WE9lSUx4In0.13c5d97f6ac3b0d2412962437066ca22ada3cafad1aefad85a2e261a98b2ee14e0ca8f3c7772c78fd8fed9cfb0b51b4b4c154c078a1a0b36a5c19185c84b6281
+
+PAYLOAD="eyJleHAiOjE1MDM1NzY4NDksIml0byI6IjAyZmNmZWNiZGFiMTExMmY0MjRiYzc2MTVmZDY2NjkzNzBhMjc3Njg1MjgxMjc3MWM2YWQ1Y2RmZTU3MTgzNDNkNSIsImp0aSI6ImNRNkROa1dUdjU3NGVLb2NoQnZlZWFtRzY2WE9lSUx4In0"
+SIGNATURE="13c5d97f6ac3b0d2412962437066ca22ada3cafad1aefad85a2e261a98b2ee14e0ca8f3c7772c78fd8fed9cfb0b51b4b4c154c078a1a0b36a5c19185c84b6281"
+```
+
+`http://example.org/path?paymentReceipt=${payload}.${signature}`
+
+
+Query&nbsp;Parameter | Description
+--------------- | ----------- 
+`payload` | Payload describes the user and expiration time.
+`signature` | Signature is SHA256 hash of concatenated `payload` and good's `sharedSecret` known only by the merchant.
+
+### Payload
+
+`payload` is a Base64 encoded JSON structure allowing to identify to whom the receipt was issued to and defining time when it expires.
+
+> Example `payload`
+
+```json
+{
+    "ito": "02fcfecbdab1112f424bc7615fd6669370a2776852812771c6ad5cdfe5718343d5",
+    "exp": 1503576849,
+    "jti": "cQ6DNkWTv574eKochBveeamG66XOeILx"
+}
+```
+
+Field | Name | Description
+--------------- | ----------- | -----------
+`jti` | JWT ID | Case sensitive unique identifier of the token.
+`ito` | Issued To | Identifies a user to whom the receipt was issued to.
+`exp` | Expiration time | Expiration time on which the payment receipt **MUST NOT** be accepted for processing.
+
+### Validating request
+
+> Validation procedure
+
+```bash
+validate () {
+    sharedSecret=$1
+    paymentReceipt=$2
+
+    receipt=(${paymentReceipt//./ })
+    payload=$(echo "${receipt[0]}=" | base64 -D )
+    signature=${receipt[1]}
+    hash=$(echo -n "$sharedSecret$payload" | openssl dgst -sha256)
+    exp=$(echo -n "$payload" | grep -oE '"exp":\d+,' | grep -oE '\d+')
+    now=$(date +%s)
+
+    [[ "$signature" == "$hash" && "0$exp" > "0$now" ]]
+}
+```
+
+```js
+function validate (sharedSecret, paymentReceipt) {
+  const receipt = paymentReceipt.split('.')
+  const payload = base64url.decode(receipt[0])
+  const signature = receipt[1]
+  const hash = SHA256(payload + sharedSecret).toString()
+  
+  return (hash === signature && payload.exp > new Date().getTime())
+}
+```
+
+Validating `paymentRecepit` means verifying the signature and expiration time. Signature is a SHA512 hash of Signature is the SHA256 hash of concatenated `payload` and good's `sharedSecret` known only by merchant. 
+
+Merchant is responsible for generating unique `sharedSecret` for every good and storing it in his own database. Determining the `sharedSecret` value for a particular request should be done based on the good URL.
+
+<aside class="warning">
+  If sharedSecret is not unique for every good, it would mean that any random valid paymentReceipt can be used to access all goods served by the merchant.
+</aside>
 
 <aside class="warning">
   Because payment receipts can be used to access the content, it is advised to secure the HTTP endpoint using an SSL connection (HTTPS).
