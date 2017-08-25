@@ -132,21 +132,15 @@ The HTTP header is followed by the content of the digital good, for example HTML
 
 ## Cross-Domain
 
-If you are serving digital goods from a different hostname the website containing SatoshiPay widget is served from, you need to work around the same-origin policy by adding these headers to your response:
-
 > Required Headers
 
 ```
 Access-Control-Allow-Origin: *
 ```
 
+If you are serving digital goods from a different hostname the website containing SatoshiPay widget is served from, you need to work around the same-origin policy by adding these headers to your response:
+
 ## Range Requests
-
-For goods with a larger file size it is recommended to process HTTP range requests and serve [partial content](https://en.wikipedia.org/wiki/Byte_serving). This will allow browsers and download managers to resume a transfer or to transfer file segments in parallel.
-
-To make skipping to a certain position (seeking) in an audio file or video possible, support for range requests is required. Most browsers or players won't allow seeking if the HTTP source does not support partial content.
-
-We will publish sample digital goods servers written in PHP and Node with support for range requests soon. [Contact us](mailto:hello@satoshipay.io) if you would like to get early access.
 
 > Standard Response Header
 
@@ -164,3 +158,9 @@ Accept-Ranges: bytes
 Content-Length: 500
 Content-Range: bytes 0-499/1000
 ```
+
+For goods with a larger file size it is recommended to process HTTP range requests and serve [partial content](https://en.wikipedia.org/wiki/Byte_serving). This will allow browsers and download managers to resume a transfer or to transfer file segments in parallel.
+
+To make skipping to a certain position (seeking) in an audio file or video possible, support for range requests is required. Most browsers or players won't allow seeking if the HTTP source does not support partial content.
+
+We will publish sample digital goods servers written in PHP and Node with support for range requests soon. [Contact us](mailto:hello@satoshipay.io) if you would like to get early access.
