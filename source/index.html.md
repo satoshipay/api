@@ -2,7 +2,7 @@
 title: SatoshiPay API
 
 language_tabs:
-  - shell: Bash
+  - shell: Shell
   - javascript: JavaScript
 
 toc_footers:
