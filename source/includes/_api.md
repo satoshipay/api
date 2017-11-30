@@ -120,6 +120,7 @@ request({
   {
     "id": "56c5a2a4f1cc5c0448c429f2",
     "price": 9106,
+    "asset": "XLM",
     "sharedSecret": "n1hLnMiJwAwB",
     "url": "https://example.info",
     "title": "Tempora accusamus maxime similique veritatis magni."
@@ -127,6 +128,7 @@ request({
   {
     "id": "56c5a2a52362b70448a589b4",
     "price": 1349,
+    "asset": "XLM",
     "sharedSecret": "m1btHMWJ6O6g",
     "url": "http://example.name",
     "title": "Saepe voluptatibus tempore pariatur atque quia corrupti nisi dolores."
@@ -145,7 +147,8 @@ Returns an array of 'good' objects. Every object has the following properties:
 Property | Type      | Description
 -------- | --------- | ------------
 `id`     | *string*  | Unique identifier of the good.
-`price`  | *integer* | Good's price in satoshis.
+`price`  | *integer* | Good's price in stroops.
+`asset`  | *string*  | Asset of good's price.  Only "XLM" is currently supported
 `sharedSecret` | *string*  | Shared secret information which will be used to sign the `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | Title of the good for reference in the provider dashboard.
@@ -168,6 +171,7 @@ curl https://api.satoshipay.io/v2/goods/ \
   -d '{
        "sharedSecret": "DLDwYsQGromi",
        "price": 6247,
+       "asset": "XLM",
        "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.",
        "url": "http://example.org/post1"
       }'
@@ -185,6 +189,7 @@ request({
   json: {
     "sharedSecret": "DLDwYsQGromi",
     "price": 6247,
+    "asset": "XLM",
     "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.",
     "url": "http://example.org/post1"
   }
@@ -198,6 +203,7 @@ request({
   "id": "56c5a5a722252b484dc4839f",
   "sharedSecret": "DLDwYsQGromi",
   "price": 6247,
+  "asset": "XLM",
   "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.",
   "url": "http://example.org/post1"
 }
@@ -213,7 +219,8 @@ Provide a 'good' object with the following properties:
 
 Property | Type      | Required | Description
 -------- | --------- | -------- | ------------
-`price`  | *integer* | yes      | Good's price in satoshis.
+`price`  | *integer* | yes      | Good's price in stroops.
+`asset`  | *string*  | yes      | Asset of good's price. Only "XLM" is currently supported
 `sharedSecret` | *string*  | yes      | Shared secret information which will be used to sign the `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | yes      | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | yes      | Title of the good for reference in the provider dashboard.
@@ -256,6 +263,7 @@ request({
   "id": "558bcdbb1309c59725bdb559",
   "sharedSecret": "m1btHMWJ6O6g",
   "price": 1349,
+  "asset": "XLM",
   "title": "Saepe voluptatibus tempore pariatur atque quia corrupti nisi dolores.",
   "url": "http://example.name"
 }
@@ -276,7 +284,8 @@ A 'good' object with the following properties:
 Property | Type      | Description
 -------- | --------- | ------------
 `id`     | *string*  | Unique identifier of the good.
-`price`  | *integer* | Good's price in satoshis.
+`price`  | *integer* | Good's price in stroops.
+`asset`  | *string*  | Asset of good's price.  Only "XLM" is supported.
 `sharedSecret` | *string*  | Shared secret information which will be used to sign the `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | Title of the good for reference in the provider dashboard.
@@ -299,6 +308,7 @@ curl https://api.satoshipay.io/v2/goods/56c5a91265e80b7c51afad23 \
   -d '{
         "sharedSecret": "RLC43wvCcmcs",
         "price": 4806,
+        "asset": "XLM",
         "title": "Veritatis impedit mollitia nam ipsum laudantium quam quidem.",
         "url": "https://example.net"
       }'
@@ -316,6 +326,7 @@ request({
   json: {
     "sharedSecret": "RLC43wvCcmcs",
     "price": 4806,
+    "asset": "XLM",
     "title": "Veritatis impedit mollitia nam ipsum laudantium quam quidem.",
     "url": "https://example.net"
   }
@@ -329,6 +340,7 @@ request({
   "id": "56c5a91265e80b7c51afad23",
   "sharedSecret": "RLC43wvCcmcs",
   "price": 4806,
+  "asset": "XLM",
   "title": "Veritatis impedit mollitia nam ipsum laudantium quam quidem.",
   "url": "https://example.net"
 }
@@ -344,7 +356,8 @@ Insert the ID of the good that should be replaced into the request URL and provi
 
 Property | Type      | Required | Description
 -------- | --------- | -------- | ------------
-`price`  | *integer* | yes      | Good's price in satoshis.
+`price`  | *integer* | yes      | Good's price in stroops.
+`asset`  | *string*  | yes      | Asset of good's price. Only "XLM" is currently supported.
 `sharedSecret` | *string*  | yes      | Shared secret information which will be used to create `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | yes      | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | yes      | Title of the good for reference in the provider dashboard.
@@ -395,6 +408,7 @@ request({
   "id": "56c5a82328383fe54f841a60",
   "sharedSecret": "XyZtFohL7",
   "price": 1799,
+  "asset": "XLM",
   "title": "Beatae ab autem delectus dolorem est fugiat.",
   "url": "http://example.com/changed"
 }
@@ -410,7 +424,8 @@ Insert the ID of the good that should be updated into the request URL and provid
 
 Property | Type      | Required | Description
 -------- | --------- | -------- | ------------
-`price`  | *integer* | no       | Good's price in satoshis.
+`price`  | *integer* | no       | Good's price in stroops.
+`asset`  | *string*  | yes      | Asset of good's price. Only "XLM" is currently supported.
 `sharedSecret` | *string*  | no       | Shared secret information which will be used to create `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | no       | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | no       | Title of the good for reference in the provider dashboard.
@@ -429,8 +444,8 @@ DELETE https://api.satoshipay.io/v2/goods/<id>
 
 > Example Request
 
-```shell
-curl https://api.satoshipay.io/v2/goods/558bcdbb1309c59725bdb559 \
+```shellc
+url https://api.satoshipay.io/v2/goods/558bcdbb1309c59725bdb559 \
   -u apikey:apisecret \
   -X DELETE
 ```
@@ -478,6 +493,7 @@ curl https://api.satoshipay.io/v2/batch/ \
             "body": {
               "sharedSecret": "NSKLDspUuo_V",
               "price": 1182,
+              "asset": "XLM",
               "title": "Aliquam sit nisi quia ut rerum.",
               "url": "https://example.com/post1"
             }
@@ -488,6 +504,7 @@ curl https://api.satoshipay.io/v2/batch/ \
             "body": {
               "sharedSecret": "NSfg1elotk_R",
               "price": 7343,
+              "asset": "XLM",
               "title": "Vitae facere ea totam hic",
               "url": "https://example.com/post2"
             }
@@ -513,6 +530,7 @@ request({
         "body": {
           "sharedSecret": "NSKLDspUuo_V",
           "price": 1182,
+          "asset": "XLM",
           "title": "Aliquam sit nisi quia ut rerum.",
           "url": "https://example.com/post1"
         }
@@ -523,6 +541,7 @@ request({
         "body": {
           "sharedSecret": "NSfg1elotk_R",
           "price": 7343,
+          "asset": "XLM",
           "title": "Vitae facere ea totam hic",
           "url": "https://example.com/post2"
         }
@@ -543,6 +562,7 @@ request({
         "id": "56c59f4092d316b1419591eb",
         "sharedSecret": "NSKLDspUuo_V",
         "price": 1182,
+        "asset": "XLM",
         "title": "Aliquam sit nisi quia ut rerum.",
         "url": "https://example.com/post1"
       }
@@ -553,6 +573,7 @@ request({
         "id": "56c59f4092d316b1419591ec",
         "sharedSecret": "NSfg1elotk_R",
         "price": 7343,
+        "asset": "XLM",
         "title": "Vitae facere ea totam hic.",
         "url": "https://example.com/post2"
       }
