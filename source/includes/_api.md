@@ -147,8 +147,8 @@ Returns an array of 'good' objects. Every object has the following properties:
 Property | Type      | Description
 -------- | --------- | ------------
 `id`     | *string*  | Unique identifier of the good.
-`price`  | *integer* | Good's price in stroops. One lumen is `10^7` (10,000,000) stroops
-`asset`  | *string*  | Asset of good's price.  Only "XLM" is currently supported
+`price`  | *integer* | Good's price in stroops. One lumen is `10^7` (10,000,000) stroops.
+`asset`  | *string*  | Asset of good's price.  Only "XLM" is currently supported.
 `sharedSecret` | *string*  | Shared secret information which will be used to sign the `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | Title of the good for reference in the provider dashboard.
@@ -219,8 +219,8 @@ Provide a 'good' object with the following properties:
 
 Property | Type      | Required | Description
 -------- | --------- | -------- | ------------
-`price`  | *integer* | yes      | Good's price in stroops. One lumen is `10^7` (10,000,000) stroops
-`asset`  | *string*  | yes      | Asset of good's price. Only "XLM" is currently supported
+`price`  | *integer* | yes      | Good's price in stroops. One lumen is `10^7` (10,000,000) stroops.
+`asset`  | *string*  | yes      | Asset of good's price. Only "XLM" is currently supported.
 `sharedSecret` | *string*  | yes      | Shared secret information which will be used to sign the `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | yes      | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | yes      | Title of the good for reference in the provider dashboard.
@@ -284,7 +284,7 @@ A 'good' object with the following properties:
 Property | Type      | Description
 -------- | --------- | ------------
 `id`     | *string*  | Unique identifier of the good.
-`price`  | *integer* | Good's price in stroops. One lumen is `10^7` (10,000,000) stroops
+`price`  | *integer* | Good's price in stroops. One lumen is `10^7` (10,000,000) stroops.
 `asset`  | *string*  | Asset of good's price.  Only "XLM" is supported.
 `sharedSecret` | *string*  | Shared secret information which will be used to sign the `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
@@ -356,7 +356,7 @@ Insert the ID of the good that should be replaced into the request URL and provi
 
 Property | Type      | Required | Description
 -------- | --------- | -------- | ------------
-`price`  | *integer* | yes      | Good's price in stroops. One lumen is `10^7` (10,000,000) stroops
+`price`  | *integer* | yes      | Good's price in stroops. One lumen is `10^7` (10,000,000) stroops.
 `asset`  | *string*  | yes      | Asset of good's price. Only "XLM" is currently supported.
 `sharedSecret` | *string*  | yes      | Shared secret information which will be used to create `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | yes      | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
@@ -424,7 +424,7 @@ Insert the ID of the good that should be updated into the request URL and provid
 
 Property | Type      | Required | Description
 -------- | --------- | -------- | ------------
-`price`  | *integer* | no       | Good's price in stroops. One lumen is `10^7` (10,000,000) stroops
+`price`  | *integer* | no       | Good's price in stroops. One lumen is `10^7` (10,000,000) stroops.
 `asset`  | *string*  | yes      | Asset of good's price. Only "XLM" is currently supported.
 `sharedSecret` | *string*  | no       | Shared secret information which will be used to create `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | no       | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
