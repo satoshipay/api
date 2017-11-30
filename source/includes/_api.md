@@ -15,14 +15,14 @@ The Digital Goods API allows developers to interact with SatoshiPay using HTTP R
 > Basic Authentication
 
 ```shell
-curl https://api.satoshipay.io/v2/goods \
+curl https://api.satoshipay.io/v2/goods/ \
   -u <api-key>:<api-secret>
 ```
 
 ```javascript
 var request = require("request");
 request({
-  url: "https://api.satoshipay.io/v2/goods",
+  url: "https://api.satoshipay.io/v2/goods/",
   auth: {
     user: "<api-key>",
     password: "<api-secret>"
@@ -91,20 +91,20 @@ The API resource `goods` allows a merchant to manage their digital goods. A good
 > Definition
 
 ```
-GET https://api.satoshipay.io/v2/goods
+GET https://api.satoshipay.io/v2/goods/
 ```
 
 > Example Request
 
 ```shell
-curl https://api.satoshipay.io/v2/goods \
+curl https://api.satoshipay.io/v2/goods/ \
   -u apikey:apisecret
 ```
 
 ```javascript
 var request = require("request");
 request({
-  url: "https://api.satoshipay.io/v2/goods",
+  url: "https://api.satoshipay.io/v2/goods/",
   auth: {
     user: "apikey",
     password: "apisecret"
@@ -161,7 +161,7 @@ POST https://api.satoshipay.io/v2/goods
 > Example Request
 
 ```shell
-curl https://api.satoshipay.io/v2/goods \
+curl https://api.satoshipay.io/v2/goods/ \
   -u apikey:apisecret \
   -H 'Content-Type: application/json' \
   -X POST \
@@ -176,7 +176,7 @@ curl https://api.satoshipay.io/v2/goods \
 ```javascript
 var request = require("request");
 request({
-  url: "https://api.satoshipay.io/v2/goods",
+  url: "https://api.satoshipay.io/v2/goods/",
   auth: {
     user: "apikey",
     password: "apisecret"
@@ -460,13 +460,13 @@ Insert the ID of the good to be deleted into the request URL.
 > Definition
 
 ```
-POST https://api.satoshipay.io/v2/batch
+POST https://api.satoshipay.io/v2/batch/
 ```
 
 > Example Request
 
 ```shell
-curl https://api.satoshipay.io/v2/batch \
+curl https://api.satoshipay.io/v2/batch/ \
   -u apikey:apisecret \
   -H 'Content-Type: application/json' \
   -X POST \
@@ -499,7 +499,7 @@ curl https://api.satoshipay.io/v2/batch \
 ```javascript
 var request = require("request");
 request({
-  url: "https://api.satoshipay.io/v2/batch",
+  url: "https://api.satoshipay.io/v2/batch/",
   auth: {
     user: "apikey",
     password: "apisecret"
