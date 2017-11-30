@@ -3,7 +3,7 @@
 > Digital Goods API Endpoint
 
 ```
-https://api.satoshipay.io/v1/
+https://api.satoshipay.io/v2/
 ```
 
 The Digital Goods API allows developers to interact with SatoshiPay using HTTP REST calls and JSON. Digital goods merchants communicate with the API in order to register individual goods for sale—either directly or through plugins and libraries provided by SatoshiPay or 3rd parties. The digital goods merchant hosts complementary [HTTP Endpoints](#html-endpoints) that deliver the goods to the user.
@@ -15,14 +15,14 @@ The Digital Goods API allows developers to interact with SatoshiPay using HTTP R
 > Basic Authentication
 
 ```shell
-curl https://api.satoshipay.io/v1/goods \
+curl https://api.satoshipay.io/v2/goods \
   -u <api-key>:<api-secret>
 ```
 
 ```javascript
 var request = require("request");
 request({
-  url: "https://api.satoshipay.io/v1/goods",
+  url: "https://api.satoshipay.io/v2/goods",
   auth: {
     user: "<api-key>",
     password: "<api-secret>"
@@ -41,7 +41,7 @@ If authorization fails, a JSON object with an error message will be returned as 
 ### Content Types
 
 ```shell
-curl https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 \
+curl https://api.satoshipay.io/v2/goods/558bcdbb1309c59725bdb559 \
   -X PATCH \
   -u apikey:apisecret \
   -H 'Content-Type: application/json' \
@@ -51,7 +51,7 @@ curl https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 \
 ```javascript
 var request = require("request");
 request({
-  url: "https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559",
+  url: "https://api.satoshipay.io/v2/goods/558bcdbb1309c59725bdb559",
   auth: {
     user: "apikey",
     password: "apisecret"
@@ -91,20 +91,20 @@ The API resource `goods` allows a merchant to manage their digital goods. A good
 > Definition
 
 ```
-GET https://api.satoshipay.io/v1/goods
+GET https://api.satoshipay.io/v2/goods
 ```
 
 > Example Request
 
 ```shell
-curl https://api.satoshipay.io/v1/goods \
+curl https://api.satoshipay.io/v2/goods \
   -u apikey:apisecret
 ```
 
 ```javascript
 var request = require("request");
 request({
-  url: "https://api.satoshipay.io/v1/goods",
+  url: "https://api.satoshipay.io/v2/goods",
   auth: {
     user: "apikey",
     password: "apisecret"
@@ -155,13 +155,13 @@ Property | Type      | Description
 > Definition
 
 ```
-POST https://api.satoshipay.io/v1/goods
+POST https://api.satoshipay.io/v2/goods
 ```
 
 > Example Request
 
 ```shell
-curl https://api.satoshipay.io/v1/goods \
+curl https://api.satoshipay.io/v2/goods \
   -u apikey:apisecret \
   -H 'Content-Type: application/json' \
   -X POST \
@@ -176,7 +176,7 @@ curl https://api.satoshipay.io/v1/goods \
 ```javascript
 var request = require("request");
 request({
-  url: "https://api.satoshipay.io/v1/goods",
+  url: "https://api.satoshipay.io/v2/goods",
   auth: {
     user: "apikey",
     password: "apisecret"
@@ -227,20 +227,20 @@ As a confirmation, the handler returns the an object representing the good from 
 > Definition
 
 ```
-GET https://api.satoshipay.io/v1/goods/<id>
+GET https://api.satoshipay.io/v2/goods/<id>
 ```
 
 > Example Request
 
 ```shell
-curl https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 \
+curl https://api.satoshipay.io/v2/goods/558bcdbb1309c59725bdb559 \
   -u apikey:apisecret
 ```
 
 ```javascript
 var request = require("request");
 request({
-  url: "https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559",
+  url: "https://api.satoshipay.io/v2/goods/558bcdbb1309c59725bdb559",
   auth: {
     user: "apikey",
     password: "apisecret"
@@ -286,13 +286,13 @@ Property | Type      | Description
 > Definition
 
 ```
-PUT https://api.satoshipay.io/v1/goods/<id>
+PUT https://api.satoshipay.io/v2/goods/<id>
 ```
 
 > Example Request
 
 ```shell
-curl https://api.satoshipay.io/v1/goods/56c5a91265e80b7c51afad23 \
+curl https://api.satoshipay.io/v2/goods/56c5a91265e80b7c51afad23 \
   -u apikey:apisecret \
   -H 'Content-Type: application/json' \
   -X PUT \
@@ -307,7 +307,7 @@ curl https://api.satoshipay.io/v1/goods/56c5a91265e80b7c51afad23 \
 ```javascript
 var request = require("request");
 request({
-  url: "https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559",
+  url: "https://api.satoshipay.io/v2/goods/558bcdbb1309c59725bdb559",
   auth: {
     user: "apikey",
     password: "apisecret"
@@ -358,13 +358,13 @@ As a confirmation, the handler returns an object representing the good from the 
 > Definition
 
 ```
-PATCH https://api.satoshipay.io/v1/goods/<id>
+PATCH https://api.satoshipay.io/v2/goods/<id>
 ```
 
 > Example Request
 
 ```shell
-curl https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 \
+curl https://api.satoshipay.io/v2/goods/558bcdbb1309c59725bdb559 \
   -u apikey:apisecret \
   -H 'Content-Type: application/json' \
   -X PATCH \
@@ -376,7 +376,7 @@ curl https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 \
 ```javascript
 var request = require("request");
 request({
-  url: "https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559",
+  url: "https://api.satoshipay.io/v2/goods/558bcdbb1309c59725bdb559",
   auth: {
     user: "apikey",
     password: "apisecret"
@@ -424,13 +424,13 @@ The updated 'good' object.
 > Definition
 
 ```
-DELETE https://api.satoshipay.io/v1/goods/<id>
+DELETE https://api.satoshipay.io/v2/goods/<id>
 ```
 
 > Example Request
 
 ```shell
-curl https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 \
+curl https://api.satoshipay.io/v2/goods/558bcdbb1309c59725bdb559 \
   -u apikey:apisecret \
   -X DELETE
 ```
@@ -438,7 +438,7 @@ curl https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 \
 ```javascript
 var request = require("request");
 request({
-  url: "https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559",
+  url: "https://api.satoshipay.io/v2/goods/558bcdbb1309c59725bdb559",
   auth: {
     user: "apikey",
     password: "apisecret"
@@ -460,13 +460,13 @@ Insert the ID of the good to be deleted into the request URL.
 > Definition
 
 ```
-POST https://api.satoshipay.io/v1/batch
+POST https://api.satoshipay.io/v2/batch
 ```
 
 > Example Request
 
 ```shell
-curl https://api.satoshipay.io/v1/batch \
+curl https://api.satoshipay.io/v2/batch \
   -u apikey:apisecret \
   -H 'Content-Type: application/json' \
   -X POST \
@@ -499,7 +499,7 @@ curl https://api.satoshipay.io/v1/batch \
 ```javascript
 var request = require("request");
 request({
-  url: "https://api.satoshipay.io/v1/batch",
+  url: "https://api.satoshipay.io/v2/batch",
   auth: {
     user: "apikey",
     password: "apisecret"
