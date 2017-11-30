@@ -119,7 +119,7 @@ request({
 [
   {
     "id": "56c5a2a4f1cc5c0448c429f2",
-    "price": 9106,
+    "price": 100000000,
     "asset": "XLM",
     "sharedSecret": "n1hLnMiJwAwB",
     "url": "https://example.info",
@@ -127,7 +127,7 @@ request({
   },
   {
     "id": "56c5a2a52362b70448a589b4",
-    "price": 1349,
+    "price": 50000000,
     "asset": "XLM",
     "sharedSecret": "m1btHMWJ6O6g",
     "url": "http://example.name",
@@ -170,7 +170,7 @@ curl https://api.satoshipay.io/v2/goods/ \
   -X POST \
   -d '{
        "sharedSecret": "DLDwYsQGromi",
-       "price": 6247,
+       "price": 200000000,
        "asset": "XLM",
        "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.",
        "url": "http://example.org/post1"
@@ -188,7 +188,7 @@ request({
   method: "POST",
   json: {
     "sharedSecret": "DLDwYsQGromi",
-    "price": 6247,
+    "price": 200000000,
     "asset": "XLM",
     "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.",
     "url": "http://example.org/post1"
@@ -202,7 +202,7 @@ request({
 {
   "id": "56c5a5a722252b484dc4839f",
   "sharedSecret": "DLDwYsQGromi",
-  "price": 6247,
+  "price": 200000000,
   "asset": "XLM",
   "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.",
   "url": "http://example.org/post1"
@@ -262,7 +262,7 @@ request({
 {
   "id": "558bcdbb1309c59725bdb559",
   "sharedSecret": "m1btHMWJ6O6g",
-  "price": 1349,
+  "price": 50000000,
   "asset": "XLM",
   "title": "Saepe voluptatibus tempore pariatur atque quia corrupti nisi dolores.",
   "url": "http://example.name"
@@ -307,7 +307,7 @@ curl https://api.satoshipay.io/v2/goods/56c5a91265e80b7c51afad23 \
   -X PUT \
   -d '{
         "sharedSecret": "RLC43wvCcmcs",
-        "price": 4806,
+        "price": 200000000,
         "asset": "XLM",
         "title": "Veritatis impedit mollitia nam ipsum laudantium quam quidem.",
         "url": "https://example.net"
@@ -325,7 +325,7 @@ request({
   method: "PUT",
   json: {
     "sharedSecret": "RLC43wvCcmcs",
-    "price": 4806,
+    "price": 200000000,
     "asset": "XLM",
     "title": "Veritatis impedit mollitia nam ipsum laudantium quam quidem.",
     "url": "https://example.net"
@@ -339,7 +339,7 @@ request({
 {
   "id": "56c5a91265e80b7c51afad23",
   "sharedSecret": "RLC43wvCcmcs",
-  "price": 4806,
+  "price": 200000000,
   "asset": "XLM",
   "title": "Veritatis impedit mollitia nam ipsum laudantium quam quidem.",
   "url": "https://example.net"
@@ -407,7 +407,7 @@ request({
 {
   "id": "56c5a82328383fe54f841a60",
   "sharedSecret": "XyZtFohL7",
-  "price": 1799,
+  "price": 150000000,
   "asset": "XLM",
   "title": "Beatae ab autem delectus dolorem est fugiat.",
   "url": "http://example.com/changed"
@@ -492,7 +492,7 @@ curl https://api.satoshipay.io/v2/batch/ \
             "path": "/goods",
             "body": {
               "sharedSecret": "NSKLDspUuo_V",
-              "price": 1182,
+              "price": 50000000,
               "asset": "XLM",
               "title": "Aliquam sit nisi quia ut rerum.",
               "url": "https://example.com/post1"
@@ -503,7 +503,7 @@ curl https://api.satoshipay.io/v2/batch/ \
             "path": "/goods",
             "body": {
               "sharedSecret": "NSfg1elotk_R",
-              "price": 7343,
+              "price": 180000000,
               "asset": "XLM",
               "title": "Vitae facere ea totam hic",
               "url": "https://example.com/post2"
@@ -529,7 +529,7 @@ request({
         "path": "/goods",
         "body": {
           "sharedSecret": "NSKLDspUuo_V",
-          "price": 1182,
+          "price": 50000000,
           "asset": "XLM",
           "title": "Aliquam sit nisi quia ut rerum.",
           "url": "https://example.com/post1"
@@ -540,7 +540,7 @@ request({
         "path": "/goods",
         "body": {
           "sharedSecret": "NSfg1elotk_R",
-          "price": 7343,
+          "price": 180000000,
           "asset": "XLM",
           "title": "Vitae facere ea totam hic",
           "url": "https://example.com/post2"
@@ -561,7 +561,7 @@ request({
       "body": {
         "id": "56c59f4092d316b1419591eb",
         "sharedSecret": "NSKLDspUuo_V",
-        "price": 1182,
+        "price": 50000000,
         "asset": "XLM",
         "title": "Aliquam sit nisi quia ut rerum.",
         "url": "https://example.com/post1"
@@ -572,7 +572,7 @@ request({
       "body": {
         "id": "56c59f4092d316b1419591ec",
         "sharedSecret": "NSfg1elotk_R",
-        "price": 7343,
+        "price": 180000000,
         "asset": "XLM",
         "title": "Vitae facere ea totam hic.",
         "url": "https://example.com/post2"
