@@ -33,7 +33,7 @@ This tag type represents text or HTML code that is loaded into the web page via 
 Data Attribute   | Required | Description
 ---------------- | -------- | -----------
 `data-sp-type`   | yes      | Content type (MIME), must be either `text/html` or `text/plain` for this type of digital good. See [supported types](#supported-content-types).
-`data-sp-src`    | yes      | [HTTP endpoint](#http-endpoints) as absolute or relative URL, e.g. `/paid-content/1.html`.
+`data-sp-src`    | yes      | [HTTP endpoint](#retrieving-goods) as absolute or relative URL, e.g. `/paid-content/1.html`.
 `data-sp-id`     | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. `558bcdbb1309c59725bdb559`.
 `data-sp-price`  | yes      | Price of content in satoshis, e.g. `4000`.
 `data-sp-length` | no       | Number of content characters (excluding HTML tags and other invisible characters), e.g. `800`. The length will be used to determine how much area the placeholder will cover. Default value: `500`.
@@ -61,7 +61,7 @@ This tag type represents an image that is loaded by injection of an `img` tag af
 Data Attribute        | Required | Description
 --------------------- | -------- | -----------
 `data-sp-type`        | yes      | Content type (MIME), must start with "image/" for this type of digital good, e.g. `image/png`. See [supported types](#supported-content-types).
-`data-sp-src`         | yes      | [HTTP endpoint](#http-endpoints) as absolute or relative URL, e.g. `/paid-content/2.png`.
+`data-sp-src`         | yes      | [HTTP endpoint](#retrieving-goods) as absolute or relative URL, e.g. `/paid-content/2.png`.
 `data-sp-id`          | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. `558bcdbb1309c59725bdb559`.
 `data-sp-price`       | yes      | Price of image in satoshis, e.g. `4000`.
 `data-sp-width`       | yes      | Width of image in pixels, e.g. `450`.
@@ -91,7 +91,7 @@ This tag type represents an audio file that is displayed by injecting an `audio`
 Data Attribute        | Required | Description
 --------------------- | -------- | -----------
 `data-sp-type`        | yes      | Content type (MIME), must start with "audio/" for this type of digital good, e.g. `audio/mpeg`. See [supported types](#supported-content-types).
-`data-sp-src`         | yes      | [HTTP endpoint](#http-endpoints) for audio as absolute or relative URL, e.g. `/paid-content/5.mp3`.
+`data-sp-src`         | yes      | [HTTP endpoint](#retrieving-goods) for audio as absolute or relative URL, e.g. `/paid-content/5.mp3`.
 `data-sp-id`          | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. `558bcdbb1309c59725bdb555`.
 `data-sp-price`       | yes      | Price of audio file in satoshis, e.g. `4000`.
 `data-sp-autoplay`    | no       | Value for automatic audio playback, where available. E.g. `true`, default: `false`.
@@ -122,7 +122,7 @@ This tag type represents a video that is displayed by injecting a `video` tag af
 Data Attribute        | Required | Description
 --------------------- | -------- | -----------
 `data-sp-type`        | yes      | Content type (MIME), must start with "video/" for this type of digital good, e.g. `video/mp4`. See [supported types](#supported-content-types).
-`data-sp-src`         | yes      | [HTTP endpoint](#http-endpoints) for video as absolute or relative URL, e.g. `/paid-content/4.mp4`.
+`data-sp-src`         | yes      | [HTTP endpoint](#retrieving-goods) for video as absolute or relative URL, e.g. `/paid-content/4.mp4`.
 `data-sp-id`          | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. `558bcdbb1309c59725bdb559`.
 `data-sp-price`       | yes      | Price of video in satoshis, e.g. `4000`.
 `data-sp-height`      | yes      | Height of video in pixels, e.g. `360`.
@@ -152,7 +152,7 @@ This tag type represents a secure download link that is displayed after successf
 Data Attribute   | Required | Description
 ---------------- | -------- | -----------
 `data-sp-type`   | yes      | Content type (MIME), must start with "application/" for this type of digital good, e.g. `application/pdf`. See [supported types](#supported-content-types).
-`data-sp-src`    | yes      | [HTTP endpoint](#http-endpoints) for download as absolute or relative URL, e.g. `/paid-content/3.pdf`.
+`data-sp-src`    | yes      | [HTTP endpoint](#retrieving-goods) for download as absolute or relative URL, e.g. `/paid-content/3.pdf`.
 `data-sp-id`     | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. `558bcdbb1309c59725bdb559`.
 `data-sp-price`  | yes      | Price of download in satoshis, e.g. `4000`.
 `data-sp-length` | yes      | HTTP content-length i.e. file size of download in bytes. This value is used to indicate the download size next to the download link. E.g. `835669`.
