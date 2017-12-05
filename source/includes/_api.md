@@ -444,8 +444,8 @@ DELETE https://api.satoshipay.io/v2/goods/<id>
 
 > Example Request
 
-```shellc
-url https://api.satoshipay.io/v2/goods/558bcdbb1309c59725bdb559 \
+```shell
+curl https://api.satoshipay.io/v2/goods/558bcdbb1309c59725bdb559 \
   -u apikey:apisecret \
   -X DELETE
 ```
