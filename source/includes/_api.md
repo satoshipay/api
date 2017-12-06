@@ -30,7 +30,7 @@ request({
 }, callback);
 ```
 
-Every request to the API must be authenticated with your API credentials. These credentials can be obtained in the [SatoshiPay Dashboard](https://dashboard.satoshipay.io/) after [creating an account](https://dashboard.satoshipay.io/sign-up). Before you can access your credentials, you need to set a Bitcoin address for payouts. Your API key and secret can then be found at [Settings > API Access](https://dashboard.satoshipay.io/settings/api).
+Every request to the API must be authenticated with your API credentials. These credentials can be obtained in the [SatoshiPay Dashboard](https://dashboard.satoshipay.io/) after [creating an account](https://dashboard.satoshipay.io/sign-up). Before you can access your credentials, you need to set a Stellar address for payouts. Your API key and secret can then be found at [Settings > API Access](https://dashboard.satoshipay.io/settings/api).
 
 The API uses [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication), where the user name is your API key, and the password is your API secret.
 
@@ -145,7 +145,7 @@ Returns an array of 'good' objects. Every object has the following properties:
 Property | Type      | Description
 -------- | --------- | ------------
 `id`     | *string*  | Unique identifier of the good.
-`price`  | *integer* | Good's price in satoshis.
+`price`  | *integer* | Good's price in stroops.
 `sharedSecret` | *string*  | Shared secret information which will be used to sign the `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | Title of the good for reference in the provider dashboard.
@@ -213,7 +213,7 @@ Provide a 'good' object with the following properties:
 
 Property | Type      | Required | Description
 -------- | --------- | -------- | ------------
-`price`  | *integer* | yes      | Good's price in satoshis.
+`price`  | *integer* | yes      | Good's price in stroops.
 `sharedSecret` | *string*  | yes      | Shared secret information which will be used to sign the `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | yes      | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | yes      | Title of the good for reference in the provider dashboard.
@@ -276,7 +276,7 @@ A 'good' object with the following properties:
 Property | Type      | Description
 -------- | --------- | ------------
 `id`     | *string*  | Unique identifier of the good.
-`price`  | *integer* | Good's price in satoshis.
+`price`  | *integer* | Good's price in stroops.
 `sharedSecret` | *string*  | Shared secret information which will be used to sign the `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | Title of the good for reference in the provider dashboard.
@@ -344,7 +344,7 @@ Insert the ID of the good that should be replaced into the request URL and provi
 
 Property | Type      | Required | Description
 -------- | --------- | -------- | ------------
-`price`  | *integer* | yes      | Good's price in satoshis.
+`price`  | *integer* | yes      | Good's price in stroops.
 `sharedSecret` | *string*  | yes      | Shared secret information which will be used to create `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | yes      | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | yes      | Title of the good for reference in the provider dashboard.
@@ -410,7 +410,7 @@ Insert the ID of the good that should be updated into the request URL and provid
 
 Property | Type      | Required | Description
 -------- | --------- | -------- | ------------
-`price`  | *integer* | no       | Good's price in satoshis.
+`price`  | *integer* | no       | Good's price in stroops.
 `sharedSecret` | *string*  | no       | Shared secret information which will be used to create `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | no       | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | no       | Title of the good for reference in the provider dashboard.
