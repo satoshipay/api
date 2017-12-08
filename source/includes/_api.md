@@ -3,10 +3,10 @@
 > Digital Goods API Endpoint
 
 ```
-https://api.satoshipay.io/v1/
+https://api.satoshipay.io/v2/
 ```
 
-The Digital Goods API allows developers to interact with SatoshiPay using HTTP REST calls and JSON. Digital goods merchants communicate with the API in order to register individual goods for sale &ndash; either directly or through plugins and libraries provided by SatoshiPay or 3rd parties. The digital goods merchant hosts complementary [HTTP Endpoints](#html-endpoints) that deliver the goods to the user.
+The Digital Goods API allows developers to interact with SatoshiPay using HTTP REST calls and JSON. Digital goods merchants communicate with the API in order to register individual goods for sale &ndash; either directly or through plugins and libraries provided by SatoshiPay or 3rd parties. The digital goods merchant hosts complementary [HTTP Endpoints](#retrieving-goods) that deliver the goods to the user.
 
 ## General
 
@@ -15,14 +15,14 @@ The Digital Goods API allows developers to interact with SatoshiPay using HTTP R
 > Basic Authentication
 
 ```shell
-curl https://api.satoshipay.io/v1/goods \
+curl https://api.satoshipay.io/v2/goods/ \
   -u <api-key>:<api-secret>
 ```
 
 ```javascript
 var request = require("request");
 request({
-  url: "https://api.satoshipay.io/v1/goods",
+  url: "https://api.satoshipay.io/v2/goods/",
   auth: {
     user: "<api-key>",
     password: "<api-secret>"
@@ -41,7 +41,7 @@ If authorization fails, a JSON object with an error message will be returned as 
 ### Content Types
 
 ```shell
-curl https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 \
+curl https://api.satoshipay.io/v2/goods/558bcdbb1309c59725bdb559 \
   -X PATCH \
   -u apikey:apisecret \
   -H 'Content-Type: application/json' \
@@ -51,7 +51,7 @@ curl https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 \
 ```javascript
 var request = require("request");
 request({
-  url: "https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559",
+  url: "https://api.satoshipay.io/v2/goods/558bcdbb1309c59725bdb559",
   auth: {
     user: "apikey",
     password: "apisecret"
@@ -91,20 +91,20 @@ The API resource `goods` allows a merchant to manage their digital goods. A good
 > Definition
 
 ```
-GET https://api.satoshipay.io/v1/goods
+GET https://api.satoshipay.io/v2/goods/
 ```
 
 > Example Request
 
 ```shell
-curl https://api.satoshipay.io/v1/goods \
+curl https://api.satoshipay.io/v2/goods/ \
   -u apikey:apisecret
 ```
 
 ```javascript
 var request = require("request");
 request({
-  url: "https://api.satoshipay.io/v1/goods",
+  url: "https://api.satoshipay.io/v2/goods/",
   auth: {
     user: "apikey",
     password: "apisecret"
@@ -119,14 +119,16 @@ request({
 [
   {
     "id": "56c5a2a4f1cc5c0448c429f2",
-    "price": 9106,
+    "price": 100000000,
+    "asset": "XLM",
     "sharedSecret": "n1hLnMiJwAwB",
     "url": "https://example.info",
     "title": "Tempora accusamus maxime similique veritatis magni."
   },
   {
     "id": "56c5a2a52362b70448a589b4",
-    "price": 1349,
+    "price": 50000000,
+    "asset": "XLM",
     "sharedSecret": "m1btHMWJ6O6g",
     "url": "http://example.name",
     "title": "Saepe voluptatibus tempore pariatur atque quia corrupti nisi dolores."
@@ -145,7 +147,8 @@ Returns an array of 'good' objects. Every object has the following properties:
 Property | Type      | Description
 -------- | --------- | ------------
 `id`     | *string*  | Unique identifier of the good.
-`price`  | *integer* | Good's price in satoshis.
+`price`  | *integer* | Good's price in stroops. One lumen is `10^7` (10,000,000) stroops.
+`asset`  | *string*  | Asset of good's price.  Only "XLM" is currently supported.
 `sharedSecret` | *string*  | Shared secret information which will be used to sign the `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | Title of the good for reference in the provider dashboard.
@@ -155,19 +158,20 @@ Property | Type      | Description
 > Definition
 
 ```
-POST https://api.satoshipay.io/v1/goods
+POST https://api.satoshipay.io/v2/goods
 ```
 
 > Example Request
 
 ```shell
-curl https://api.satoshipay.io/v1/goods \
+curl https://api.satoshipay.io/v2/goods/ \
   -u apikey:apisecret \
   -H 'Content-Type: application/json' \
   -X POST \
   -d '{
        "sharedSecret": "DLDwYsQGromi",
-       "price": 6247,
+       "price": 200000000,
+       "asset": "XLM",
        "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.",
        "url": "http://example.org/post1"
       }'
@@ -176,7 +180,7 @@ curl https://api.satoshipay.io/v1/goods \
 ```javascript
 var request = require("request");
 request({
-  url: "https://api.satoshipay.io/v1/goods",
+  url: "https://api.satoshipay.io/v2/goods/",
   auth: {
     user: "apikey",
     password: "apisecret"
@@ -184,7 +188,8 @@ request({
   method: "POST",
   json: {
     "sharedSecret": "DLDwYsQGromi",
-    "price": 6247,
+    "price": 200000000,
+    "asset": "XLM",
     "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.",
     "url": "http://example.org/post1"
   }
@@ -197,7 +202,8 @@ request({
 {
   "id": "56c5a5a722252b484dc4839f",
   "sharedSecret": "DLDwYsQGromi",
-  "price": 6247,
+  "price": 200000000,
+  "asset": "XLM",
   "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.",
   "url": "http://example.org/post1"
 }
@@ -213,7 +219,8 @@ Provide a 'good' object with the following properties:
 
 Property | Type      | Required | Description
 -------- | --------- | -------- | ------------
-`price`  | *integer* | yes      | Good's price in satoshis.
+`price`  | *integer* | yes      | Good's price in stroops. One lumen is `10^7` (10,000,000) stroops.
+`asset`  | *string*  | yes      | Asset of good's price. Only "XLM" is currently supported.
 `sharedSecret` | *string*  | yes      | Shared secret information which will be used to sign the `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | yes      | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | yes      | Title of the good for reference in the provider dashboard.
@@ -227,20 +234,20 @@ As a confirmation, the handler returns the an object representing the good from 
 > Definition
 
 ```
-GET https://api.satoshipay.io/v1/goods/<id>
+GET https://api.satoshipay.io/v2/goods/<id>
 ```
 
 > Example Request
 
 ```shell
-curl https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 \
+curl https://api.satoshipay.io/v2/goods/558bcdbb1309c59725bdb559 \
   -u apikey:apisecret
 ```
 
 ```javascript
 var request = require("request");
 request({
-  url: "https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559",
+  url: "https://api.satoshipay.io/v2/goods/558bcdbb1309c59725bdb559",
   auth: {
     user: "apikey",
     password: "apisecret"
@@ -255,7 +262,8 @@ request({
 {
   "id": "558bcdbb1309c59725bdb559",
   "sharedSecret": "m1btHMWJ6O6g",
-  "price": 1349,
+  "price": 50000000,
+  "asset": "XLM",
   "title": "Saepe voluptatibus tempore pariatur atque quia corrupti nisi dolores.",
   "url": "http://example.name"
 }
@@ -276,7 +284,8 @@ A 'good' object with the following properties:
 Property | Type      | Description
 -------- | --------- | ------------
 `id`     | *string*  | Unique identifier of the good.
-`price`  | *integer* | Good's price in satoshis.
+`price`  | *integer* | Good's price in stroops. One lumen is `10^7` (10,000,000) stroops.
+`asset`  | *string*  | Asset of good's price.  Only "XLM" is supported.
 `sharedSecret` | *string*  | Shared secret information which will be used to sign the `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | Title of the good for reference in the provider dashboard.
@@ -286,19 +295,20 @@ Property | Type      | Description
 > Definition
 
 ```
-PUT https://api.satoshipay.io/v1/goods/<id>
+PUT https://api.satoshipay.io/v2/goods/<id>
 ```
 
 > Example Request
 
 ```shell
-curl https://api.satoshipay.io/v1/goods/56c5a91265e80b7c51afad23 \
+curl https://api.satoshipay.io/v2/goods/56c5a91265e80b7c51afad23 \
   -u apikey:apisecret \
   -H 'Content-Type: application/json' \
   -X PUT \
   -d '{
         "sharedSecret": "RLC43wvCcmcs",
-        "price": 4806,
+        "price": 200000000,
+        "asset": "XLM",
         "title": "Veritatis impedit mollitia nam ipsum laudantium quam quidem.",
         "url": "https://example.net"
       }'
@@ -307,7 +317,7 @@ curl https://api.satoshipay.io/v1/goods/56c5a91265e80b7c51afad23 \
 ```javascript
 var request = require("request");
 request({
-  url: "https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559",
+  url: "https://api.satoshipay.io/v2/goods/558bcdbb1309c59725bdb559",
   auth: {
     user: "apikey",
     password: "apisecret"
@@ -315,7 +325,8 @@ request({
   method: "PUT",
   json: {
     "sharedSecret": "RLC43wvCcmcs",
-    "price": 4806,
+    "price": 200000000,
+    "asset": "XLM",
     "title": "Veritatis impedit mollitia nam ipsum laudantium quam quidem.",
     "url": "https://example.net"
   }
@@ -328,7 +339,8 @@ request({
 {
   "id": "56c5a91265e80b7c51afad23",
   "sharedSecret": "RLC43wvCcmcs",
-  "price": 4806,
+  "price": 200000000,
+  "asset": "XLM",
   "title": "Veritatis impedit mollitia nam ipsum laudantium quam quidem.",
   "url": "https://example.net"
 }
@@ -344,7 +356,8 @@ Insert the ID of the good that should be replaced into the request URL and provi
 
 Property | Type      | Required | Description
 -------- | --------- | -------- | ------------
-`price`  | *integer* | yes      | Good's price in satoshis.
+`price`  | *integer* | yes      | Good's price in stroops. One lumen is `10^7` (10,000,000) stroops.
+`asset`  | *string*  | yes      | Asset of good's price. Only "XLM" is currently supported.
 `sharedSecret` | *string*  | yes      | Shared secret information which will be used to create `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | yes      | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | yes      | Title of the good for reference in the provider dashboard.
@@ -358,13 +371,13 @@ As a confirmation, the handler returns an object representing the good from the 
 > Definition
 
 ```
-PATCH https://api.satoshipay.io/v1/goods/<id>
+PATCH https://api.satoshipay.io/v2/goods/<id>
 ```
 
 > Example Request
 
 ```shell
-curl https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 \
+curl https://api.satoshipay.io/v2/goods/558bcdbb1309c59725bdb559 \
   -u apikey:apisecret \
   -H 'Content-Type: application/json' \
   -X PATCH \
@@ -376,7 +389,7 @@ curl https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 \
 ```javascript
 var request = require("request");
 request({
-  url: "https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559",
+  url: "https://api.satoshipay.io/v2/goods/558bcdbb1309c59725bdb559",
   auth: {
     user: "apikey",
     password: "apisecret"
@@ -394,7 +407,8 @@ request({
 {
   "id": "56c5a82328383fe54f841a60",
   "sharedSecret": "XyZtFohL7",
-  "price": 1799,
+  "price": 150000000,
+  "asset": "XLM",
   "title": "Beatae ab autem delectus dolorem est fugiat.",
   "url": "http://example.com/changed"
 }
@@ -410,7 +424,8 @@ Insert the ID of the good that should be updated into the request URL and provid
 
 Property | Type      | Required | Description
 -------- | --------- | -------- | ------------
-`price`  | *integer* | no       | Good's price in satoshis.
+`price`  | *integer* | no       | Good's price in stroops. One lumen is `10^7` (10,000,000) stroops.
+`asset`  | *string*  | yes      | Asset of good's price. Only "XLM" is currently supported.
 `sharedSecret` | *string*  | no       | Shared secret information which will be used to create `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | no       | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | no       | Title of the good for reference in the provider dashboard.
@@ -424,13 +439,13 @@ The updated 'good' object.
 > Definition
 
 ```
-DELETE https://api.satoshipay.io/v1/goods/<id>
+DELETE https://api.satoshipay.io/v2/goods/<id>
 ```
 
 > Example Request
 
 ```shell
-curl https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 \
+curl https://api.satoshipay.io/v2/goods/558bcdbb1309c59725bdb559 \
   -u apikey:apisecret \
   -X DELETE
 ```
@@ -438,7 +453,7 @@ curl https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559 \
 ```javascript
 var request = require("request");
 request({
-  url: "https://api.satoshipay.io/v1/goods/558bcdbb1309c59725bdb559",
+  url: "https://api.satoshipay.io/v2/goods/558bcdbb1309c59725bdb559",
   auth: {
     user: "apikey",
     password: "apisecret"
@@ -460,13 +475,13 @@ Insert the ID of the good to be deleted into the request URL.
 > Definition
 
 ```
-POST https://api.satoshipay.io/v1/batch
+POST https://api.satoshipay.io/v2/batch/
 ```
 
 > Example Request
 
 ```shell
-curl https://api.satoshipay.io/v1/batch \
+curl https://api.satoshipay.io/v2/batch/ \
   -u apikey:apisecret \
   -H 'Content-Type: application/json' \
   -X POST \
@@ -477,7 +492,8 @@ curl https://api.satoshipay.io/v1/batch \
             "path": "/goods",
             "body": {
               "sharedSecret": "NSKLDspUuo_V",
-              "price": 1182,
+              "price": 50000000,
+              "asset": "XLM",
               "title": "Aliquam sit nisi quia ut rerum.",
               "url": "https://example.com/post1"
             }
@@ -487,7 +503,8 @@ curl https://api.satoshipay.io/v1/batch \
             "path": "/goods",
             "body": {
               "sharedSecret": "NSfg1elotk_R",
-              "price": 7343,
+              "price": 180000000,
+              "asset": "XLM",
               "title": "Vitae facere ea totam hic",
               "url": "https://example.com/post2"
             }
@@ -499,7 +516,7 @@ curl https://api.satoshipay.io/v1/batch \
 ```javascript
 var request = require("request");
 request({
-  url: "https://api.satoshipay.io/v1/batch",
+  url: "https://api.satoshipay.io/v2/batch/",
   auth: {
     user: "apikey",
     password: "apisecret"
@@ -512,7 +529,8 @@ request({
         "path": "/goods",
         "body": {
           "sharedSecret": "NSKLDspUuo_V",
-          "price": 1182,
+          "price": 50000000,
+          "asset": "XLM",
           "title": "Aliquam sit nisi quia ut rerum.",
           "url": "https://example.com/post1"
         }
@@ -522,7 +540,8 @@ request({
         "path": "/goods",
         "body": {
           "sharedSecret": "NSfg1elotk_R",
-          "price": 7343,
+          "price": 180000000,
+          "asset": "XLM",
           "title": "Vitae facere ea totam hic",
           "url": "https://example.com/post2"
         }
@@ -542,7 +561,8 @@ request({
       "body": {
         "id": "56c59f4092d316b1419591eb",
         "sharedSecret": "NSKLDspUuo_V",
-        "price": 1182,
+        "price": 50000000,
+        "asset": "XLM",
         "title": "Aliquam sit nisi quia ut rerum.",
         "url": "https://example.com/post1"
       }
@@ -552,7 +572,8 @@ request({
       "body": {
         "id": "56c59f4092d316b1419591ec",
         "sharedSecret": "NSfg1elotk_R",
-        "price": 7343,
+        "price": 180000000,
+        "asset": "XLM",
         "title": "Vitae facere ea totam hic.",
         "url": "https://example.com/post2"
       }
