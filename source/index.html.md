@@ -63,11 +63,11 @@ We've nicknamed our website widget "Sun of Satoshi" to honour Bitcoin's anonymou
   <img src="images/sun.png" />
 </p>
 
-The widget displays a user's current balance in satoshis and, when clicked, a menu with items for top-up, settings and help. It can be included *anywhere* on *any* web page and will automatically transform SatoshiPay [HTML Tags](#html-tags) into digital goods. See it in action at the <a href="https://satoshipay.io/">SatoshiPay website</a>.
+The widget displays a user's current balance in lumens and, when clicked, a menu with items for top-up, settings and help. It can be included *anywhere* on *any* web page and will automatically transform SatoshiPay [HTML Tags](#html-tags) into digital goods. See it in action at the <a href="https://satoshipay.io/">SatoshiPay website</a>.
 
 The widget performs the following tasks:
 
-* Generate a bitcoin wallet and keep it in the user's LocalStorage
+* Generate a Stellar wallet and keep it in the user's LocalStorage
 * Communicate with SatoshiPay servers
 * Control digital goods on the web page
 * Interact with the user via menus and messages

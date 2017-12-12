@@ -30,7 +30,7 @@ request({
 }, callback);
 ```
 
-Every request to the API must be authenticated with your API credentials. These credentials can be obtained in the [SatoshiPay Dashboard](https://dashboard.satoshipay.io/) after [creating an account](https://dashboard.satoshipay.io/sign-up). Before you can access your credentials, you need to set a Bitcoin address for payouts. Your API key and secret can then be found at [Settings > API Access](https://dashboard.satoshipay.io/settings/api).
+Every request to the API must be authenticated with your API credentials. These credentials can be obtained in the [SatoshiPay Dashboard](https://dashboard.satoshipay.io/) after [creating an account](https://dashboard.satoshipay.io/sign-up). Before you can access your credentials, you need to set a Stellar address for payouts. Your API key and secret can then be found at [Settings > API Access](https://dashboard.satoshipay.io/settings/api).
 
 The API uses [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication), where the user name is your API key, and the password is your API secret.
 

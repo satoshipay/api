@@ -31,7 +31,7 @@ When the `X-Payment-Certificate` header is not set, or the certificate is invali
 Response Header       | Description
 --------------------- | -----------
 <span style="white-space: nowrap;">`X-Payment-Types-Accepted: SatoshiPay`</span> | Indicate that the only accepted payment method is SatoshiPay.
-`X-Payment-Price: <price>` | Price of the good in satoshis.
+`X-Payment-Price: <price>` | Price of the good in stroops.
 <span style="white-space: nowrap;">`X-Payment-Identifier: <satoshipay-id>`</span> | Identifier of the good in SatoshiPay's registry. Needs to be the same as the `data-sp-id` attribute in the corresponding [HTML tag](#html-tags).
 
 ### Process Request Headers
