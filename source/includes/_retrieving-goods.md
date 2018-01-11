@@ -126,7 +126,7 @@ Content-Type: text/html; charset=UTF-8
 <strong>OH HAI!</strong> You've <em>nanopaid</em> me.
 ```
 
-The response needs to have HTTP status 200 set and contain the correct `Content-Type` header for the digital good. In most cases simply passing on the MIME media type returned by the file system should be sufficient, but make sure to check the [list of content types](#supported-content-types) that are supported.
+The response needs to have HTTP status 200 set and contain the correct `Content-Type` header for the digital good. In most cases simply passing on the MIME media type returned by the file system should be sufficient, but make sure to check the [list of content types](#content-types) that are supported.
 
 The HTTP header is followed by the content of the digital good, for example HTML code.
 
