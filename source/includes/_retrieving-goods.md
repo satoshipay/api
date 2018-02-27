@@ -83,22 +83,6 @@ Field | Name | Description
 
 > Validation procedure
 
-```bash
-validate () {
-    sharedSecret=$1
-    paymentReceipt=$2
-
-    receipt=(${paymentReceipt//./ })
-    payload=$(echo "${receipt[0]}=" | base64 -D )
-    signature=${receipt[1]}
-    hash=$(echo -n "$payload$sharedSecret" | openssl dgst -sha512)
-    exp=$(echo -n "$payload" | grep -oE '"exp":\d+,' | grep -oE '\d+')
-    now=$(date +%s)
-
-    [[ "$signature" == "$hash" && "0$exp" > "0$now" ]]
-}
-```
-
 ```js
 const SHA512 = require('crypto-js/sha512')
 
