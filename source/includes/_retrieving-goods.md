@@ -33,7 +33,7 @@ Query&nbsp;Parameter | Description
 <a name="retriving-auth"></a>
 ## Authentication
 
-Authentication is implemented on the merchant's HTTP endpoint without connecting to the SatoshiPay API using [JSON Web Token](https://en.wikipedia.org/wiki/JSON_Web_Token) standard ([RFC 7519](https://tools.ietf.org/html/rfc7519)). It is done by verifying value of the query parameter `paymentReceipt`, which consists of [Base64](https://en.wikipedia.org/wiki/Base64) encoded `payload` and `signature` split by a dot.
+Authentication is implemented on the merchant's HTTP endpoint without connecting to the SatoshiPay API. It is done by verifying the value of the query parameter `paymentReceipt`, which consists of [Base64](https://en.wikipedia.org/wiki/Base64) encoded `payload` and `signature` split by a dot.
 
 > Example URL
 
@@ -48,9 +48,9 @@ SIGNATURE="13c5d97f6ac3b0d2412962437066ca22ada3cafad1aefad85a2e261a98b2ee14e0ca8
 
 
 Query&nbsp;Parameter | Description
---------------- | ----------- 
+--------------- | -----------
 `payload` | Payload describes the user and expiration time.
-`signature` | Signature is SHA256 hash of concatenated `payload` and good's `sharedSecret` known only by the merchant.
+`signature` | Signature is the SHA-512 hash of concatenated `payload` and good's `sharedSecret` known only by the merchant.
 
 ### Payload
 
@@ -60,55 +60,48 @@ Query&nbsp;Parameter | Description
 
 ```json
 {
-    "ito": "02fcfecbdab1112f424bc7615fd6669370a2776852812771c6ad5cdfe5718343d5",
     "exp": 1503576849,
+    "ito": "02fcfecbdab1112f424bc7615fd6669370a2776852812771c6ad5cdfe5718343d5",
     "jti": "cQ6DNkWTv574eKochBveeamG66XOeILx"
 }
 ```
 
+> Example `signature`
+
+The correct signature for the above example payload and a `sharedSecret` value of `"jsbicjttovhgtkdtsthduxg"` is
+```text
+"13c5d97f6ac3b0d2412962437066ca22ada3cafad1aefad85a2e261a98b2ee14e0ca8f3c7772c78fd8fed9cfb0b51b4b4c154c078a1a0b36a5c19185c84b6281"
+```
+
 Field | Name | Description
 --------------- | ----------- | -----------
-`jti` | JWT ID | Case sensitive unique identifier of the token.
-`ito` | Issued To | Identifies a user to whom the receipt was issued to.
 `exp` | Expiration time | Expiration time on which the payment receipt **MUST NOT** be accepted for processing.
+`ito` | Issued To | Identifies a user to whom the receipt was issued to.
+`jti` | JWT ID | Case sensitive unique identifier of the token.
 
 ### Validating request
 
 > Validation procedure
 
-```bash
-validate () {
-    sharedSecret=$1
-    paymentReceipt=$2
-
-    receipt=(${paymentReceipt//./ })
-    payload=$(echo "${receipt[0]}=" | base64 -D )
-    signature=${receipt[1]}
-    hash=$(echo -n "$sharedSecret$payload" | openssl dgst -sha256)
-    exp=$(echo -n "$payload" | grep -oE '"exp":\d+,' | grep -oE '\d+')
-    now=$(date +%s)
-
-    [[ "$signature" == "$hash" && "0$exp" > "0$now" ]]
-}
-```
-
 ```js
+const SHA512 = require('crypto-js/sha512')
+
 function validate (sharedSecret, paymentReceipt) {
   const receipt = paymentReceipt.split('.')
   const payload = base64url.decode(receipt[0])
   const signature = receipt[1]
-  const hash = SHA256(payload + sharedSecret).toString()
-  
+  const hash = SHA512(payload + sharedSecret).toString()
+
   return (hash === signature && payload.exp > new Date().getTime())
 }
 ```
 
-Validating `paymentRecepit` means verifying the signature and expiration time. Signature is a SHA512 hash of Signature is the SHA256 hash of concatenated `payload` and good's `sharedSecret` known only by merchant. 
+Validating `paymentRecepit` means verifying the signature and expiration time. The signature is the SHA-512 hash of the string resulting from concatenating `payload` and the good's `sharedSecret` known only by merchant.
 
-Merchant is responsible for generating unique `sharedSecret` for every good and storing it in his own database. Determining the `sharedSecret` value for a particular request should be done based on the good URL.
+The merchant is responsible for generating a unique `sharedSecret` for every good and storing it in the merchant's own database.
 
 <aside class="warning">
-  If sharedSecret is not unique for every good, it would mean that any random valid paymentReceipt can be used to access all goods served by the merchant.
+  If `sharedSecret` is not unique for every good, it would mean that any random valid `paymentReceipt` can be used to access all goods served by the merchant.
 </aside>
 
 <aside class="warning">
