@@ -28,35 +28,39 @@ The endpoint will be called with a `GET` request that has the following *query p
 
 Query&nbsp;Parameter | Description
 --------------- | -----------
-`paymentReceipt`   | Receipt for payment. This parameter should be used by the endpoint to authenticate the request (see [authentication](#retriving-auth) below).
+`paymentReceipt`   | Receipt for payment. This parameter should be used by the endpoint to authenticate the request (see [authentication](#retrieving-auth) below).
 
-<a name="retriving-auth"></a>
+<a name="retrieving-auth"></a>
 ## Authentication
 
-Authentication is implemented on the merchant's HTTP endpoint without connecting to the SatoshiPay API. It is done by verifying the value of the query parameter `paymentReceipt`, which consists of [Base64](https://en.wikipedia.org/wiki/Base64) encoded `payload` and `signature` split by a dot.
+Authentication is implemented on the merchant's HTTP endpoint without connecting to the SatoshiPay API. It is done by verifying the value of the query parameter `paymentReceipt`, which consists of the [Base64](https://en.wikipedia.org/wiki/Base64) encoded JSON payload and a signature split by a dot.
 
 > Example URL
 
 ```text
 https://example.org/satoshipay-content/5?paymentReceipt=eyJleHAiOjE1MDM1NzY4NDksIml0byI6IjAyZmNmZWNiZGFiMTExMmY0MjRiYzc2MTVmZDY2NjkzNzBhMjc3Njg1MjgxMjc3MWM2YWQ1Y2RmZTU3MTgzNDNkNSIsImp0aSI6ImNRNkROa1dUdjU3NGVLb2NoQnZlZWFtRzY2WE9lSUx4In0.13c5d97f6ac3b0d2412962437066ca22ada3cafad1aefad85a2e261a98b2ee14e0ca8f3c7772c78fd8fed9cfb0b51b4b4c154c078a1a0b36a5c19185c84b6281
 
-PAYLOAD="eyJleHAiOjE1MDM1NzY4NDksIml0byI6IjAyZmNmZWNiZGFiMTExMmY0MjRiYzc2MTVmZDY2NjkzNzBhMjc3Njg1MjgxMjc3MWM2YWQ1Y2RmZTU3MTgzNDNkNSIsImp0aSI6ImNRNkROa1dUdjU3NGVLb2NoQnZlZWFtRzY2WE9lSUx4In0"
+PAYLOAD_BASE64="eyJleHAiOjE1MDM1NzY4NDksIml0byI6IjAyZmNmZWNiZGFiMTExMmY0MjRiYzc2MTVmZDY2NjkzNzBhMjc3Njg1MjgxMjc3MWM2YWQ1Y2RmZTU3MTgzNDNkNSIsImp0aSI6ImNRNkROa1dUdjU3NGVLb2NoQnZlZWFtRzY2WE9lSUx4In0"
 SIGNATURE="13c5d97f6ac3b0d2412962437066ca22ada3cafad1aefad85a2e261a98b2ee14e0ca8f3c7772c78fd8fed9cfb0b51b4b4c154c078a1a0b36a5c19185c84b6281"
 ```
 
-`http://example.org/path?paymentReceipt=${payload}.${signature}`
+`http://example.org/path?paymentReceipt=${payloadBase64}.${signature}`
 
 
 Query&nbsp;Parameter | Description
 --------------- | -----------
-`payload` | Payload describes the user and expiration time.
-`signature` | Signature is the SHA-512 hash of concatenated `payload` and good's `sharedSecret` known only by the merchant.
+`payloadBase64` | Base64 encoded payload describes the user and expiration time.
+`signature` | Signature is the SHA-512 hash of string resulting from concatenating `payloadBase64` and the good's `sharedSecret` known only by the merchant.
 
 ### Payload
 
-`payload` is a Base64 encoded JSON structure allowing to identify to whom the receipt was issued to and defining time when it expires.
+`payloadBase64` is a Base64 encoded JSON structure allowing to identify to whom the receipt was issued to and defining the time it expires.
+> Example `payloadBase64`
+```
+eyJleHAiOjE1MDM1NzY4NDksIml0byI6IjAyZmNmZWNiZGFiMTExMmY0MjRiYzc2MTVmZDY2NjkzNzBhMjc3Njg1MjgxMjc3MWM2YWQ1Y2RmZTU3MTgzNDNkNSIsImp0aSI6ImNRNkROa1dUdjU3NGVLb2NoQnZlZWFtRzY2WE9lSUx4In0
+```
 
-> Example `payload`
+> Example Payload
 
 ```json
 {
@@ -75,7 +79,7 @@ The correct signature for the above example payload and a `sharedSecret` value o
 
 Field | Name | Description
 --------------- | ----------- | -----------
-`exp` | Expiration time | Expiration time on which the payment receipt **MUST NOT** be accepted for processing.
+`exp` | Expiration time | Expiration time (UNIX time in seconds) after which the payment receipt **MUST NOT** be accepted for processing.
 `ito` | Issued To | Identifies a user to whom the receipt was issued to.
 `jti` | JWT ID | Case sensitive unique identifier of the token.
 
@@ -85,18 +89,21 @@ Field | Name | Description
 
 ```js
 const SHA512 = require('crypto-js/sha512')
+const base64url = require('base64url');
 
 function validate (sharedSecret, paymentReceipt) {
   const receipt = paymentReceipt.split('.')
-  const payload = base64url.decode(receipt[0])
+  const payloadBase64 = receipt[0]
+  const payload = base64url.decode(payloadBase64)
+  const payloadParsed = JSON.parse(payload)
   const signature = receipt[1]
-  const hash = SHA512(payload + sharedSecret).toString()
+  const hash = SHA512(payloadBase64 + sharedSecret).toString()
 
-  return (hash === signature && payload.exp > new Date().getTime())
+  return (hash === signature && payloadParsed.exp > Date.now() / 1000)
 }
 ```
 
-Validating `paymentRecepit` means verifying the signature and expiration time. The signature is the SHA-512 hash of the string resulting from concatenating `payload` and the good's `sharedSecret` known only by merchant.
+Validating `paymentReceipt` means verifying the signature and expiration time. The signature is the SHA-512 hash of the string resulting from concatenating `payloadBase64` and the good's `sharedSecret` known only by merchant.
 
 The merchant is responsible for generating a unique `sharedSecret` for every good and storing it in the merchant's own database.
 
