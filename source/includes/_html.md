@@ -157,3 +157,34 @@ Data Attribute   | Required | Description
 `data-sp-price`  | yes      | Price of download in stroops, e.g. `40000000`.
 `data-sp-length` | yes      | HTTP content-length i.e. file size of download in bytes. This value is used to indicate the download size next to the download link. E.g. `835669`.
 `data-sp-title`  | no       | Short title of download, e.g. `Research Report 2016`. If no title is given, `File` will be used.
+
+## Donation
+
+> Donation Example
+
+```html
+<div class="satoshipay-placeholder-donation"
+    data-sp-type="donation"
+    data-sp-id="558bcdbb1309c59725bdb561"
+    data-sp-price="10000000"
+    data-sp-currency="GBP"  
+    data-sp-width="450"
+    data-sp-height="300"
+    data-sp-placeholder="/placeholders/4.png"
+></div>
+```
+
+This tag type allows a one-time payment. 
+
+#### Data Attributes
+
+Data Attribute        | Required | Description
+--------------------- | -------- | -----------
+`data-sp-type`        | yes      | Must be "donation"
+`data-sp-id`          | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. `558bcdbb1309c59725bdb559`.
+`data-sp-price`       | yes      | Price of download in stroops, e.g. `40000000`.
+`data-sp-currency`    | yes      | The XLM price converted to US Dollars, Euro, or UK Pounds (we support: 'USD', 'EUR', or 'GBP')
+`data-sp-height`      | no       | Height of video in pixels, e.g. `360`.
+`data-sp-width`       | no       | Width of video in pixels, e.g. `640`.
+`data-sp-placeholder` | no       | Absolute or relative URL to placeholder/preview image. This will be displayed if the video has not been paid yet. E.g. `/placeholders/4.png`.
+
