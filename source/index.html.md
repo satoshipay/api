@@ -49,7 +49,7 @@ The goods can be embedded on your web page using [HTML Tags](#html-tags) with sp
 
 The special HTML tags are recognised by the SatoshiPay widget, which needs to be included on every page that contains digital goods for sale. When a user buys a digital good, the widget handles the payment process by communicating to the SatoshiPay backend using a WebSocket connection. After successful payment the widget receives a payment receipt, which in turn is used to fetch the content of the good from a special HTTP Endpoint provided by you (see [Retrieving Goods](#retrieving-goods)).
 
-## Sun of Satoshi
+## The SatoshiPay Widget
 
 > Include SatoshiPay Widget
 
@@ -57,13 +57,15 @@ The special HTML tags are recognised by the SatoshiPay widget, which needs to be
 <script src="https://wallet.satoshipay.io/satoshipay.js"></script>
 ```
 
-We've nicknamed our website widget "Sun of Satoshi" to honour Bitcoin's anonymous creator Satoshi Nakamoto. It will float at the bottom right of the page and look like this:
+The SatoshiPay website widget floats at the bottom right of the page and looks like this:
 
 <p>
   <img src="images/sun.png" />
 </p>
 
-The widget displays a user's current balance in lumens and, when clicked, a menu with items for top-up, settings and help. It can be included *anywhere* on *any* web page and will automatically transform SatoshiPay [HTML Tags](#html-tags) into digital goods. See it in action at the <a href="https://satoshipay.io/">SatoshiPay website</a>.
+The widget displays a user's current balance in lumens and, when clicked, a menu where a user can  top-up, manage their wallet, and learn more about the tool. 
+
+The SatoshiPay widget can be included *anywhere* on *any* web page and will automatically transform SatoshiPay [HTML Tags](#html-tags) into digital goods. See it in action at the <a href="https://satoshipay.io/">SatoshiPay website</a>.
 
 The widget performs the following tasks:
 
