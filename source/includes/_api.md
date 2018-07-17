@@ -10,7 +10,7 @@ The Digital Goods API allows developers to interact with SatoshiPay using HTTP R
 
 ## General
 
-### Authentication
+### API Authentication
 
 > Basic Authentication
 
@@ -38,7 +38,7 @@ The example uses Basic Authentication to receive the list of your goods. The res
 
 If authorization fails, a JSON object with an error message will be returned as a response (along with the HTTP status `401`) .
 
-### Content Types
+### Valid JSON 
 
 ```shell
 curl https://api.satoshipay.io/v2/goods/558bcdbb1309c59725bdb559 \
