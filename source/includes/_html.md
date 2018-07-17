@@ -21,7 +21,7 @@ During page load placeholders will appear in a simplified form (grey boxes) to m
     data-sp-type="text/html"
     data-sp-src="/paid-content/1.html"
     data-sp-id="558bcdbb1309c59725bdb559"
-    data-sp-price="1000"
+    data-sp-price="2"
     data-sp-length="800"
 ></div>
 ```
@@ -35,7 +35,7 @@ Data Attribute   | Required | Description
 `data-sp-type`   | yes      | Content type (MIME), must be either `text/html` or `text/plain` for this type of digital good. See [supported types](#content-types).
 `data-sp-src`    | yes      | [HTTP endpoint](#retrieving-goods) as absolute or relative URL, e.g. `/paid-content/1.html`.
 `data-sp-id`     | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. `558bcdbb1309c59725bdb559`.
-`data-sp-price`  | yes      | Price of content in stroops, e.g. `40000000`.
+`data-sp-price`  | yes      | Price of content in lumens, e.g. `4`. Will display before real price is fetched from database.
 `data-sp-length` | no       | Number of content characters (excluding HTML tags and other invisible characters), e.g. `800`. The length will be used to determine how much area the placeholder will cover. Default value: `500`.
 
 ## Image
@@ -47,7 +47,7 @@ Data Attribute   | Required | Description
     data-sp-type="image/png"
     data-sp-src="/paid-content/2.png"
     data-sp-id="558bcdbb1309c59725bdb560"
-    data-sp-price="4000"
+    data-sp-price="4"
     data-sp-width="450"
     data-sp-height="300"
     data-sp-placeholder="/placeholders/2.png"
@@ -63,7 +63,7 @@ Data Attribute        | Required | Description
 `data-sp-type`        | yes      | Content type (MIME), must start with "image/" for this type of digital good, e.g. `image/png`. See [supported types](#content-types).
 `data-sp-src`         | yes      | [HTTP endpoint](#retrieving-goods) as absolute or relative URL, e.g. `/paid-content/2.png`.
 `data-sp-id`          | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. `558bcdbb1309c59725bdb559`.
-`data-sp-price`       | yes      | Price of image in stroops, e.g. `40000000`.
+`data-sp-price`       | yes      | Price of image in lumens, e.g. `4`. Will display before real price is fetched from database.
 `data-sp-width`       | yes      | Width of image in pixels, e.g. `450`.
 `data-sp-height`      | yes      | Height of image in pixels, e.g. `300`.
 `data-sp-placeholder` | no       | Absolute or relative URL to placeholder/preview image. This will be displayed if the image has not been paid yet. E.g. `/placeholders/2.png`.
@@ -77,7 +77,7 @@ Data Attribute        | Required | Description
     data-sp-type="audio/mpeg"
     data-sp-src="/paid-content/5.mp3"
     data-sp-id="558bcdbb1309c59725bdb555"
-    data-sp-price="4000"
+    data-sp-price="4"
     data-sp-autoplay="true"
     data-sp-length="28007040"
     data-sp-title="Podcast: Interview with Satoshi Nakamoto"
@@ -93,7 +93,7 @@ Data Attribute        | Required | Description
 `data-sp-type`        | yes      | Content type (MIME), must start with "audio/" for this type of digital good, e.g. `audio/mpeg`. See [supported types](#content-types).
 `data-sp-src`         | yes      | [HTTP endpoint](#retrieving-goods) for audio as absolute or relative URL, e.g. `/paid-content/5.mp3`.
 `data-sp-id`          | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. `558bcdbb1309c59725bdb555`.
-`data-sp-price`       | yes      | Price of audio file in stroops, e.g. `40000000`.
+`data-sp-price`       | yes      | Price of audio file in lumens, e.g. `4`. Will display before real price is fetched from database.
 `data-sp-autoplay`    | no       | Value for automatic audio playback, where available. E.g. `true`, default: `false`.
 `data-sp-length`      | yes      | HTTP content-length i.e. file size of audio in bytes. This value is used to indicate the audio file size next to the audio payment button. E.g. `28007040`.
 `data-sp-title`       | no       | Short title of audio file, e.g. `Podcast: Interview with Satoshi Nakamoto`. If no title is given, `File` will be used.
@@ -107,7 +107,7 @@ Data Attribute        | Required | Description
     data-sp-type="video/mp4"
     data-sp-src="/paid-content/4.mp4"
     data-sp-id="558bcdbb1309c59725bdb562"
-    data-sp-price="4000"
+    data-sp-price="4"
     data-sp-width="640"
     data-sp-height="360"
     data-sp-autoplay="true"
@@ -124,7 +124,7 @@ Data Attribute        | Required | Description
 `data-sp-type`        | yes      | Content type (MIME), must start with "video/" for this type of digital good, e.g. `video/mp4`. See [supported types](#content-types).
 `data-sp-src`         | yes      | [HTTP endpoint](#retrieving-goods) for video as absolute or relative URL, e.g. `/paid-content/4.mp4`.
 `data-sp-id`          | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. `558bcdbb1309c59725bdb559`.
-`data-sp-price`       | yes      | Price of video in stroops, e.g. `40000000`.
+`data-sp-price`       | yes      | Price of video in lumens, e.g. `4`. Will display before real price is fetched from database.
 `data-sp-height`      | yes      | Height of video in pixels, e.g. `360`.
 `data-sp-width`       | yes      | Width of video in pixels, e.g. `640`.
 `data-sp-autoplay`    | no       | Value for automatic video playback, where available. E.g. `true`, default: `false`.
@@ -139,7 +139,7 @@ Data Attribute        | Required | Description
     data-sp-type="application/pdf"
     data-sp-src="/paid-content/3.pdf"
     data-sp-id="558bcdbb1309c59725bdb561"
-    data-sp-price="4000"
+    data-sp-price="4"
     data-sp-length="835669"
     data-sp-title="Book: What's the Deal with Bitcoins?"
 ></div>
@@ -154,7 +154,7 @@ Data Attribute   | Required | Description
 `data-sp-type`   | yes      | Content type (MIME), must start with "application/" for this type of digital good, e.g. `application/pdf`. See [supported types](#content-types).
 `data-sp-src`    | yes      | [HTTP endpoint](#retrieving-goods) for download as absolute or relative URL, e.g. `/paid-content/3.pdf`.
 `data-sp-id`     | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. `558bcdbb1309c59725bdb559`.
-`data-sp-price`  | yes      | Price of download in stroops, e.g. `40000000`.
+`data-sp-price`  | yes      | Price of download in lumens, e.g. `4`. Will display before real price is fetched from database.
 `data-sp-length` | yes      | HTTP content-length i.e. file size of download in bytes. This value is used to indicate the download size next to the download link. E.g. `835669`.
 `data-sp-title`  | no       | Short title of download, e.g. `Research Report 2016`. If no title is given, `File` will be used.
 
@@ -166,15 +166,15 @@ Data Attribute   | Required | Description
 <div class="satoshipay-placeholder-donation"
     data-sp-type="donation"
     data-sp-id="558bcdbb1309c59725bdb561"
-    data-sp-price="10000000"
+    data-sp-price="4"
     data-sp-currency="GBP"  
+    data-sp-placeholder="/placeholders/4.png"
     data-sp-width="450"
     data-sp-height="300"
-    data-sp-placeholder="/placeholders/4.png"
 ></div>
 ```
 
-This tag type allows a one-time payment. 
+This tag type allows for a one-time payment. 
 
 #### Data Attributes
 
@@ -182,9 +182,8 @@ Data Attribute        | Required | Description
 --------------------- | -------- | -----------
 `data-sp-type`        | yes      | Must be "donation"
 `data-sp-id`          | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. `558bcdbb1309c59725bdb559`.
-`data-sp-price`       | yes      | Price of download in stroops, e.g. `40000000`.
-`data-sp-currency`    | yes      | The XLM price converted to US Dollars, Euro, or UK Pounds (we support: 'USD', 'EUR', or 'GBP')
-`data-sp-height`      | no       | Height of video in pixels, e.g. `360`.
-`data-sp-width`       | no       | Width of video in pixels, e.g. `640`.
-`data-sp-placeholder` | no       | Absolute or relative URL to placeholder/preview image. This will be displayed if the video has not been paid yet. E.g. `/placeholders/4.png`.
-
+`data-sp-price`       | yes      | Donation amount in lumens, e.g. `4`. Will display before real price is fetched from database.
+`data-sp-currency`    | no      | The XLM price converted to US Dollars, Euro, or UK Pounds. Use currency symbols: 'USD', 'EUR', or 'GBP')
+`data-sp-placeholder` | no       | Absolute or relative URL to placeholder/preview image. This will be displayed if 
+`data-sp-height`      | no       | Height of placeholder/preview image in pixels, e.g. `360`.
+`data-sp-width`       | no       | Width of placeholder/preview image in pixels, e.g. `640`.
