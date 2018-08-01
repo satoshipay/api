@@ -152,6 +152,7 @@ Property | Type      | Description
 `sharedSecret` | *string*  | Shared secret information which will be used to sign the `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | Title of the good for reference in the provider dashboard.
+`purchaseValidityPeriod`  | *string*  | Time in milliseconds until the good's payment expires..
 
 ### Create a Good
 
@@ -173,7 +174,8 @@ curl https://api.satoshipay.io/v2/goods/ \
        "price": 200000000,
        "asset": "XLM",
        "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.",
-       "url": "http://example.org/post1"
+       "url": "http://example.org/post1",
+       "purchaseValidityPeriod": "86400000"
       }'
 ```
 
@@ -191,7 +193,8 @@ request({
     "price": 200000000,
     "asset": "XLM",
     "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.",
-    "url": "http://example.org/post1"
+    "url": "http://example.org/post1",
+    "purchaseValidityPeriod": "86400000"
   }
 }, callback);
 ```
@@ -200,12 +203,13 @@ request({
 
 ```json
 {
-  "id": "56c5a5a722252b484dc4839f",
-  "sharedSecret": "DLDwYsQGromi",
-  "price": 200000000,
-  "asset": "XLM",
-  "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.",
-  "url": "http://example.org/post1"
+    "id": "5b61b65c96fec50010512cf6",
+    "sharedSecret": "DLDwYsQGromi",
+    "asset": "XLM",
+    "price": 200000000,
+    "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.",
+    "url": "http://example.org/post1",
+    "purchaseValidityPeriod": 86400000
 }
 ```
 
@@ -224,6 +228,7 @@ Property | Type      | Required | Description
 `sharedSecret` | *string*  | yes      | Shared secret information which will be used to sign the `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | yes      | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | yes      | Title of the good for reference in the provider dashboard.
+`purchaseValidityPeriod`  | *string*  | no      | Time in milliseconds until the good's payment expires.
 
 #### Response
 
@@ -289,6 +294,7 @@ Property | Type      | Description
 `sharedSecret` | *string*  | Shared secret information which will be used to sign the `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | Title of the good for reference in the provider dashboard.
+`purchaseValidityPeriod`  | *string*  | Time in milliseconds until the good's payment expires.
 
 ### Replace a Good
 
@@ -310,7 +316,8 @@ curl https://api.satoshipay.io/v2/goods/56c5a91265e80b7c51afad23 \
         "price": 200000000,
         "asset": "XLM",
         "title": "Veritatis impedit mollitia nam ipsum laudantium quam quidem.",
-        "url": "https://example.net"
+        "url": "https://example.net",
+        "purchaseValidityPeriod": "60000"
       }'
 ```
 
@@ -328,7 +335,8 @@ request({
     "price": 200000000,
     "asset": "XLM",
     "title": "Veritatis impedit mollitia nam ipsum laudantium quam quidem.",
-    "url": "https://example.net"
+    "url": "https://example.net",
+    "purchaseValidityPeriod": "60000"
   }
 }, callback);
 ```
@@ -337,12 +345,13 @@ request({
 
 ```json
 {
-  "id": "56c5a91265e80b7c51afad23",
-  "sharedSecret": "RLC43wvCcmcs",
-  "price": 200000000,
-  "asset": "XLM",
-  "title": "Veritatis impedit mollitia nam ipsum laudantium quam quidem.",
-  "url": "https://example.net"
+    "id": "5b61b76d66fec50010514cf7",
+    "sharedSecret": "RLC43wvCcmcs",
+    "asset": "XLM",
+    "price": 200000000,
+    "title": "Veritatis impedit mollitia nam ipsum laudantium quam quidem.",
+    "url": "https://example.net",
+    "purchaseValidityPeriod": 60000
 }
 ```
 
@@ -361,6 +370,7 @@ Property | Type      | Required | Description
 `sharedSecret` | *string*  | yes      | Shared secret information which will be used to create `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | yes      | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | yes      | Title of the good for reference in the provider dashboard.
+`purchaseValidityPeriod`  | *string*  | no      | Time in milliseconds until the good's payment expires.
 
 #### Response
 
@@ -429,6 +439,7 @@ Property | Type      | Required | Description
 `sharedSecret` | *string*  | no       | Shared secret information which will be used to create `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | no       | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | no       | Title of the good for reference in the provider dashboard.
+`purchaseValidityPeriod`  | *string*  | no      | Time in milliseconds until the good's payment expires.
 
 #### Response
 
