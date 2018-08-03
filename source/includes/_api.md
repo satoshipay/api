@@ -131,7 +131,8 @@ request({
     "asset": "XLM",
     "sharedSecret": "m1btHMWJ6O6g",
     "url": "http://example.name",
-    "title": "Saepe voluptatibus tempore pariatur atque quia corrupti nisi dolores."
+    "title": "Saepe voluptatibus tempore pariatur atque quia corrupti nisi dolores.",
+    "purchaseValidityPeriod": 86400000
   }
 ]
 ```
@@ -152,7 +153,7 @@ Property | Type      | Description
 `sharedSecret` | *string*  | Shared secret information which will be used to sign the `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | Title of the good for reference in the provider dashboard.
-`purchaseValidityPeriod`  | *string*  | Time in milliseconds until the good's payment expires..
+`purchaseValidityPeriod`  | *string*  | Time until the good's [payment expiry](#payment-expiry).
 
 ### Create a Good
 
@@ -175,7 +176,7 @@ curl https://api.satoshipay.io/v2/goods/ \
        "asset": "XLM",
        "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.",
        "url": "http://example.org/post1",
-       "purchaseValidityPeriod": "86400000"
+       "purchaseValidityPeriod": "1m"
       }'
 ```
 
@@ -194,7 +195,7 @@ request({
     "asset": "XLM",
     "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.",
     "url": "http://example.org/post1",
-    "purchaseValidityPeriod": "86400000"
+    "purchaseValidityPeriod": "1m"
   }
 }, callback);
 ```
@@ -209,7 +210,7 @@ request({
     "price": 200000000,
     "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.",
     "url": "http://example.org/post1",
-    "purchaseValidityPeriod": 86400000
+    "purchaseValidityPeriod": 60000
 }
 ```
 
@@ -228,7 +229,7 @@ Property | Type      | Required | Description
 `sharedSecret` | *string*  | yes      | Shared secret information which will be used to sign the `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | yes      | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | yes      | Title of the good for reference in the provider dashboard.
-`purchaseValidityPeriod`  | *string*  | no      | Time in milliseconds until the good's payment expires.
+`purchaseValidityPeriod`  | *string*  | no      | Time until the good's [payment expiry](#payment-expiry).
 
 #### Response
 
@@ -270,7 +271,8 @@ request({
   "price": 50000000,
   "asset": "XLM",
   "title": "Saepe voluptatibus tempore pariatur atque quia corrupti nisi dolores.",
-  "url": "http://example.name"
+  "url": "http://example.name",
+  "purchaseValidityPeriod": 60000
 }
 ```
 
@@ -294,7 +296,7 @@ Property | Type      | Description
 `sharedSecret` | *string*  | Shared secret information which will be used to sign the `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | Title of the good for reference in the provider dashboard.
-`purchaseValidityPeriod`  | *string*  | Time in milliseconds until the good's payment expires.
+`purchaseValidityPeriod`  | *interger*  | Time in milliseconds until the good's payment expires.
 
 ### Replace a Good
 
@@ -370,7 +372,7 @@ Property | Type      | Required | Description
 `sharedSecret` | *string*  | yes      | Shared secret information which will be used to create `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | yes      | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | yes      | Title of the good for reference in the provider dashboard.
-`purchaseValidityPeriod`  | *string*  | no      | Time in milliseconds until the good's payment expires.
+`purchaseValidityPeriod`  | *string*  | no      | Time until the good's [payment expiry](#payment-expiry).
 
 #### Response
 
@@ -439,7 +441,7 @@ Property | Type      | Required | Description
 `sharedSecret` | *string*  | no       | Shared secret information which will be used to create `paymentReceipt` used to [authenticate](#retriving-auth) user during digital goods [retrieval](#retrieving-goods).
 `url`    | *string*  | no       | URL of the web page which contains the good. Used as a reference in the [Dashboard](https://dashboard.satoshipay.io/performance/goods).
 `title`  | *string*  | no       | Title of the good for reference in the provider dashboard.
-`purchaseValidityPeriod`  | *string*  | no      | Time in milliseconds until the good's payment expires.
+`purchaseValidityPeriod`  | *string*  | no      | Time until the good's [payment expiry](#payment-expiry).
 
 #### Response
 
@@ -615,3 +617,22 @@ Property | Type         | Description
 -------- | ------------ | -----------
 `status` | *integer*    | HTTP status code of the respective request.
 `body`   | *json value* | JSON value that represents the response body from the respective request.
+
+## Payment Expiry
+
+Digital goods can have a payment expiry. After a successful payment, a good will be in its paid state until the defined expiry time interval has passed, after which the payment will no longer be valid.
+
+### Setting Payment Expiry
+
+During the registration of a good, the optional `purchaseValidityPeriod` property can be set with an arbitrary, positive time period. The time format is translated by the ["ms" NPM package](https://www.npmjs.com/package/ms), which converts various time formats to milliseconds. See examples below. 
+
+**Examples:**
+
+Value | Milliseconds
+-------- | ------------ 
+`"5s"` | 5000
+`"60000"` | 60000
+`"1m"` | 60000
+`"2.5 hrs"` | 9000000
+`"2 days"` | 172800000  
+`"1y"` | 31557600000
