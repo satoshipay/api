@@ -2,12 +2,12 @@
 
 SatoshiPay uses the [MIME media type](https://en.wikipedia.org/wiki/Media_type) standard to identify the content of digital goods. Media types (also "content types") influence the way digital goods are retrieved and displayed. Here is a complete list of supported types.
 
-### Text
+### Text types
 
 * `text/html`
 * `text/plain`
 
-### Image
+### Image types
 
 * `image/bmp`
 * `image/gif`
@@ -16,7 +16,7 @@ SatoshiPay uses the [MIME media type](https://en.wikipedia.org/wiki/Media_type) 
 * `image/svg+xml`
 * `image/tiff`
 
-### Audio
+### Audio types
 
 * `audio/mpeg`
 * `audio/mp4`
@@ -24,7 +24,7 @@ SatoshiPay uses the [MIME media type](https://en.wikipedia.org/wiki/Media_type) 
 * `audio/webm`
 * `audio/wav`
 
-### Video
+### Video types
 
 * `video/avi`
 * `video/mp4`
@@ -34,7 +34,7 @@ SatoshiPay uses the [MIME media type](https://en.wikipedia.org/wiki/Media_type) 
 * `video/quicktime`
 * `video/x-msvideo`
 
-### Download
+### Download types
 
 * `application/bzip2`
 * `application/java-archive`
