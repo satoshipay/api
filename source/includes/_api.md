@@ -176,7 +176,7 @@ curl https://api.satoshipay.io/v2/goods/ \
        "asset": "XLM",
        "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.",
        "url": "http://example.org/post1",
-       "purchaseValidityPeriod": "1m"
+       "purchaseValidityPeriod": "1h"
       }'
 ```
 
@@ -195,7 +195,7 @@ request({
     "asset": "XLM",
     "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.",
     "url": "http://example.org/post1",
-    "purchaseValidityPeriod": "1m"
+    "purchaseValidityPeriod": "1h"
   }
 }, callback);
 ```
@@ -210,7 +210,7 @@ request({
     "price": 200000000,
     "title": "Nihil placeat sapiente ut eaque assumenda et reprehenderit quos ab.",
     "url": "http://example.org/post1",
-    "purchaseValidityPeriod": 60000
+    "purchaseValidityPeriod": 3600000
 }
 ```
 
