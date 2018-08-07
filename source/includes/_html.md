@@ -184,6 +184,6 @@ Data Attribute        | Required | Description
 `data-sp-id`          | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. `558bcdbb1309c59725bdb559`.
 `data-sp-price`       | yes      | Donation amount in lumens, e.g. `4`. Will display before real price is fetched from database.
 `data-sp-currency`    | no      | The XLM price converted to US Dollars, Euro, or UK Pounds. Use currency symbols: 'USD', 'EUR', or 'GBP')
-`data-sp-placeholder` | no       | Absolute or relative URL to placeholder/preview image. This will be displayed if 
+`data-sp-placeholder` | no       | Absolute or relative URL to placeholder/preview image. This will be displayed if the image has not been paid yet. E.g. `/placeholders/2.png`.
 `data-sp-height`      | no       | Height of placeholder/preview image in pixels, e.g. `360`.
 `data-sp-width`       | no       | Width of placeholder/preview image in pixels, e.g. `640`.
