@@ -8,7 +8,7 @@ Before purchase, a digital good is represented on the merchant's website by a pl
 
 ![Goods placeholder](../images/content-mask.png "Goods placeholder")
 
-The data attributes specify where the good can be downloaded from by the SatoshiPay client once the payment has been successfully completed, which specific type of good is displayed, its price and other content type specific properties like length or size. See below for a detailed description of the data attributes for different content types.
+The data attributes specify where the good can be downloaded from by the SatoshiPay client once the payment has been successfully completed, which specific type of good is displayed, and other content type specific properties like length or size. See below for a detailed description of the data attributes for different content types.
 
 During page load placeholders will appear in a simplified form (grey boxes) to make them recognizable while the SatoshiPay widget is being initialized. Placeholder styling can not be modified by the surrounding website.
 
