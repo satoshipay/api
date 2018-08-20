@@ -2,3 +2,8 @@
   from = "/api/*"
   to = "/:splat"
   status = 200
+
+[[redirects]]
+  from = "/"
+  to = "/api/"
+  status = 302
