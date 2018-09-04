@@ -1,6 +1,6 @@
 # HTML Tags
 
-Digital goods can be included on a web page by defining special *HTML tags*, which will then be controlled by the SatoshiPay [widget](#sun-of-satoshi). Content types for [text](#text), [images](#image), [audio files](#audio), [videos](#video) and [downloads](#download) are supported. Find a complete list of [supported types](#content-types) in the reference section.
+Digital goods can be included on a web page by defining special *HTML tags*, which will then be controlled by the SatoshiPay [widget](#the-satoshipay-widget). Content types for [text](#text), [images](#image), [audio files](#audio), [videos](#video) and [downloads](#download) are supported. Find a complete list of [supported types](#content-types) in the reference section.
 
 Before purchase, a digital good is represented on the merchant's website by a placeholder. These placeholders are injected by the SatoshiPay widget, which scans the current page for placeholder tags on initialization. The placeholder tags are identified by a CSS class name starting with `satoshipay-placeholder` and contain details about the good they replace in their `data` attributes (see the [text](#text) tag example).
 

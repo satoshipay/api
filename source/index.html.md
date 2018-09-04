@@ -21,7 +21,7 @@ search: true
 
 # Introduction
 
-Welcome to the [SatoshiPay](https://satoshipay.io/) API! You can use this API to make digital goods like articles, images, videos and downloadable files available for purchase using the SatoshiPay [widget](#sun-of-satoshi). This documentation covers:
+Welcome to the [SatoshiPay](https://satoshipay.io/) API! You can use this API to make digital goods like articles, images, videos and downloadable files available for purchase using the SatoshiPay [widget](#the-satoshipay-widget). This documentation covers:
 
 * [Digital Goods API](#digital-goods-api) - Register and manage digital goods with SatoshiPay
 * [HTML Tags](#html-tags) - How to embed digital goods into your website
@@ -63,7 +63,7 @@ The SatoshiPay website widget floats at the bottom right of the page and looks l
   <img src="images/sun.png" />
 </p>
 
-The widget displays a user's current balance in lumens and, when clicked, a menu where a user can  top-up, manage their wallet, and learn more about the tool. 
+The widget displays a user's current balance in lumens and, when clicked, a menu where a user can  top-up, manage their wallet, and learn more about the tool.
 
 The SatoshiPay widget can be included *anywhere* on *any* web page and will automatically transform SatoshiPay [HTML Tags](#html-tags) into digital goods. See it in action at the <a href="https://satoshipay.io/">SatoshiPay website</a>.
 
