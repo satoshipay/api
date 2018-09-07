@@ -26,7 +26,7 @@ Welcome to the [SatoshiPay](https://satoshipay.io/) API! You can use this API to
 * [Digital Goods API](#digital-goods-api) - Register and manage digital goods with SatoshiPay
 * [HTML Tags](#html-tags) - How to embed digital goods into your website
 * [Retrieving Goods](#retrieving-goods) - How to deliver paid digital goods to your users
-* [Reference](#reference) - Complete list of supported content types
+* [Content Types](#content-types) - Complete list of supported content types
 
 ## SatoshiPay and You
 
