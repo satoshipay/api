@@ -15,6 +15,7 @@ includes:
   - html
   - retrieving-goods
   - content-types
+  - testnet
 
 search: true
 ---
