@@ -36,7 +36,7 @@ In order to use the testnet version of the [widget](#the-satoshipay-widget) on y
 
 ## Testnet Funds
 
-In order to get testnet funds, find a Stellar friendbot which disperses free testnet lumens to a testnet account. Solar wallet is free and comes with a friendbot feature for testnet. Download the wallet on [solarwallet.io](https://solarwallet.io/).
+In order to get testnet funds, find a Stellar friendbot which sends free testnet lumens to a testnet account. Solar wallet is free and comes with a friendbot feature for testnet. Download the wallet from [solarwallet.io](https://solarwallet.io/).
 
 
 
