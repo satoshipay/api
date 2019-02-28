@@ -6,9 +6,9 @@ language_tabs:
   - javascript: JavaScript
 
 toc_footers:
-  - <a href='https://dashboard.satoshipay.io/sign-up'>Sign up for API key</a>
+  - <a href='https://dashboard.satoshipay.io/sign-up'>Sign up for API key &rarr;</a>
   - <a href='https://github.com/tripit/slate'>Docs by Slate</a>
-  - <span>&copy;</span> 2016-2018 <a href='https://satoshipay.io/'>SatoshiPay</a>
+  - <span>&copy;</span> 2016-2019 <a href='https://satoshipay.io/'>SatoshiPay</a>
 
 includes:
   - api
