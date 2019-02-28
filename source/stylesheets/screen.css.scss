@@ -358,7 +358,7 @@ html, body {
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
-    background-color: #fdfdfd;
+    border-top: 1px solid #f0f4f7;
   }
 
   h1:first-child, div:first-child + h1 {
@@ -371,7 +371,6 @@ html, body {
     font-size: 19px;
     margin-top: 4em;
     margin-bottom: 0;
-    border-top: 1px solid #f0f4f7;
     padding-top: 1.2em;
     padding-bottom: 1.2em;
   }
