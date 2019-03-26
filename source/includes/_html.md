@@ -157,6 +157,7 @@ Data Attribute   | Required | Description
     data-sp-type="donation"
     data-sp-id="558bcdbb1309c59725bdb561"
     data-sp-currency="GBP"
+    data-sp-show-thankyou="true"
     data-sp-placeholder="/placeholders/4.png"
     data-sp-width="450"
     data-sp-height="300"
@@ -171,7 +172,8 @@ Data Attribute        | Required | Description
 --------------------- | -------- | -----------
 `data-sp-type`        | yes      | Must be "donation"
 `data-sp-id`          | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. `558bcdbb1309c59725bdb559`.
-`data-sp-currency`    | no      | The XLM price converted to US Dollars, Euro, or UK Pounds. Use currency symbols: 'USD', 'EUR', or 'GBP')
+`data-sp-currency`    | no       | The XLM price converted to US Dollars, Euro, or UK Pounds. Use currency symbols: 'USD', 'EUR', or 'GBP')
+`data-sp-show-thankyou`| no      | If set to `true`, a "Thank you" notice will be shown permanently after successful donation. Default: `false`.
 `data-sp-placeholder` | no       | Absolute or relative URL to placeholder/preview image. This will be displayed if the image has not been paid yet. E.g. `/placeholders/2.png`.
 `data-sp-height`      | no       | Height of placeholder/preview image in pixels, e.g. `360`.
 `data-sp-width`       | no       | Width of placeholder/preview image in pixels, e.g. `640`.
