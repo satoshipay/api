@@ -36,7 +36,7 @@ Data Attribute      | Required | Description
 `data-sp-src`       | yes      | [HTTP endpoint](#retrieving-goods) as absolute or relative URL, e.g. `/paid-content/1.html`.
 `data-sp-id`        | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. `558bcdbb1309c59725bdb559`.
 `data-sp-length`    | no       | Number of content characters (excluding HTML tags and other invisible characters), e.g. `800`. The length will be used to determine how much area the placeholder will cover. Default value: `500`.
-`data-sp-currency`  | no       | The XLM price converted to US Dollars, Euro, or UK Pounds. Use currency symbols: 'USD', 'EUR', or 'GBP'
+`data-sp-currency`  | no       | The XLM price converted to US Dollars, Euro, or UK Pounds. Use currency code: 'USD', 'EUR', or 'GBP'
 
 ## Image
 
@@ -66,7 +66,7 @@ Data Attribute        | Required | Description
 `data-sp-width`       | yes      | Width of image in pixels, e.g. `450`.
 `data-sp-height`      | yes      | Height of image in pixels, e.g. `300`.
 `data-sp-placeholder` | no       | Absolute or relative URL to placeholder/preview image. This will be displayed if the image has not been paid yet. E.g. `/placeholders/2.png`.
-`data-sp-currency`    | no       | The XLM price converted to US Dollars, Euro, or UK Pounds. Use currency symbols: 'USD', 'EUR', or 'GBP'
+`data-sp-currency`    | no       | The XLM price converted to US Dollars, Euro, or UK Pounds. Use currency code: 'USD', 'EUR', or 'GBP'
 
 ## Audio
 
@@ -96,7 +96,7 @@ Data Attribute        | Required | Description
 `data-sp-autoplay`    | no       | Value for automatic audio playback, where available. E.g. `true`, default: `false`.
 `data-sp-length`      | yes      | HTTP content-length i.e. file size of audio in bytes. This value is used to indicate the audio file size next to the audio payment button. E.g. `28007040`.
 `data-sp-title`       | no       | Short title of audio file, e.g. `Podcast: Interview with Satoshi Nakamoto`. If no title is given, `File` will be used.
-`data-sp-currency`    | no       | The XLM price converted to US Dollars, Euro, or UK Pounds. Use currency symbols: 'USD', 'EUR', or 'GBP'
+`data-sp-currency`    | no       | The XLM price converted to US Dollars, Euro, or UK Pounds. Use currency code: 'USD', 'EUR', or 'GBP'
 
 ## Video
 
@@ -128,7 +128,7 @@ Data Attribute        | Required | Description
 `data-sp-width`       | yes      | Width of video in pixels, e.g. `640`.
 `data-sp-autoplay`    | no       | Value for automatic video playback, where available. E.g. `true`, default: `false`.
 `data-sp-placeholder` | no       | Absolute or relative URL to placeholder/preview image. This will be displayed if the video has not been paid yet. E.g. `/placeholders/4.png`.
-`data-sp-currency`    | no       | The XLM price converted to US Dollars, Euro, or UK Pounds. Use currency symbols: 'USD', 'EUR', or 'GBP'
+`data-sp-currency`    | no       | The XLM price converted to US Dollars, Euro, or UK Pounds. Use currency code: 'USD', 'EUR', or 'GBP'
 
 ## Download
 
@@ -156,7 +156,7 @@ Data Attribute      | Required | Description
 `data-sp-id`        | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. `558bcdbb1309c59725bdb559`.
 `data-sp-length`    | yes      | HTTP content-length i.e. file size of download in bytes. This value is used to indicate the download size next to the download link. E.g. `835669`.
 `data-sp-title`     | no       | Short title of download, e.g. `Research Report 2016`. If no title is given, `File` will be used.
-`data-sp-currency`  | no       | The XLM price converted to US Dollars, Euro, or UK Pounds. Use currency symbols: 'USD', 'EUR', or 'GBP'
+`data-sp-currency`  | no       | The XLM price converted to US Dollars, Euro, or UK Pounds. Use currency code: 'USD', 'EUR', or 'GBP'
 
 ## Donation
 
@@ -182,7 +182,7 @@ Data Attribute          | Required | Description
 ----------------------- | -------- | -----------
 `data-sp-type`          | yes      | Must be "donation"
 `data-sp-id`            | yes      | Unique identifier for the good in SatoshiPay's registry. Consists of a hex string, e.g. `558bcdbb1309c59725bdb559`.
-`data-sp-currency`      | no       | The XLM price converted to US Dollars, Euro, or UK Pounds. Use currency symbols: 'USD', 'EUR', or 'GBP'
+`data-sp-currency`      | no       | The XLM price converted to US Dollars, Euro, or UK Pounds. Use currency code: 'USD', 'EUR', or 'GBP'
 `data-sp-show-thankyou` | no       | If set to `true`, a "Thank you" notice will be shown permanently after successful donation. Default: `false`.
 `data-sp-placeholder`   | no       | Absolute or relative URL to placeholder/preview image. This will be displayed if the image has not been paid yet. E.g. `/placeholders/2.png`.
 `data-sp-height`        | no       | Height of placeholder/preview image in pixels, e.g. `360`.
