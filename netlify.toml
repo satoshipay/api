@@ -7,3 +7,4 @@
   from = "/"
   to = "/api/"
   status = 302
+  force = true
